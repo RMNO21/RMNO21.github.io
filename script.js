@@ -30,11 +30,11 @@
       "about.label": "Identity & Background",
       "about.headline": "About Raman Tondro",
       "sidebar.nameLabel": "Full Name",
-      "sidebar.instLabel": "Institution",
+      "sidebar.locationLabel": "Location",
       "sidebar.targetLabel": "Primary Target",
       "sidebar.githubLabel": "GitHub Handle",
       sidebarName: config.profile?.name || "Raman Tondro",
-      sidebarInst: "Shiraz University",
+      sidebarLocation: "Iran",
       sidebarTarget: "Embedded Firmware & Systems",
       "contact.label": "Connect",
       "contact.headline": "Direct Channels",
@@ -67,17 +67,17 @@
       "about.label": "هویت و پیشینه",
       "about.headline": "درباره رامان تندرو",
       "sidebar.nameLabel": "نام و نام خانوادگی",
-      "sidebar.instLabel": "دانشگاه",
+      "sidebar.locationLabel": "موقعیت",
       "sidebar.targetLabel": "تمرکز تخصصی",
       "sidebar.githubLabel": "شناسه گیت‌هاب",
       sidebarName: config.profile?.persianName || "رامان تندرو",
-      sidebarInst: "دانشگاه شیراز",
+      sidebarLocation: "ایران",
       sidebarTarget: "فرم‌ویر و سیستم‌های نهفته",
       "contact.label": "پل‌های ارتباطی",
       "contact.headline": "راه‌های ارتباط مستقیم",
       footerCopy: "&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز",
       bioParagraphs: [
-        "<strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر دانشگاه شیراز است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.",
+        "<strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.",
         "پروژه‌های منبع‌باز او بر حل چالش‌های عینی مهندسی متمرکز است: از کدنویسی C++ روی <strong>ESP32</strong> و آنالیز پکت‌های خام وای‌فای، تا توسعه اپلیکیشن‌های مدیا در اندروید با <strong>کاتلین</strong> و مدل‌های پردازش تصویر بی‌درنگ."
       ]
     }
@@ -210,8 +210,8 @@
 
       case "whoami":
         response = currentLang === "fa"
-          ? (config.profile?.persianName + " | دانشجوی مهندسی کامپیوتر دانشگاه شیراز | توسعه‌دهنده سیستم‌های نهفته")
-          : "Raman Tondro | Computer Engineering Student @ Shiraz University | Systems Developer";
+          ? (config.profile?.persianName + " | دانشجوی مهندسی کامپیوتر و تکنسین برق | توسعه‌دهنده سیستم‌های نهفته")
+          : "Raman Tondro | Computer Engineering & Systems Developer";
         break;
 
       case "bio":
@@ -241,7 +241,7 @@
 / /__\\ \\    Host: ESP32-WROOM-32 / Android ARM64
 \\/____\\/    Kernel: 6.10.4-hardened-rt
             Stack: C++20, Rust, Kotlin, Python, GLSL
-            Institution: ${currentLang === 'fa' ? 'دانشگاه شیراز' : 'Shiraz University'}
+            Focus: Embedded Firmware & Real-time Systems
             Status: Active & Compiling`;
         break;
 
@@ -332,8 +332,8 @@
     const sidebarName = document.getElementById("sidebarName");
     if (sidebarName) sidebarName.textContent = dict.sidebarName;
 
-    const sidebarInst = document.getElementById("sidebarInst");
-    if (sidebarInst) sidebarInst.textContent = dict.sidebarInst;
+    const sidebarLoc = document.getElementById("sidebarLocation");
+    if (sidebarLoc) sidebarLoc.textContent = dict.sidebarLocation;
 
     const sidebarTarget = document.getElementById("sidebarTarget");
     if (sidebarTarget) sidebarTarget.textContent = dict.sidebarTarget;

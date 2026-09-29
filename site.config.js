@@ -12,8 +12,8 @@ window.SITE_CONFIG = {
     persianTagline: "دانشجوی مهندسی کامپیوتر و توسعه‌دهنده سیستم‌های نهفته",
     status: "Available for engineering projects & collaboration",
     persianStatus: "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
-    location: "Iran (Shiraz University)",
-    persianLocation: "ایران (دانشگاه شیراز)",
+    location: "Iran",
+    persianLocation: "ایران",
     email: "tondroraman83@gmail.com",
     github: "https://github.com/RMNO21",
     avatar: "https://avatars.githubusercontent.com/u/158779818?v=4",
@@ -81,9 +81,9 @@ window.SITE_CONFIG = {
       title: "sess-shirazu-autologin",
       category: "automation",
       tag: "Browser / Scripting",
-      description: "High-performance browser extension automating authentication for Shiraz University SESS portal with smart CAPTCHA reset.",
-      persianDescription: "افزونه مرورگر سریع برای ورود خودکار به سامانه سس دانشگاه شیراز با قابلیت تشخیص و ریست هوشمند کپچا.",
-      stack: ["JavaScript", "Chrome MV3", "DOM", "Shiraz University"],
+      description: "High-performance browser extension automating portal authentication with smart CAPTCHA reset.",
+      persianDescription: "افزونه مرورگر سریع برای ورود خودکار به سامانه دانشگاهی با قابلیت تشخیص و ریست هوشمند کپچا.",
+      stack: ["JavaScript", "Chrome MV3", "DOM", "Automation"],
       url: "https://github.com/RMNO21/sess-shirazu-autologin",
       stars: 1
     },
@@ -149,14 +149,14 @@ window.SITE_CONFIG = {
     ],
     commands: {
       help: "Available commands: whoami, bio, projects, skills, contact, specs, clear, exit",
-      whoami: "Raman Tondro (رامان تندرو) | Computer Engineering Student @ Shiraz University | Embedded Systems Developer",
+      whoami: "Raman Tondro | Computer Engineering Student & Systems Developer",
       contact: "Email: tondroraman83@gmail.com | GitHub: https://github.com/RMNO21",
       specs: [
         "OS: Arch Linux x86_64 / FreeRTOS (ESP32)",
         "Kernel: 6.10-hardened-rt",
         "Hardware Target: ESP32-WROOM-32 / Android ARM64",
         "Primary Stack: C++20, Rust, Kotlin, Python 3.12",
-        "Active Workspace: Shiraz, Iran"
+        "Status: Active & Compiling"
       ]
     }
   }
