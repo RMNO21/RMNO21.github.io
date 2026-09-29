@@ -8,6 +8,7 @@
 
   const i18n = {
     en: {
+      pageTitle: "Raman Tondro | Systems & Embedded Engineer",
       langBtn: "FA / فارسی",
       headerName: config.profile?.name || "Raman Tondro",
       headerSub: "Systems Developer",
@@ -22,13 +23,21 @@
       "hero.btnProjects": "Explore Projects",
       "hero.btnTerminal": "Open Shell Terminal",
       "hero.btnContact": "Contact",
+      "projects.label": "Selected Works",
       "projects.headline": "Engineered Repositories",
+      "skills.label": "Capabilities",
       "skills.headline": "Engineering Stack & Toolchain",
-      "about.headline": "Background & Engineering Principles",
-      "contact.headline": "Direct Channels",
+      "about.label": "Identity & Background",
+      "about.headline": "About Raman Tondro",
+      "sidebar.nameLabel": "Full Name",
+      "sidebar.instLabel": "Institution",
+      "sidebar.targetLabel": "Primary Target",
+      "sidebar.githubLabel": "GitHub Handle",
       sidebarName: config.profile?.name || "Raman Tondro",
       sidebarInst: "Shiraz University",
       sidebarTarget: "Embedded Firmware & Systems",
+      "contact.label": "Connect",
+      "contact.headline": "Direct Channels",
       footerCopy: "&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages",
       bioParagraphs: [
         "<strong>Raman Tondro</strong> is a Computer Engineering student and practical electrical/hardware technician. He builds low-overhead software systems closely coupled to physical microcontrollers, real-time operating systems, and edge computing nodes.",
@@ -36,6 +45,7 @@
       ]
     },
     fa: {
+      pageTitle: "رامان تندرو | مهندسی سیستم‌ها و نهفته",
       langBtn: "EN / English",
       headerName: config.profile?.persianName || "رامان تندرو",
       headerSub: "توسعه‌دهنده سیستم‌های نهفته",
@@ -50,13 +60,21 @@
       "hero.btnProjects": "مشاهده پروژه‌ها",
       "hero.btnTerminal": "کنسول خط فرمان",
       "hero.btnContact": "ارتباط مستقیم",
+      "projects.label": "پروژه‌های منتخب",
       "projects.headline": "مخازن و سیستم‌های توسعه‌یافته",
+      "skills.label": "توانمندی‌های فنی",
       "skills.headline": "معماری فنی و پشته ابزارها",
-      "about.headline": "پیشینه فنی و اصول مهندسی",
-      "contact.headline": "راه‌های ارتباط مستقیم",
+      "about.label": "هویت و پیشینه",
+      "about.headline": "درباره رامان تندرو",
+      "sidebar.nameLabel": "نام و نام خانوادگی",
+      "sidebar.instLabel": "دانشگاه",
+      "sidebar.targetLabel": "تمرکز تخصصی",
+      "sidebar.githubLabel": "شناسه گیت‌هاب",
       sidebarName: config.profile?.persianName || "رامان تندرو",
       sidebarInst: "دانشگاه شیراز",
       sidebarTarget: "فرم‌ویر و سیستم‌های نهفته",
+      "contact.label": "پل‌های ارتباطی",
+      "contact.headline": "راه‌های ارتباط مستقیم",
       footerCopy: "&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز",
       bioParagraphs: [
         "<strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر دانشگاه شیراز است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.",
@@ -275,7 +293,14 @@
 
     const dict = i18n[lang] || i18n.en;
 
-    // Update data-i18n attributes
+    // Document title
+    if (dict.pageTitle) {
+      document.title = dict.pageTitle;
+      const titleEl = document.getElementById("pageTitle");
+      if (titleEl) titleEl.textContent = dict.pageTitle;
+    }
+
+    // Update all data-i18n attributes
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) {
@@ -323,8 +348,8 @@
 
   // --- Setup Event Listeners ---
   document.addEventListener("DOMContentLoaded", () => {
-    // 1. Initial Render
-    renderProjects("all");
+    // 1. Initialize language first so all dynamic text and projects match
+    setLanguage(currentLang);
     renderSkills();
     initTerminal();
 
@@ -346,8 +371,5 @@
         setLanguage(nextLang);
       });
     }
-
-    // Initialize with stored or default language
-    setLanguage(currentLang);
   });
 })();

@@ -665,11 +665,45 @@ a {
 /* RTL Mode */
 body.lang-fa {
   font-family: var(--font-fa), var(--font-sans);
+  direction: rtl;
+  text-align: right;
 }
 
-body.lang-fa .hero-main-title .farsi-tag {
-  margin-left: 0;
-  margin-right: 0.6rem;
+body.lang-fa .site-header .header-container {
+  flex-direction: row;
+}
+
+body.lang-fa .header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+body.lang-fa .sidebar-tech-info {
+  text-align: right;
+}
+
+body.lang-fa .sidebar-info-row {
+  align-items: flex-start;
+}
+
+body.lang-fa .sidebar-info-val,
+body.lang-fa .sidebar-info-label {
+  text-align: right;
+}
+
+body.lang-fa .bio-editorial-text p {
+  text-align: right;
+  line-height: 2;
+  unicode-bidi: plaintext;
+}
+
+body.lang-fa .section-head-bar {
+  text-align: right;
+}
+
+body.lang-fa .terminal-block {
+  direction: ltr;
+  text-align: left;
 }
 
 /* Responsive adjustments */
