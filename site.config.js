@@ -17,6 +17,7 @@ window.SITE_CONFIG = {
     email: "tondroraman83@gmail.com",
     github: "https://github.com/RMNO21",
     orcid: "https://orcid.org/0009-0008-3052-1874",
+    wikidata: "https://www.wikidata.org/wiki/Q141601053",
     avatar: "https://avatars.githubusercontent.com/u/158779818?v=4",
     bio: [
       "Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.",
