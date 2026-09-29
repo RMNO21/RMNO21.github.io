@@ -9,37 +9,59 @@
   const i18n = {
     en: {
       langBtn: "FA / فارسی",
+      headerName: config.profile?.name || "Raman Tondro",
+      headerSub: "Systems Developer",
+      heroTitle: config.profile?.name || "Raman Tondro",
+      heroTagline: config.profile?.bio?.[0] || "Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.",
       "nav.projects": "Projects",
       "nav.terminal": "Terminal",
       "nav.skills": "Stack",
       "nav.about": "Background",
       "nav.contact": "Contact",
       "hero.status": config.profile?.status || "Available for engineering projects & collaboration",
-      "hero.tagline": config.profile?.bio?.[0] || "",
       "hero.btnProjects": "Explore Projects",
       "hero.btnTerminal": "Open Shell Terminal",
       "hero.btnContact": "Contact",
       "projects.headline": "Engineered Repositories",
       "skills.headline": "Engineering Stack & Toolchain",
-      "about.headline": "About Raman Tondro (درباره رامان تندرو)",
-      "contact.headline": "Direct Channels"
+      "about.headline": "Background & Engineering Principles",
+      "contact.headline": "Direct Channels",
+      sidebarName: config.profile?.name || "Raman Tondro",
+      sidebarInst: "Shiraz University",
+      sidebarTarget: "Embedded Firmware & Systems",
+      footerCopy: "&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages",
+      bioParagraphs: [
+        "<strong>Raman Tondro</strong> is a Computer Engineering student and practical electrical/hardware technician. He builds low-overhead software systems closely coupled to physical microcontrollers, real-time operating systems, and edge computing nodes.",
+        "His open-source repositories focus on solving concrete engineering challenges: from bare-metal C++ on <strong>ESP32</strong> and raw Wi-Fi packet analysis, to native Android multimedia players in <strong>Kotlin</strong> and computer vision models running at 60 FPS on edge CPUs."
+      ]
     },
     fa: {
       langBtn: "EN / English",
+      headerName: config.profile?.persianName || "رامان تندرو",
+      headerSub: "توسعه‌دهنده سیستم‌های نهفته",
+      heroTitle: config.profile?.persianName || "رامان تندرو",
+      heroTagline: config.profile?.persianBio?.[0] || "دانشجوی مهندسی کامپیوتر با تمرکز بر میکروکنترلرهای نهفته، معماری سیستم‌های سطح پایین و نرم‌افزارهای پرسرعت کاربردی.",
       "nav.projects": "پروژه‌ها",
       "nav.terminal": "ترمینال",
       "nav.skills": "مهارت‌ها",
       "nav.about": "پیشینه",
       "nav.contact": "ارتباط",
       "hero.status": config.profile?.persianStatus || "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
-      "hero.tagline": config.profile?.persianBio?.[0] || "",
       "hero.btnProjects": "مشاهده پروژه‌ها",
       "hero.btnTerminal": "کنسول خط فرمان",
       "hero.btnContact": "ارتباط مستقیم",
       "projects.headline": "مخازن و سیستم‌های توسعه‌یافته",
       "skills.headline": "معماری فنی و پشته ابزارها",
-      "about.headline": "درباره رامان تندرو (About Raman Tondro)",
-      "contact.headline": "راه‌های ارتباط مستقیم"
+      "about.headline": "پیشینه فنی و اصول مهندسی",
+      "contact.headline": "راه‌های ارتباط مستقیم",
+      sidebarName: config.profile?.persianName || "رامان تندرو",
+      sidebarInst: "دانشگاه شیراز",
+      sidebarTarget: "فرم‌ویر و سیستم‌های نهفته",
+      footerCopy: "&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز",
+      bioParagraphs: [
+        "<strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر دانشگاه شیراز است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.",
+        "پروژه‌های منبع‌باز او بر حل چالش‌های عینی مهندسی متمرکز است: از کدنویسی C++ روی <strong>ESP32</strong> و آنالیز پکت‌های خام وای‌فای، تا توسعه اپلیکیشن‌های مدیا در اندروید با <strong>کاتلین</strong> و مدل‌های پردازش تصویر بی‌درنگ."
+      ]
     }
   };
 
@@ -169,16 +191,20 @@
         break;
 
       case "whoami":
-        response = config.terminal?.commands?.whoami || "Raman Tondro | Systems Developer";
+        response = currentLang === "fa"
+          ? (config.profile?.persianName + " | دانشجوی مهندسی کامپیوتر دانشگاه شیراز | توسعه‌دهنده سیستم‌های نهفته")
+          : "Raman Tondro | Computer Engineering Student @ Shiraz University | Systems Developer";
         break;
 
       case "bio":
-        response = (config.profile?.bio || []).join("\n\n");
+        response = currentLang === "fa"
+          ? (config.profile?.persianBio || []).join("\n\n")
+          : (config.profile?.bio || []).join("\n\n");
         break;
 
       case "projects":
         response = (config.projects || [])
-          .map(p => `• <span class="out-highlight">${p.title}</span> [${p.tag}]: ${p.description}`)
+          .map(p => `• <span class="out-highlight">${p.title}</span> [${p.tag}]: ${currentLang === 'fa' && p.persianDescription ? p.persianDescription : p.description}`)
           .join("\n\n");
         break;
 
@@ -197,7 +223,7 @@
 / /__\\ \\    Host: ESP32-WROOM-32 / Android ARM64
 \\/____\\/    Kernel: 6.10.4-hardened-rt
             Stack: C++20, Rust, Kotlin, Python, GLSL
-            Institution: Shiraz University (دانشگاه شیراز)
+            Institution: ${currentLang === 'fa' ? 'دانشگاه شیراز' : 'Shiraz University'}
             Status: Active & Compiling`;
         break;
 
@@ -248,6 +274,8 @@
     }
 
     const dict = i18n[lang] || i18n.en;
+
+    // Update data-i18n attributes
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) {
@@ -255,10 +283,38 @@
       }
     });
 
+    // Update specific ID targets
     const langDisplay = document.getElementById("langDisplay");
-    if (langDisplay) {
-      langDisplay.textContent = dict.langBtn;
+    if (langDisplay) langDisplay.textContent = dict.langBtn;
+
+    const headerName = document.getElementById("headerName");
+    if (headerName) headerName.textContent = dict.headerName;
+
+    const headerSub = document.getElementById("headerSub");
+    if (headerSub) headerSub.textContent = dict.headerSub;
+
+    const heroTitle = document.getElementById("heroTitle");
+    if (heroTitle) heroTitle.textContent = dict.heroTitle;
+
+    const heroTagline = document.getElementById("heroTagline");
+    if (heroTagline) heroTagline.textContent = dict.heroTagline;
+
+    const bioEditorial = document.getElementById("bioEditorial");
+    if (bioEditorial && dict.bioParagraphs) {
+      bioEditorial.innerHTML = dict.bioParagraphs.map(p => `<p>${p}</p>`).join("");
     }
+
+    const sidebarName = document.getElementById("sidebarName");
+    if (sidebarName) sidebarName.textContent = dict.sidebarName;
+
+    const sidebarInst = document.getElementById("sidebarInst");
+    if (sidebarInst) sidebarInst.textContent = dict.sidebarInst;
+
+    const sidebarTarget = document.getElementById("sidebarTarget");
+    if (sidebarTarget) sidebarTarget.textContent = dict.sidebarTarget;
+
+    const footerCopy = document.getElementById("footerCopy");
+    if (footerCopy) footerCopy.innerHTML = dict.footerCopy;
 
     // Re-render project descriptions in chosen language
     const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
@@ -291,8 +347,7 @@
       });
     }
 
-    if (currentLang !== "en") {
-      setLanguage(currentLang);
-    }
+    // Initialize with stored or default language
+    setLanguage(currentLang);
   });
 })();

@@ -101,8 +101,8 @@
         <a href="#hero" class="header-identity">
           <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
           <div class="identity-text">
-            <span class="name-primary">Raman Tondro</span>
-            <span class="name-persian">رامان تندرو</span>
+            <span class="name-primary" id="headerName">Raman Tondro</span>
+            <span class="name-sub" id="headerSub">Systems Developer</span>
           </div>
         </a>
 
@@ -138,11 +138,10 @@
           </div>
 
           <h1 class="hero-main-title">
-            <span>Raman Tondro</span>
-            <span class="farsi-tag" lang="fa" dir="rtl">(رامان تندرو)</span>
+            <span id="heroTitle">Raman Tondro</span>
           </h1>
 
-          <p class="hero-tagline" id="heroTagline" data-i18n="hero.tagline">
+          <p class="hero-tagline" id="heroTagline">
             Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.
           </p>
 
@@ -280,33 +279,27 @@
           </div>
 
           <div class="bio-editorial-layout">
-            <div class="bio-editorial-text">
+            <div class="bio-editorial-text" id="bioEditorial">
               <p>
-                <strong>Raman Tondro</strong> is an Iranian Computer Engineering student and practical electrical/hardware technician. He builds low-overhead software systems closely coupled to physical microcontrollers, real-time operating systems, and edge computing nodes.
+                <strong>Raman Tondro</strong> is a Computer Engineering student and practical electrical/hardware technician. He builds low-overhead software systems closely coupled to physical microcontrollers, real-time operating systems, and edge computing nodes.
               </p>
               <p>
-                His open-source repositories focus on solving concrete engineering challenges: from bare-metal C++ on <strong>ESP32</strong> and raw Wi-Fi packet analysis, to native Android multimedia players in <strong>Kotlin</strong> and computer vision models running at 60 FPS on CPU.
+                His open-source repositories focus on solving concrete engineering challenges: from bare-metal C++ on <strong>ESP32</strong> and raw Wi-Fi packet analysis, to native Android multimedia players in <strong>Kotlin</strong> and computer vision models running at 60 FPS on edge CPUs.
               </p>
-
-              <div class="bio-editorial-fa" lang="fa" dir="rtl">
-                <p>
-                  <strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر دانشگاه شیراز است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.
-                </p>
-              </div>
             </div>
 
             <div class="sidebar-tech-info">
               <div class="sidebar-info-row">
                 <span class="sidebar-info-label">Full Name</span>
-                <span class="sidebar-info-val">Raman Tondro (رامان تندرو)</span>
+                <span class="sidebar-info-val" id="sidebarName">Raman Tondro</span>
               </div>
               <div class="sidebar-info-row">
                 <span class="sidebar-info-label">Institution</span>
-                <span class="sidebar-info-val">Shiraz University (دانشگاه شیراز)</span>
+                <span class="sidebar-info-val" id="sidebarInst">Shiraz University</span>
               </div>
               <div class="sidebar-info-row">
                 <span class="sidebar-info-label">Primary Target</span>
-                <span class="sidebar-info-val">Embedded Firmware & Systems</span>
+                <span class="sidebar-info-val" id="sidebarTarget">Embedded Firmware & Systems</span>
               </div>
               <div class="sidebar-info-row">
                 <span class="sidebar-info-label">GitHub Handle</span>
@@ -344,7 +337,7 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; 2026 Raman Tondro (رامان تندرو) &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div id="footerCopy">&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
         <div style="display: flex; gap: 1rem;">
           <a href="sitemap.xml">Sitemap</a>
           <a href="robots.txt">Robots</a>
