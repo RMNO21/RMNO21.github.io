@@ -1,134 +1,298 @@
 /**
- * Personal Portfolio & Identity Engine
- * Raman Tondro (رامان تندرو) - RMNO21
+ * Minimalist Systems Engineer & Terminal Engine
+ * Raman Tondro (RMNO21)
  */
 
-const translations = {
-  en: {
-    langLabel: "FA / فارسی",
-    "nav.about": "Biography",
-    "nav.projects": "Projects",
-    "nav.skills": "Skills",
-    "nav.contact": "Contact",
-    "hero.status": "Available for Engineering Projects & Research",
-    "hero.role": "Computer Engineering Student & Electrical/Computer Technician",
-    "hero.tagline": "Bridging the gap between hardware circuits and high-performance software architecture. Passionate about embedded microcontrollers (ESP32), computer vision, Android applications, and network security tooling.",
-    "hero.cta.projects": "Explore Projects",
-    "hero.cta.github": "GitHub Profile (@RMNO21)",
-    "hero.cta.contact": "Get in Touch",
-    "metrics.repos": "Public Repositories",
-    "metrics.followers": "GitHub Followers",
-    "metrics.stacks": "Languages & Frameworks",
-    "metrics.passion": "Open-Source Dedication",
-    "about.tag": "Official Biography",
-    "about.title": "About Raman Tondro (درباره رامان تندرو)",
-    "about.subtitle": "Background, academic journey, and engineering principles",
-    "projects.tag": "Engineering Portfolio",
-    "projects.title": "Featured Open-Source Repositories",
-    "projects.subtitle": "Handcrafted systems spanning embedded hardware, computer vision, mobile, and security",
-    "skills.tag": "Technical Capabilities",
-    "skills.title": "Skills & Engineering Stack",
-    "skills.subtitle": "Languages, hardware architectures, and developer frameworks",
-    "contact.tag": "Get Connected",
-    "contact.title": "Connect With Raman Tondro",
-    "contact.subtitle": "For collaboration, project inquiries, or technical discussion"
-  },
-  fa: {
-    langLabel: "EN / انگلیسی",
-    "nav.about": "بیوگرافی",
-    "nav.projects": "پروژه‌ها",
-    "nav.skills": "مهارت‌ها",
-    "nav.contact": "ارتباط",
-    "hero.status": "آماده برای پروژه‌های مهندسی و همکاری پژوهشی",
-    "hero.role": "دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر",
-    "hero.tagline": "پیوند میان مدارهای سخت‌افزاری و معماری نرم‌افزارهای پرسرعت. متمرکز بر میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین، توسعه اپلیکیشن‌های اندروید و ابزارهای امنیت شبکه.",
-    "hero.cta.projects": "مشاهده پروژه‌ها",
-    "hero.cta.github": "پروفایل گیت‌هاب (@RMNO21)",
-    "hero.cta.contact": "تماس و ارتباط",
-    "metrics.repos": "مخازن عمومی گیت‌هاب",
-    "metrics.followers": "دنبال‌کنندگان گیت‌هاب",
-    "metrics.stacks": "زبان‌ها و فریم‌ورک‌ها",
-    "metrics.passion": "تعهد به متن‌باز",
-    "about.tag": "بیوگرافی رسمی",
-    "about.title": "درباره رامان تندرو (About Raman Tondro)",
-    "about.subtitle": "پیشینه، مسیر دانشگاهی و اصول مهندسی",
-    "projects.tag": "نمونه کارهای مهندسی",
-    "projects.title": "پروژه‌های شاخص منبع‌باز",
-    "projects.subtitle": "سیستم‌های توسعه‌یافته در حوزه‌های سخت‌افزار، بینایی ماشین، موبایل و امنیت",
-    "skills.tag": "توانمندی‌های فنی",
-    "skills.title": "مهارت‌ها و فناوری‌های مورد استفاده",
-    "skills.subtitle": "زبان‌های برنامه‌نویسی، معماری‌های سخت‌افزاری و ابزارهای توسعه",
-    "contact.tag": "پل‌های ارتباطی",
-    "contact.title": "راه‌های ارتباط با رامان تندرو",
-    "contact.subtitle": "جهت همکاری‌های فنی، پروژه‌ها و گفتگوهای پژوهشی"
-  }
-};
+(function () {
+  const config = window.SITE_CONFIG || {};
 
-let currentLang = localStorage.getItem("preferred_lang") || "en";
-
-function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem("preferred_lang", lang);
-  
-  if (lang === "fa") {
-    document.documentElement.setAttribute("dir", "rtl");
-    document.documentElement.setAttribute("lang", "fa");
-    document.body.classList.add("lang-fa");
-  } else {
-    document.documentElement.setAttribute("dir", "ltr");
-    document.documentElement.setAttribute("lang", "en");
-    document.body.classList.remove("lang-fa");
-  }
-
-  // Update translatable elements
-  const elements = document.querySelectorAll("[data-i18n]");
-  elements.forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+  const i18n = {
+    en: {
+      langBtn: "FA / فارسی",
+      "nav.projects": "Projects",
+      "nav.terminal": "Terminal",
+      "nav.skills": "Stack",
+      "nav.about": "Background",
+      "nav.contact": "Contact",
+      "hero.status": config.profile?.status || "Available for engineering projects & collaboration",
+      "hero.tagline": config.profile?.bio?.[0] || "",
+      "hero.btnProjects": "Explore Projects",
+      "hero.btnTerminal": "Open Shell Terminal",
+      "hero.btnContact": "Contact",
+      "projects.headline": "Engineered Repositories",
+      "skills.headline": "Engineering Stack & Toolchain",
+      "about.headline": "About Raman Tondro (درباره رامان تندرو)",
+      "contact.headline": "Direct Channels"
+    },
+    fa: {
+      langBtn: "EN / English",
+      "nav.projects": "پروژه‌ها",
+      "nav.terminal": "ترمینال",
+      "nav.skills": "مهارت‌ها",
+      "nav.about": "پیشینه",
+      "nav.contact": "ارتباط",
+      "hero.status": config.profile?.persianStatus || "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
+      "hero.tagline": config.profile?.persianBio?.[0] || "",
+      "hero.btnProjects": "مشاهده پروژه‌ها",
+      "hero.btnTerminal": "کنسول خط فرمان",
+      "hero.btnContact": "ارتباط مستقیم",
+      "projects.headline": "مخازن و سیستم‌های توسعه‌یافته",
+      "skills.headline": "معماری فنی و پشته ابزارها",
+      "about.headline": "درباره رامان تندرو (About Raman Tondro)",
+      "contact.headline": "راه‌های ارتباط مستقیم"
     }
-  });
+  };
 
-  const langLabel = document.getElementById("langLabel");
-  if (langLabel && translations[lang]) {
-    langLabel.textContent = translations[lang].langLabel;
+  let currentLang = localStorage.getItem("rmn_lang") || "en";
+
+  // --- Dynamic Project Catalog Rendering ---
+  function renderProjects(filter = "all") {
+    const container = document.getElementById("projectsCatalog");
+    if (!container || !config.projects) return;
+
+    const filtered = filter === "all"
+      ? config.projects
+      : config.projects.filter(p => p.category === filter);
+
+    container.innerHTML = filtered.map(p => {
+      const desc = currentLang === "fa" && p.persianDescription ? p.persianDescription : p.description;
+      const stackHtml = p.stack.map(s => `<span class="stack-badge">${s}</span>`).join("");
+
+      return `
+        <article class="project-card-tech" data-category="${p.category}">
+          <div class="project-top-row">
+            <span class="project-tag-pill">${p.tag}</span>
+            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="project-repo-link" aria-label="${p.title} on GitHub">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+          <h3 class="project-name-tech">${p.title}</h3>
+          <p class="project-summary-tech">${desc}</p>
+          <div class="project-stack-row">
+            ${stackHtml}
+          </div>
+        </article>
+      `;
+    }).join("");
   }
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  const langToggle = document.getElementById("langToggle");
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
-      const nextLang = currentLang === "en" ? "fa" : "en";
-      setLanguage(nextLang);
+  // --- Dynamic Skills Matrix Rendering ---
+  function renderSkills() {
+    const container = document.getElementById("skillsMatrix");
+    if (!container || !config.skills) return;
+
+    container.innerHTML = config.skills.map(s => `
+      <div class="skill-matrix-card">
+        <div class="skill-matrix-category">${s.category}</div>
+        <ul class="skill-list-items">
+          ${s.items.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </div>
+    `).join("");
+  }
+
+  // --- Interactive Terminal Engine (Option B) ---
+  const cmdHistory = [];
+  let historyIdx = -1;
+
+  function initTerminal() {
+    const output = document.getElementById("terminalOutput");
+    const input = document.getElementById("terminalInput");
+    const termWindow = document.getElementById("terminalWindow");
+    if (!output || !input) return;
+
+    // Display Banner
+    if (config.terminal?.banner) {
+      output.innerHTML = `<span class="out-banner">${config.terminal.banner.join("\n")}</span>\n\nType '<span class="out-cmd">help</span>' for a list of available commands.\n\n`;
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const rawCmd = input.value.trim();
+        input.value = "";
+        if (!rawCmd) return;
+
+        cmdHistory.push(rawCmd);
+        historyIdx = cmdHistory.length;
+
+        executeTerminalCommand(rawCmd, output);
+        if (termWindow) {
+          termWindow.scrollTop = termWindow.scrollHeight;
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (historyIdx > 0) {
+          historyIdx--;
+          input.value = cmdHistory[historyIdx] || "";
+        }
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (historyIdx < cmdHistory.length - 1) {
+          historyIdx++;
+          input.value = cmdHistory[historyIdx] || "";
+        } else {
+          historyIdx = cmdHistory.length;
+          input.value = "";
+        }
+      }
+    });
+
+    // Keyboard shortcut: Pressing '~' or '/' focuses terminal
+    window.addEventListener("keydown", (e) => {
+      if ((e.key === "~" || e.key === "`") && document.activeElement !== input) {
+        e.preventDefault();
+        input.focus();
+        const termElem = document.getElementById("terminal");
+        if (termElem) termElem.scrollIntoView({ behavior: "smooth" });
+      }
     });
   }
 
-  if (currentLang !== "en") {
-    setLanguage(currentLang);
+  function executeTerminalCommand(cmdStr, outputElem) {
+    const cmd = cmdStr.toLowerCase().trim();
+    const promptLine = `<span class="terminal-prompt">${config.terminal?.prompt || "raman@arch-box:~$"}</span> ${escapeHtml(cmdStr)}\n`;
+    let response = "";
+
+    switch (cmd) {
+      case "help":
+        response = `Available commands:
+  • <span class="out-cmd">whoami</span>    - Prints identity, university and focus
+  • <span class="out-cmd">bio</span>       - Displays full developer biography
+  • <span class="out-cmd">projects</span>  - Lists primary open-source systems
+  • <span class="out-cmd">skills</span>    - Technical toolchain breakdown
+  • <span class="out-cmd">specs</span>     - Architecture & hardware specifications
+  • <span class="out-cmd">contact</span>   - Direct communication channels
+  • <span class="out-cmd">clear</span>     - Clears the terminal screen
+  • <span class="out-cmd">neofetch</span>  - System banner representation`;
+        break;
+
+      case "whoami":
+        response = config.terminal?.commands?.whoami || "Raman Tondro | Systems Developer";
+        break;
+
+      case "bio":
+        response = (config.profile?.bio || []).join("\n\n");
+        break;
+
+      case "projects":
+        response = (config.projects || [])
+          .map(p => `• <span class="out-highlight">${p.title}</span> [${p.tag}]: ${p.description}`)
+          .join("\n\n");
+        break;
+
+      case "skills":
+        response = (config.skills || [])
+          .map(s => `[${s.category}]\n  ${s.items.join(", ")}`)
+          .join("\n\n");
+        break;
+
+      case "specs":
+      case "neofetch":
+        response = `
+   /\\       raman@arch-box
+  /  \\      --------------
+ / /\\ \\     OS: Arch Linux x86_64 / FreeRTOS
+/ /__\\ \\    Host: ESP32-WROOM-32 / Android ARM64
+\\/____\\/    Kernel: 6.10.4-hardened-rt
+            Stack: C++20, Rust, Kotlin, Python, GLSL
+            Institution: Shiraz University (دانشگاه شیراز)
+            Status: Active & Compiling`;
+        break;
+
+      case "contact":
+        response = `Email: <a href="mailto:${config.profile?.email}" style="color:#38bdf8;">${config.profile?.email}</a>\nGitHub: <a href="${config.profile?.github}" target="_blank" style="color:#38bdf8;">${config.profile?.github}</a>`;
+        break;
+
+      case "clear":
+        outputElem.innerHTML = "";
+        return;
+
+      case "exit":
+        response = "Session stays persistent. Terminal cannot be killed.";
+        break;
+
+      case "sudo":
+      case "sudo rm -rf /":
+        response = "<span style='color:#ef4444;'>Permission denied: Raman is root. You are not in the sudoers file. This incident will be reported.</span>";
+        break;
+
+      default:
+        response = `<span style="color:#ef4444;">zsh: command not found: ${escapeHtml(cmd)}</span>. Type '<span class="out-cmd">help</span>' for available commands.`;
+        break;
+    }
+
+    outputElem.innerHTML += promptLine + response + "\n\n";
   }
 
-  // Optional: Fetch live GitHub statistics
-  fetchLiveGitHubStats();
-});
-
-async function fetchLiveGitHubStats() {
-  try {
-    const response = await fetch("https://api.github.com/users/RMNO21");
-    if (!response.ok) return;
-    const data = await response.json();
-    
-    // If successful, update repo & follower metrics if present
-    const repoMetric = document.querySelector(".metrics-grid .metric-card:nth-child(1) .metric-num");
-    const followerMetric = document.querySelector(".metrics-grid .metric-card:nth-child(2) .metric-num");
-    
-    if (repoMetric && data.public_repos) {
-      repoMetric.textContent = `${data.public_repos}+`;
-    }
-    if (followerMetric && data.followers) {
-      followerMetric.textContent = `${data.followers}+`;
-    }
-  } catch (e) {
-    // Fail silently; fallback static metrics are already in place
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
   }
-}
+
+  // --- Language Toggle Engine ---
+  function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem("rmn_lang", lang);
+
+    if (lang === "fa") {
+      document.documentElement.setAttribute("dir", "rtl");
+      document.documentElement.setAttribute("lang", "fa");
+      document.body.classList.add("lang-fa");
+    } else {
+      document.documentElement.setAttribute("dir", "ltr");
+      document.documentElement.setAttribute("lang", "en");
+      document.body.classList.remove("lang-fa");
+    }
+
+    const dict = i18n[lang] || i18n.en;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    const langDisplay = document.getElementById("langDisplay");
+    if (langDisplay) {
+      langDisplay.textContent = dict.langBtn;
+    }
+
+    // Re-render project descriptions in chosen language
+    const activeFilter = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
+    renderProjects(activeFilter);
+  }
+
+  // --- Setup Event Listeners ---
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Initial Render
+    renderProjects("all");
+    renderSkills();
+    initTerminal();
+
+    // 2. Filter Buttons
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderProjects(btn.getAttribute("data-filter") || "all");
+      });
+    });
+
+    // 3. Language Toggle
+    const langBtn = document.getElementById("langToggleBtn");
+    if (langBtn) {
+      langBtn.addEventListener("click", () => {
+        const nextLang = currentLang === "en" ? "fa" : "en";
+        setLanguage(nextLang);
+      });
+    }
+
+    if (currentLang !== "en") {
+      setLanguage(currentLang);
+    }
+  });
+})();

@@ -1,0 +1,163 @@
+/**
+ * Raman Tondro - Official Portfolio Configuration
+ * Central source of truth for site content, projects, and metadata.
+ */
+
+window.SITE_CONFIG = {
+  profile: {
+    name: "Raman Tondro",
+    persianName: "رامان تندرو",
+    handle: "RMNO21",
+    tagline: "Computer Engineering Student & Systems Developer",
+    persianTagline: "دانشجوی مهندسی کامپیوتر و توسعه‌دهنده سیستم‌های نهفته",
+    status: "Available for engineering projects & collaboration",
+    persianStatus: "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
+    location: "Iran (Shiraz University)",
+    persianLocation: "ایران (دانشگاه شیراز)",
+    email: "tondroraman83@gmail.com",
+    github: "https://github.com/RMNO21",
+    avatar: "https://avatars.githubusercontent.com/u/158779818?v=4",
+    bio: [
+      "Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.",
+      "Bridging the physical and digital domains: from bare-metal ESP32 C/C++ firmware and wireless RF sensing to native Android apps and real-time computer vision pipelines."
+    ],
+    persianBio: [
+      "دانشجوی مهندسی کامپیوتر با تمرکز بر میکروکنترلرهای نهفته (Embedded Systems)، معماری سیستم‌های سطح پایین و نرم‌افزارهای پرسرعت کاربردی.",
+      "پیوند میان دنیای فیزیکال و دیجیتال: از توسعه فرم‌ویر C/++C برای بردهای ESP32 و پردازش سیگنال‌های بی‌سیم تا توسعه اپلیکیشن‌های نیتیو اندروید و پایپ‌لاین‌های بینایی ماشین در زمان واقعی."
+    ]
+  },
+
+  skills: [
+    {
+      category: "Embedded & Hardware",
+      items: ["ESP32 / ESP8266", "C & C++", "FreeRTOS", "802.11 Wi-Fi Raw Frames", "Digital Circuit Design", "Proteus"]
+    },
+    {
+      category: "Software & Mobile",
+      items: ["Kotlin (Android SDK)", "Python", "Lua", "AutoHotkey (Win32 APIs)", "Rust (Embedded/Systems)", "Bash / Shell"]
+    },
+    {
+      category: "Vision & Signal Processing",
+      items: ["OpenCV", "MediaPipe", "Facial Landmark Detection", "CSI Wi-Fi Sensing", "FFmpeg Multi-pass"]
+    },
+    {
+      category: "Infrastructure & Security",
+      items: ["Linux Kernel & Distros", "Network Packet Auditing", "Git & CI/CD", "Reverse Engineering", "Wireshark"]
+    }
+  ],
+
+  projects: [
+    {
+      title: "Sepotify",
+      category: "mobile",
+      tag: "Android / Kotlin",
+      description: "Native zero-delay audio streaming and offline playback engine for Android with lossless FLAC decoding and background service isolation.",
+      persianDescription: "موتور پخش و استریم نیتیو موزیک در اندروید با تأخیر صفر، پشتیبانی از دیکود فایل‌های Lossless FLAC و معماری سرویس پس‌زمینه بدون کرش.",
+      stack: ["Kotlin", "Android SDK", "FLAC", "Media3"],
+      url: "https://github.com/RMNO21/Sepotify",
+      stars: 6
+    },
+    {
+      title: "RuView",
+      category: "embedded",
+      tag: "RF Sensing / Rust",
+      description: "Spatial intelligence and vital sign monitoring using commodity Wi-Fi CSI signals without requiring cameras or optical sensors.",
+      persianDescription: "هوشمندی مکانی و پایش علائم حیاتی و حضور افراد با تحلیل سیگنال‌های CSI وای‌فای خانگی بدون نیاز به هیچ‌گونه دوربین نوری.",
+      stack: ["Rust", "Wi-Fi CSI", "RF Analysis", "IoT"],
+      url: "https://github.com/RMNO21/RuView",
+      stars: 2
+    },
+    {
+      title: "ESP32-Deauth",
+      category: "security",
+      tag: "Firmware / C++",
+      description: "Standalone embedded firmware for ESP32 microcontrollers executing 802.11 management frame inspection, injection, and security auditing.",
+      persianDescription: "فرم‌ویر میکروکنترلر ESP32 جهت بازرسی و تزریق فریم‌های مدیریتی 802.11 و ارزیابی پروتکل‌های امنیتی شبکه‌های بی‌سیم.",
+      stack: ["C++", "ESP32", "802.11", "Network Auditing"],
+      url: "https://github.com/RMNO21/ESP32-Deauth",
+      stars: 3
+    },
+    {
+      title: "sess-shirazu-autologin",
+      category: "automation",
+      tag: "Browser / Scripting",
+      description: "High-performance browser extension automating authentication for Shiraz University SESS portal with smart CAPTCHA reset.",
+      persianDescription: "افزونه مرورگر سریع برای ورود خودکار به سامانه سس دانشگاه شیراز با قابلیت تشخیص و ریست هوشمند کپچا.",
+      stack: ["JavaScript", "Chrome MV3", "DOM", "Shiraz University"],
+      url: "https://github.com/RMNO21/sess-shirazu-autologin",
+      stars: 1
+    },
+    {
+      title: "Drawsiness-detection",
+      category: "vision",
+      tag: "Computer Vision",
+      description: "Real-time driver fatigue monitor tracking ocular blink duration and facial 68-point landmarks via computer vision to prevent collisions.",
+      persianDescription: "سیستم پایش زمان‌واقعی خستگی و خواب‌آلودگی راننده بر پایه نرخ پلک‌زدن و لندمارک‌های چهره جهت پیشگیری از تصادفات جاده‌ای.",
+      stack: ["Python", "OpenCV", "Dlib", "Facial Landmarks"],
+      url: "https://github.com/RMNO21/Drawsiness-detection",
+      stars: 1
+    },
+    {
+      title: "ai-virtual-mouse",
+      category: "vision",
+      tag: "Vision / Win32",
+      description: "Jitter-free computer vision virtual mouse for Windows using MediaPipe hand tracking, decoupled gesture state machines, and Win32 APIs.",
+      persianDescription: "موس مجازی بدون لرزش در ویندوز با رهگیری حرکات دست توسط MediaPipe و شبیه‌سازی دقیق ماوس با Win32 API.",
+      stack: ["Python", "MediaPipe", "Win32", "OpenCV"],
+      url: "https://github.com/RMNO21/ai-virtual-mouse",
+      stars: 2
+    },
+    {
+      title: "Mort",
+      category: "automation",
+      tag: "CLI Tooling",
+      description: "Intelligent CLI media orchestrator that parses MKV codecs, groups multi-season TV shows, tags audio tracks, and cleans directory trees.",
+      persianDescription: "ابزار خط فرمانی جهت سازماندهی خودکار، تگ‌گذاری و دسته‌بندی فایل‌های ویدیویی MKV و سریال‌های چندفصلی.",
+      stack: ["Python", "CLI", "Media Parsing", "Regex"],
+      url: "https://github.com/RMNO21/Mort",
+      stars: 3
+    },
+    {
+      title: "Linux_Mirrors",
+      category: "security",
+      tag: "Linux / DevOps",
+      description: "Resilient cross-distribution Linux mirror routing manager designed for uninterrupted package updates during network anomalies.",
+      persianDescription: "مدیریت و مسیریابی هوشمند میرورهای لینوکس جهت دانلود پایدار و پرسرعت پکیج‌ها در شرایط اختلال شبکه.",
+      stack: ["Bash", "Linux", "Network Routing", "Shell"],
+      url: "https://github.com/RMNO21/Linux_Mirrors",
+      stars: 2
+    },
+    {
+      title: "DimOLED",
+      category: "automation",
+      tag: "Win32 / AHK",
+      description: "Zero-flicker background utility protecting OLED monitors against burn-in through direct DWM alpha manipulation without latency.",
+      persianDescription: "ابزار بهینه‌سازی پس‌زمینه جهت محافظت از نمایشگرهای OLED در برابر پیکسل سوختگی با تنظیم نرم روشنایی بدون پرش تصویر.",
+      stack: ["AutoHotkey", "Win32 API", "OLED Tech"],
+      url: "https://github.com/RMNO21/DimOLED",
+      stars: 1
+    }
+  ],
+
+  terminal: {
+    prompt: "raman@arch-box:~$",
+    banner: [
+      "===========================================================",
+      "  RAMAN TONDRO [RMNO21] - SYSTEMS & EMBEDDED KERNEL SHELL  ",
+      "  Type 'help' for available commands or 'whoami' to inspect.",
+      "==========================================================="
+    ],
+    commands: {
+      help: "Available commands: whoami, bio, projects, skills, contact, specs, clear, exit",
+      whoami: "Raman Tondro (رامان تندرو) | Computer Engineering Student @ Shiraz University | Embedded Systems Developer",
+      contact: "Email: tondroraman83@gmail.com | GitHub: https://github.com/RMNO21",
+      specs: [
+        "OS: Arch Linux x86_64 / FreeRTOS (ESP32)",
+        "Kernel: 6.10-hardened-rt",
+        "Hardware Target: ESP32-WROOM-32 / Android ARM64",
+        "Primary Stack: C++20, Rust, Kotlin, Python 3.12",
+        "Active Workspace: Shiraz, Iran"
+      ]
+    }
+  }
+};
