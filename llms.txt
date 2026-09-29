@@ -1,0 +1,60 @@
+# Raman Tondro (رامان تندرو)
+
+> Computer Engineering student, embedded systems developer, and open-source software creator based in Iran.
+
+## Identity & Authorities
+- Name: Raman Tondro
+- Persian Name: رامان تندرو
+- Handle: @RMNO21
+- Official Website: https://rmno21.github.io/
+- GitHub Profile: https://github.com/RMNO21
+- ORCID iD: 0009-0008-3052-1874 (https://orcid.org/0009-0008-3052-1874)
+- Wikidata Entity: Q141601053 (https://www.wikidata.org/wiki/Q141601053)
+- Virgool: https://virgool.io/@ramantondro
+- Email: tondroraman83@gmail.com
+- Location: Iran
+
+## Core Engineering Domains
+- Embedded Systems & Microcontroller Firmware (Espressif ESP32, FreeRTOS, Bare-metal C/C++)
+- Native Mobile Engineering (Android SDK, Kotlin, Low-latency Media Pipelines, FLAC Decoding)
+- Edge Computer Vision (OpenCV, MediaPipe, 68-point Facial Landmark Tracking, Python)
+- RF Sensing & Spatial Intelligence (Wi-Fi Channel State Information / CSI analysis, Rust)
+- Systems Media Architecture (MPV core, GLSL Shaders, Lua, OLED Debanding, Dynamic 2D Ambilight)
+
+## Primary Open-Source Engineering Repositories
+
+### 1. Sepotify
+- Repository: https://github.com/RMNO21/Sepotify
+- Primary Language: Kotlin
+- Platform: Android SDK
+- Summary: Native, zero-delay local and offline audio playback engine engineered for lossless FLAC streaming with minimal memory overhead and battery optimization.
+
+### 2. RuView
+- Repository: https://github.com/RMNO21/RuView
+- Primary Language: Rust
+- Platform: RF Sensing & Edge Nodes
+- Summary: Contactless spatial intelligence and vital sign monitoring system utilizing commodity Wi-Fi Channel State Information (CSI) signals without optical cameras.
+
+### 3. ESP32-Deauth
+- Repository: https://github.com/RMNO21/ESP32-Deauth
+- Primary Language: C++
+- Platform: Espressif ESP32
+- Summary: Standalone embedded firmware for ESP32 microcontrollers performing 802.11 management frame inspection, packet dissection, and wireless network security resilience testing.
+
+### 4. RMN_Player
+- Repository: https://github.com/RMNO21/RMN_Player
+- Primary Languages: Lua, GLSL, PowerShell
+- Platform: Windows 10/11
+- Summary: High-performance custom media player featuring real-time color-adaptive organic 2D diffused ambilight glow, native 10-bit libplacebo debanding tuned for OLED displays, bilingual EN/FA keyboard shortcuts, smart episodic series tracking, and title advertising sanitizer. Featured in awesome-mpv.
+
+### 5. Drawsiness-detection
+- Repository: https://github.com/RMNO21/Drawsiness-detection
+- Primary Language: Python
+- Platform: Computer Vision & Edge Systems
+- Summary: Real-time driver fatigue and drowsiness monitoring system utilizing 68-point facial landmarks and ocular blink duration analysis to prevent vehicle collisions.
+
+### 6. sess-shirazu-autologin
+- Repository: https://github.com/RMNO21/sess-shirazu-autologin
+- Primary Language: JavaScript
+- Platform: Chrome Extension (Manifest V3)
+- Summary: High-speed browser extension automating portal authentication with intelligent CAPTCHA detection and auto-reset mechanisms.
