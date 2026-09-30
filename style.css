@@ -706,6 +706,32 @@ body.lang-fa .terminal-block {
   text-align: left;
 }
 
+/* Accessibility & SEO Crawler Helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sidebar-info-sub {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  font-family: var(--font-fa);
+  margin-left: 6px;
+}
+
+body.lang-fa .sidebar-info-sub {
+  margin-left: 0;
+  margin-right: 6px;
+  font-family: var(--font-sans);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-main-title {

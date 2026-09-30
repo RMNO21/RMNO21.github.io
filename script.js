@@ -83,7 +83,9 @@
     }
   };
 
-  let currentLang = localStorage.getItem("rmn_lang") || "en";
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramLang = urlParams.get("lang");
+  let currentLang = (paramLang === "fa" || paramLang === "en") ? paramLang : (localStorage.getItem("rmn_lang") || "en");
 
   // --- Dynamic Project Catalog Rendering ---
   function renderProjects(filter = "all") {
@@ -330,7 +332,11 @@
     }
 
     const sidebarName = document.getElementById("sidebarName");
-    if (sidebarName) sidebarName.textContent = dict.sidebarName;
+    if (sidebarName) {
+      sidebarName.innerHTML = (lang === "fa")
+        ? `رامان تندرو <span class="sidebar-info-sub" dir="ltr">(Raman Tondro)</span>`
+        : `Raman Tondro <span class="sidebar-info-sub" dir="rtl">(رامان تندرو)</span>`;
+    }
 
     const sidebarLoc = document.getElementById("sidebarLocation");
     if (sidebarLoc) sidebarLoc.textContent = dict.sidebarLocation;
