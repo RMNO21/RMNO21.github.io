@@ -13,35 +13,36 @@
       headerName: config.profile?.name || "Raman Tondro",
       headerSub: "Systems Developer",
       heroTitle: config.profile?.name || "Raman Tondro",
-      heroTagline: config.profile?.bio?.[0] || "Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.",
+      heroTagline: config.profile?.bio?.[0] || "Focus: Embedded firmware, low-level architecture, microcontrollers (ESP32) & high-performance client systems.",
       "nav.projects": "Projects",
       "nav.terminal": "Terminal",
       "nav.skills": "Stack",
-      "nav.about": "Background",
+      "nav.about": "Dossier",
       "nav.contact": "Contact",
-      "hero.status": config.profile?.status || "Available for engineering projects & collaboration",
-      "hero.btnProjects": "Explore Projects",
+      "hero.status": config.profile?.status || "Status: Active · Open to technical collaboration",
+      "hero.btnProjects": "Explore Repositories",
       "hero.btnTerminal": "Open Shell Terminal",
-      "hero.btnContact": "Contact",
-      "projects.label": "Selected Works",
-      "projects.headline": "Engineered Repositories",
-      "skills.label": "Capabilities",
+      "hero.btnContact": "Direct Channels",
+      "projects.label": "System Repositories",
+      "projects.headline": "Engineered Implementations",
+      "skills.label": "Technical Scope",
       "skills.headline": "Engineering Stack & Toolchain",
-      "about.label": "Identity & Background",
-      "about.headline": "About Raman Tondro",
-      "sidebar.nameLabel": "Full Name",
+      "about.label": "System Dossier",
+      "about.headline": "Technical Profile & Scope",
+      "sidebar.nameLabel": "Identity",
       "sidebar.locationLabel": "Location",
-      "sidebar.targetLabel": "Primary Target",
+      "sidebar.targetLabel": "Core Domain",
       "sidebar.githubLabel": "GitHub Handle",
       sidebarName: config.profile?.name || "Raman Tondro",
       sidebarLocation: "Iran",
-      sidebarTarget: "Embedded Firmware & Systems",
-      "contact.label": "Connect",
+      sidebarTarget: "Embedded Firmware & Low-Level Systems",
+      "contact.label": "Endpoints",
       "contact.headline": "Direct Channels",
       footerCopy: "&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages",
       bioParagraphs: [
-        "<strong>Raman Tondro</strong> is a Computer Engineering student and practical electrical/hardware technician. He builds low-overhead software systems closely coupled to physical microcontrollers, real-time operating systems, and edge computing nodes.",
-        "His open-source repositories focus on solving concrete engineering challenges: from bare-metal C++ on <strong>ESP32</strong> and raw Wi-Fi packet analysis, to native Android multimedia players in <strong>Kotlin</strong> and computer vision models running at 60 FPS on edge CPUs."
+        "<strong>Profile:</strong> Systems & Embedded Software Developer &middot; Computer Engineering & Hardware Technology.",
+        "<strong>Technical Scope:</strong> Bare-metal C/C++ firmware on <strong>ESP32</strong>, 802.11 raw packet inspection, low-latency audio engines (<strong>Kotlin</strong>), and real-time edge computer vision.",
+        "<strong>Engineering Directive:</strong> Direct hardware control, minimal abstraction overhead, deterministic execution."
       ]
     },
     fa: {
@@ -50,35 +51,36 @@
       headerName: config.profile?.persianName || "رامان تندرو",
       headerSub: "توسعه‌دهنده سیستم‌های نهفته",
       heroTitle: config.profile?.persianName || "رامان تندرو",
-      heroTagline: config.profile?.persianBio?.[0] || "دانشجوی مهندسی کامپیوتر با تمرکز بر میکروکنترلرهای نهفته، معماری سیستم‌های سطح پایین و نرم‌افزارهای پرسرعت کاربردی.",
+      heroTagline: config.profile?.persianBio?.[0] || "حوزه تمرکز: فرم‌ویر و سیستم‌های نهفته، معماری سطح پایین، مهندسی میکروکنترلرها (ESP32) و نرم‌افزارهای کلاینت با کارایی بالا.",
       "nav.projects": "پروژه‌ها",
       "nav.terminal": "ترمینال",
       "nav.skills": "مهارت‌ها",
-      "nav.about": "پیشینه",
+      "nav.about": "شناسنامه",
       "nav.contact": "ارتباط",
-      "hero.status": config.profile?.persianStatus || "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
-      "hero.btnProjects": "مشاهده پروژه‌ها",
+      "hero.status": config.profile?.persianStatus || "وضعیت: فعال · آماده همکاری‌های فنی و مهندسی",
+      "hero.btnProjects": "مشاهده مخازن",
       "hero.btnTerminal": "کنسول خط فرمان",
-      "hero.btnContact": "ارتباط مستقیم",
-      "projects.label": "پروژه‌های منتخب",
-      "projects.headline": "مخازن و سیستم‌های توسعه‌یافته",
-      "skills.label": "توانمندی‌های فنی",
+      "hero.btnContact": "پل‌های ارتباطی",
+      "projects.label": "مخازن و سیستم‌ها",
+      "projects.headline": "پیاده‌سازی‌های مهندسی",
+      "skills.label": "ابعاد فنی",
       "skills.headline": "معماری فنی و پشته ابزارها",
-      "about.label": "هویت و پیشینه",
-      "about.headline": "درباره رامان تندرو",
-      "sidebar.nameLabel": "نام و نام خانوادگی",
+      "about.label": "شناسنامه سیستم",
+      "about.headline": "مشخصات و ابعاد فنی",
+      "sidebar.nameLabel": "هویت",
       "sidebar.locationLabel": "موقعیت",
       "sidebar.targetLabel": "تمرکز تخصصی",
       "sidebar.githubLabel": "شناسه گیت‌هاب",
       sidebarName: config.profile?.persianName || "رامان تندرو",
       sidebarLocation: "ایران",
-      sidebarTarget: "فرم‌ویر و سیستم‌های نهفته",
+      sidebarTarget: "فرم‌ویر و سیستم‌های سطح پایین",
       "contact.label": "پل‌های ارتباطی",
       "contact.headline": "راه‌های ارتباط مستقیم",
       footerCopy: "&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز",
       bioParagraphs: [
-        "<strong>رامان تندرو (Raman Tondro)</strong> دانشجوی مهندسی کامپیوتر و تکنسین برق و کامپیوتر است. تمرکز تخصصی او بر پیوند میان معماری‌های سخت‌افزاری، میکروکنترلرهای تعبیه‌شده (ESP32)، بینایی ماشین کاربردی و سیستم‌های نرم‌افزاری سطح پایین با کارایی حداکثری است.",
-        "پروژه‌های منبع‌باز او بر حل چالش‌های عینی مهندسی متمرکز است: از کدنویسی C++ روی <strong>ESP32</strong> و آنالیز پکت‌های خام وای‌فای، تا توسعه اپلیکیشن‌های مدیا در اندروید با <strong>کاتلین</strong> و مدل‌های پردازش تصویر بی‌درنگ."
+        "<strong>پروفایل:</strong> توسعه‌دهنده سیستم‌ها و فرم‌ویر نهفته &middot; مهندسی کامپیوتر و فناوری‌های سخت‌افزاری.",
+        "<strong>محورهای تخصصی:</strong> برنامه‌نویسی سطح پایین C/++C روی <strong>ESP32</strong>، آنالیز پکت‌های خام 802.11، موتورهای استریم نیتیو (<strong>کاتلین</strong>) و بینایی ماشین بی‌درنگ در لبه پردازش.",
+        "<strong>جهت‌گیری مهندسی:</strong> دسترسی مستقیم به سخت‌افزار، کارایی قطعی، حذف لایه‌های سربار و توسعه سیستم‌های خودکفا."
       ]
     }
   };
@@ -212,8 +214,8 @@
 
       case "whoami":
         response = currentLang === "fa"
-          ? (config.profile?.persianName + " | دانشجوی مهندسی کامپیوتر و تکنسین برق | توسعه‌دهنده سیستم‌های نهفته")
-          : "Raman Tondro | Computer Engineering & Systems Developer";
+          ? (config.profile?.persianName + ": توسعه‌دهنده سیستم‌ها و فرم‌ویر نهفته (ESP32) | مهندسی کامپیوتر")
+          : "Raman Tondro: Systems Developer & Embedded Firmware (ESP32) Engineer";
         break;
 
       case "bio":

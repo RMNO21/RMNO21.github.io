@@ -8,10 +8,10 @@ window.SITE_CONFIG = {
     name: "Raman Tondro",
     persianName: "رامان تندرو",
     handle: "RMNO21",
-    tagline: "Computer Engineering Student & Systems Developer",
-    persianTagline: "دانشجوی مهندسی کامپیوتر و توسعه‌دهنده سیستم‌های نهفته",
-    status: "Available for engineering projects & collaboration",
-    persianStatus: "آماده برای پروژه‌های مهندسی و همکاری‌های علمی",
+    tagline: "Systems & Embedded Developer | Low-level Architecture & Microcontrollers",
+    persianTagline: "توسعه‌دهنده سیستم‌های نهفته | معماری سطح پایین و میکروکنترلرها",
+    status: "Status: Active · Open to technical collaboration",
+    persianStatus: "وضعیت: فعال · آماده همکاری‌های فنی و مهندسی",
     location: "Iran",
     persianLocation: "ایران",
     email: "tondroraman83@gmail.com",
@@ -21,12 +21,12 @@ window.SITE_CONFIG = {
     youtube: "https://www.youtube.com/@RMNT21",
     avatar: "https://avatars.githubusercontent.com/u/158779818?v=4",
     bio: [
-      "Computer Engineering student with a deep focus on embedded microcontrollers, low-level architecture, and high-performance client software.",
-      "Bridging the physical and digital domains: from bare-metal ESP32 C/C++ firmware and wireless RF sensing to native Android apps and real-time computer vision pipelines."
+      "Focus: Embedded firmware (ESP32), low-level architecture, bare-metal C/C++, native client systems & edge vision.",
+      "Engineering Directive: Direct hardware control, minimal abstraction overhead, deterministic execution."
     ],
     persianBio: [
-      "دانشجوی مهندسی کامپیوتر با تمرکز بر میکروکنترلرهای نهفته (Embedded Systems)، معماری سیستم‌های سطح پایین و نرم‌افزارهای پرسرعت کاربردی.",
-      "پیوند میان دنیای فیزیکال و دیجیتال: از توسعه فرم‌ویر C/++C برای بردهای ESP32 و پردازش سیگنال‌های بی‌سیم تا توسعه اپلیکیشن‌های نیتیو اندروید و پایپ‌لاین‌های بینایی ماشین در زمان واقعی."
+      "حوزه تمرکز: فرم‌ویر و میکروکنترلرهای ESP32، معماری سطح پایین، توسعه کلاینت‌های نیتیو و پردازش تصویر در لبه.",
+      "جهت‌گیری مهندسی: کنترل مستقیم سخت‌افزار، حذف سربار لایه‌ها، عملکرد قطعی و پایدار."
     ]
   },
 
@@ -152,7 +152,7 @@ window.SITE_CONFIG = {
     ],
     commands: {
       help: "Available commands: whoami, bio, projects, skills, contact, specs, clear, exit",
-      whoami: "Raman Tondro | Computer Engineering Student & Systems Developer",
+      whoami: "Raman Tondro: Systems Developer & Embedded Firmware Engineer",
       contact: "Email: tondroraman83@gmail.com | GitHub: https://github.com/RMNO21",
       specs: [
         "OS: Arch Linux x86_64 / FreeRTOS (ESP32)",
