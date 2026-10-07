@@ -18,8 +18,10 @@
       "nav.terminal": "Terminal",
       "nav.skills": "Stack",
       "nav.about": "Dossier",
+      "nav.resume": "Resume",
       "nav.contact": "Contact",
       "hero.status": config.profile?.status || "Status: Active · Open to technical collaboration",
+      "hero.btnResume": "Official Resume",
       "hero.btnProjects": "Explore Repositories",
       "hero.btnTerminal": "Open Shell Terminal",
       "hero.btnContact": "Direct Channels",
@@ -56,8 +58,10 @@
       "nav.terminal": "ترمینال",
       "nav.skills": "مهارت‌ها",
       "nav.about": "شناسنامه",
+      "nav.resume": "رزومه رسمی",
       "nav.contact": "ارتباط",
       "hero.status": config.profile?.persianStatus || "وضعیت: فعال · آماده همکاری‌های فنی و مهندسی",
+      "hero.btnResume": "مشاهده رزومه و مدارک",
       "hero.btnProjects": "مشاهده مخازن",
       "hero.btnTerminal": "کنسول خط فرمان",
       "hero.btnContact": "پل‌های ارتباطی",
@@ -206,10 +210,15 @@
   • <span class="out-cmd">bio</span>       - Displays full developer biography
   • <span class="out-cmd">projects</span>  - Lists primary open-source systems
   • <span class="out-cmd">skills</span>    - Technical toolchain breakdown
+  • <span class="out-cmd">resume</span>    - Official verified resume & credentials
   • <span class="out-cmd">specs</span>     - Architecture & hardware specifications
   • <span class="out-cmd">contact</span>   - Direct communication channels
   • <span class="out-cmd">clear</span>     - Clears the terminal screen
   • <span class="out-cmd">neofetch</span>  - System banner representation`;
+        break;
+
+      case "resume":
+        response = `Official Engineering Dossier & Verified Credentials:\n<a href="resume.html" style="color:#38bdf8; text-decoration:underline;">➜ Click here to open resume.html (Print / PDF Ready)</a>\n\nVerified credentials: Sololearn, FaraDars, Maktabkhooneh & Social Security Organization of Iran.`;
         break;
 
       case "whoami":

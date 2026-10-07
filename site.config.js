@@ -19,7 +19,11 @@ window.SITE_CONFIG = {
     orcid: "https://orcid.org/0009-0008-3052-1874",
     wikidata: "https://www.wikidata.org/wiki/Q141601053",
     youtube: "https://www.youtube.com/@RMNT21",
+    telegram: "https://t.me/RMNT21",
+    phone: "+989330093381",
+    resumeUrl: "resume.html",
     avatar: "https://avatars.githubusercontent.com/u/158779818?v=4",
+    portrait: "assets/images/raman-tondro-square.jpg",
     bio: [
       "Focus: Embedded firmware (ESP32), low-level architecture, bare-metal C/C++, native client systems & edge vision.",
       "Engineering Directive: Direct hardware control, minimal abstraction overhead, deterministic execution."
@@ -151,9 +155,10 @@ window.SITE_CONFIG = {
       "==========================================================="
     ],
     commands: {
-      help: "Available commands: whoami, bio, projects, skills, contact, specs, clear, exit",
+      help: "Available commands: whoami, bio, projects, skills, resume, contact, specs, clear, exit",
       whoami: "Raman Tondro: Systems Developer & Embedded Firmware Engineer",
-      contact: "Email: tondroraman83@gmail.com | GitHub: https://github.com/RMNO21",
+      resume: "Opening official resume: https://rmno21.github.io/resume.html",
+      contact: "Email: tondroraman83@gmail.com | Telegram: @RMNT21 | GitHub: https://github.com/RMNO21",
       specs: [
         "OS: Arch Linux x86_64 / FreeRTOS (ESP32)",
         "Kernel: 6.10-hardened-rt",
