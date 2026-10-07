@@ -9,7 +9,7 @@ window.SITE_CONFIG = {
     persianName: "رامان تندرو",
     handle: "RMNO21",
     tagline: "Systems & Embedded Developer | Low-level Architecture & Microcontrollers",
-    persianTagline: "توسعه‌دهنده سیستم‌های نهفته | معماری سطح پایین و میکروکنترلرها",
+    persianTagline: "توسعه‌دهنده سیستم‌های نهفته | معماری نزدیک به سخت‌افزار و میکروکنترلرها",
     status: "Status: Active · Open to technical collaboration",
     persianStatus: "وضعیت: فعال · آماده همکاری‌های فنی و مهندسی",
     location: "Iran",
@@ -29,7 +29,7 @@ window.SITE_CONFIG = {
       "Engineering Directive: Direct hardware control, minimal abstraction overhead, deterministic execution."
     ],
     persianBio: [
-      "حوزه تمرکز: فرم‌ویر و میکروکنترلرهای ESP32، معماری سطح پایین، توسعه کلاینت‌های نیتیو و پردازش تصویر در لبه.",
+      "حوزه تمرکز: فرم‌ویر و میکروکنترلرهای ESP32، معماری نزدیک به سخت‌افزار و سیستم‌های پایه، توسعه کلاینت‌های نیتیو و پردازش تصویر در لبه.",
       "جهت‌گیری مهندسی: کنترل مستقیم سخت‌افزار، حذف سربار لایه‌ها، عملکرد قطعی و پایدار."
     ]
   },
