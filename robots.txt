@@ -6,9 +6,7 @@ Disallow: /docs/
 
 # Explicit Image Crawling Directives
 User-agent: Googlebot-Image
-Allow: /assets/images/raman-tondro.jpg
-Allow: /assets/images/raman-tondro-square.jpg
-Allow: /assets/images/
+Allow: /
 Disallow: /certificates/
 Disallow: /assets/certificates/
 Disallow: /docs/
