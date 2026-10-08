@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SESS-Shirazu-Autologin: Secure Portal Automation | Raman Tondro</title>
+  
+  <meta name="title" content="SESS-Shirazu-Autologin: Secure Portal Automation | Raman Tondro">
+  <meta name="description" content="Technical dossier of SESS-Shirazu-Autologin: A secure Chrome Manifest V3 extension automating Shiraz University portal logins with client-side AES-GCM-256 Web Crypto encryption and sub-50ms execution. By Raman Tondro.">
+  <meta name="keywords" content="SESS Shiraz University, Chrome Extension, Manifest V3, Web Crypto API, AES-GCM, Automation, Raman Tondro, رامان تندرو, RMNO21, Shiraz University">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/sess-shirazu-autologin.html">
+  <meta property="og:title" content="SESS-Shirazu-Autologin - Secure Portal Automation">
+  <meta property="og:description" content="Chrome MV3 extension automating authentication on Shiraz University's SESS portal with AES-GCM-256 Web Crypto encryption.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SESS Portal Automator">
+  <meta name="twitter:description" content="Secure browser automation extension for Shiraz University by Raman Tondro.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SESS-Shirazu-Autologin",
+    "operatingSystem": "Chrome OS, Windows, macOS, Linux (Chromium)",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Chrome Manifest V3 browser extension automating authentication on the Shiraz University educational portal using AES-GCM-256 encryption.",
+    "url": "https://rmno21.github.io/projects/sess-shirazu-autologin.html",
+    "downloadUrl": "https://github.com/RMNO21/sess-shirazu-autologin",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "JavaScript"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">Raman Tondro</span>
+            <span class="name-sub">Systems Developer</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+            <span id="langDisplay">FA / فارسی</span>
+          </button>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/sess-shirazu-autologin" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#projects">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">SESS Autologin</span>
+      </nav>
+
+      <!-- English Content Section -->
+      <article class="lang-content-en">
+        <header class="project-hero">
+          <div class="project-category-badge">Browser Security &middot; Web Crypto API &middot; Manifest V3</div>
+          <h1 class="project-title">SESS-Shirazu-Autologin: Cryptographically Secured Portal Automator</h1>
+          <p class="project-lead">
+            A high-performance Chrome Manifest V3 browser extension built to streamline daily authentication on Shiraz University's educational system (SESS). Protects user credentials with client-side AES-GCM-256 Web Crypto API encryption while guaranteeing zero third-party telemetry.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/sess-shirazu-autologin" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Source on GitHub</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">Platform Extension Model</span>
+            <span class="spec-value">Chromium Manifest V3 Standard</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Cryptographic Engine</span>
+            <span class="spec-value">Web Crypto API (`SubtleCrypto` AES-GCM)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">DOM Injection Timing</span>
+            <span class="spec-value">`document_start` (Sub-35ms pipeline)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">External Network Calls</span>
+            <span class="spec-value">0 (Strict Content Security Policy)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Storage Integrity</span>
+            <span class="spec-value">Encrypted Local Storage + IV vector</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Portal Compatibility</span>
+            <span class="spec-value">Shiraz University SESS (sess.shirazu.ac.ir)</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>1. The Challenge of Academic Portal Authentication</h2>
+          <p>
+            University academic portals frequently suffer from aggressive session timeouts (forcing re-login multiple times daily) alongside clunky legacy ASP.NET/PHP login forms that fail to cooperate cleanly with standard browser password managers. Students and faculty lose significant time repeatedly re-entering credentials and solving repetitive verification steps.
+          </p>
+          <p>
+            However, automated login extensions often represent massive security risks: bad implementations save usernames and passwords in plaintext inside <code>chrome.storage.local</code>, leaving them vulnerable to malware or malicious extensions. SESS-Shirazu-Autologin resolves this by wrapping credentials in military-grade AES-GCM-256 encryption using the browser's hardware-backed Web Crypto API.
+          </p>
+
+          <h2>2. Zero-Plaintext Cryptographic Architecture</h2>
+          <p>
+            Credentials are encrypted prior to persistence. Decryption keys are derived on-the-fly and never leave ephemeral memory:
+          </p>
+
+          <pre><code>// Client-Side Hardware Encryption via Web Crypto API
+async function encryptCredentials(password, key) {
+    const iv = crypto.getRandomValues(new Uint8Array(12)); // 96-bit AES-GCM IV
+    const encoded = new TextEncoder().encode(password);
+    
+    const ciphertext = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv },
+        key,
+        encoded
+    );
+    
+    return {
+        iv: Array.from(iv),
+        data: Array.from(new Uint8Array(ciphertext))
+    };
+}</code></pre>
+
+          <h2>3. Key Architectural Advantages</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Instant `document_start` Execution</h4>
+              <p>Injected into the DOM before external fonts, trackers, or heavy stylesheets execute, populating input fields in under 35 ms without visual jumping.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Strict Air-Gapped Operation</h4>
+              <p>Manifest V3 CSP completely disables outbound remote network traffic. All cryptographic routines and DOM manipulation occur 100% locally on the client device.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Intelligent CAPTCHA Handling</h4>
+              <p>Detects portal security challenge triggers and automatically focuses the cursor directly into the verification box, minimizing user friction.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Clean Manifest V3 Service Worker</h4>
+              <p>Built strictly with modern non-persistent service workers, consuming zero background battery when the university portal tab is not active.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Persian Content Section -->
+      <article class="lang-content-fa">
+        <header class="project-hero">
+          <div class="project-category-badge">امنیت مرورگر &middot; وب‌کریپتو API &middot; منیفیست ۳</div>
+          <h1 class="project-title">افزونه ورود خودکار سامانه سس دانشگاه شیراز (SESS Autologin)</h1>
+          <p class="project-lead">
+            یک افزونه پرسرعت مرورگر مبتنی بر استاندارد کرومیوم Manifest V3 جهت خودکارسازی و تسهیل ورود روزانه به سامانه جامع آموزشی دانشگاه شیراز (SESS). محافظت رمزنگارانه از اطلاعات هویتی با الگوریتم AES-GCM-256 در سطح کلاینت بدون خروج حتی یک بایت داده به بیرون.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/sess-shirazu-autologin" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">استاندارد توسعه افزونه</span>
+            <span class="spec-value">معماری نوین Chromium Manifest V3</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">موتور رمزنگاری</span>
+            <span class="spec-value">رمزنگاری سخت‌افزاری AES-GCM-256 کلاینت</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">زمان تزریق به صفحه</span>
+            <span class="spec-value">فاز `document_start` (اجرا زیر ۳۵ میلی‌ثانیه)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">درخواست‌های شبکه خارجی</span>
+            <span class="spec-value">صفر &middot; سیاست امنیتی اکید ایزوله محلی</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">امنیت ذخیره‌سازی داده</span>
+            <span class="spec-value">عدم ذخیره متن خام همراه با بردار اولیه (IV)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">سامانه هدف</span>
+            <span class="spec-value">سامانه سس دانشگاه شیراز (sess.shirazu.ac.ir)</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. ضرورت حل مشکل احراز هویت در پرتال‌های دانشگاهی</h2>
+          <p>
+            سامانه‌های آموزشی دانشگاهی نظیر سس (SESS) به دلیل انقضای زودهنگام نشست‌ها (Session Timeout)، دانشجویان و اساتید را مجبور به ورودهای مکرر در طول روز می‌کنند. سیستم سنتی ورود و ساختار فیلدهای فرم نیز معمولاً سازگاری پایینی با مدیرهای رمزعبور پیش‌فرض مرورگرها دارد.
+          </p>
+          <p>
+            بسیاری از اسکریپت‌های اتوماسیون معمولی نام کاربری و رمزعبور را به صورت متن آشکار (Plaintext) درون حافظه مرورگر ذخیره می‌کنند که یک خطای امنیتی بحرانی است. افزونه SESS Autologin با تکیه بر استاندارد Web Crypto API اطلاعات را با کلید رمزنگاری سخت‌افزاری AES-GCM رمزگذاری می‌کند تا دسترسی غیرمجاز سایر افزونه‌ها به اطلاعات هویتی غیرممکن گردد.
+          </p>
+
+          <h2>۲. معماری بدون متن آشکار (Zero-Plaintext)</h2>
+          <p>
+            فرآیند رمزگذاری پیش از ذخیره‌سازی در سطح مرورگر و با شتاب سخت‌افزاری توابع کریپتو انجام می‌پذیرد:
+          </p>
+
+          <pre><code>// رمزنگاری امن سمت کلاینت با استاندارد Web Crypto API
+async function encryptCredentials(password, key) {
+    const iv = crypto.getRandomValues(new Uint8Array(12)); // بردار تصادفی ۹۶ بیتی
+    const encoded = new TextEncoder().encode(password);
+    
+    const ciphertext = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv },
+        key,
+        encoded
+    );
+    
+    return {
+        iv: Array.from(iv),
+        data: Array.from(new Uint8Array(ciphertext))
+    };
+}</code></pre>
+
+          <h2>۳. مزایا و ویژگی‌های کلیدی افزونه</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>تزریق آنی در فاز `document_start`</h4>
+              <p>اسکریپت پیش از لود شدن فونت‌ها و فایل‌های سنگین پرتال در کمتر از ۳۵ میلی‌ثانیه فیلدها را پر کرده و از پرش‌های آزاردهنده ظاهری جلوگیری می‌کند.</p>
+            </div>
+            <div class="feature-card">
+              <h4>ایزولاسیون کامل بدون ارتباط اینترنتی</h4>
+              <p>سیاست امنیتی افزونه ارسال هرگونه ترافیک به سرورهای بیرونی را مسدود می‌کند؛ تمامی فعالیت‌ها به صورت ۱۰۰٪ آفلاین و محلی انجام می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>مدیریت هوشمند کد امنیتی (کپچا)</h4>
+              <p>در صورت نیاز به حل کپچا، نشانگر ماوس مستقیماً روی فیلد کد امنیتی قرار می‌گیرد تا کاربر با کمترین اتلاف وقت وارد سامانه شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>معماری سبک Service Worker در Manifest V3</h4>
+              <p>در زمان‌هایی که تب دانشگاه باز نیست هیچ پروسه‌ای در رم مرورگر فعال نبوده و مصرف باتری دستگاه روی صفر درصد حفظ می‌شود.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">Home</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/sess-shirazu-autologin">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

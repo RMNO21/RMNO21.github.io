@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 802.11 Deauth & Network Auditing Device | Raman Tondro</title>
+  
+  <meta name="title" content="ESP32 802.11 Deauth & Network Auditing Device | Raman Tondro">
+  <meta name="description" content="Technical dossier of ESP32 Deauth: A standalone Wi-Fi 802.11 management frame penetration testing device with SSD1306 OLED, async web interface, and raw packet injection. Designed by Raman Tondro.">
+  <meta name="keywords" content="ESP32, Deauth, 802.11, Wi-Fi Security, Penetration Testing, SSD1306, FreeRTOS, Raman Tondro, رامان تندرو, RMNO21, Hardware Security">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/projects/esp32-deauth.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/esp32-deauth.html">
+  <meta property="og:title" content="ESP32 802.11 Deauth & Network Auditing Device">
+  <meta property="og:description" content="Standalone pocket-sized Wi-Fi penetration testing appliance with SSD1306 OLED, raw frame injection, and responsive Web GUI.">
+  <meta property="og:image" content="https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ESP32 Wi-Fi Security Appliance">
+  <meta name="twitter:description" content="Embedded 802.11 raw packet injection and network auditing device by Raman Tondro.">
+  <meta name="twitter:image" content="https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication & Hardware Project -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ESP32 802.11 Deauth Tool",
+    "operatingSystem": "FreeRTOS / ESP-IDF",
+    "applicationCategory": "SecurityApplication",
+    "description": "Standalone pocket Wi-Fi security auditing appliance with SSD1306 OLED display, raw 802.11 packet injection, and dual-core FreeRTOS task distribution.",
+    "url": "https://rmno21.github.io/projects/esp32-deauth.html",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "C++"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">Raman Tondro</span>
+            <span class="name-sub">Systems Developer</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+            <span id="langDisplay">FA / فارسی</span>
+          </button>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/esp32-deauth" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#projects">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">ESP32 Deauth</span>
+      </nav>
+
+      <!-- English Content Section -->
+      <article class="lang-content-en">
+        <header class="project-hero">
+          <div class="project-category-badge">Embedded Systems &middot; Wireless Security &middot; C++</div>
+          <h1 class="project-title">ESP32 802.11 Deauth &amp; Network Auditing Device</h1>
+          <p class="project-lead">
+            A standalone, pocket-sized hardware security appliance built on the ESP32 dual-core SoC. Enables deep IEEE 802.11 management frame inspection, targeted packet deauthentication, beacon spamming, and real-time OLED telemetry without external PC dependencies.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/esp32-deauth" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Source on GitHub</span>
+            </a>
+            <a href="https://github.com/RMNO21/esp32-deauth/releases" target="_blank" rel="noopener noreferrer" class="btn-pill">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download Firmware Binaries</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42" alt="ESP32 Deauth Hardware Device Running with OLED Screen" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            Field demonstration: ESP32 running standalone firmware with integrated 0.96" SSD1306 I2C OLED display, physical push-button navigation, and active packet injection telemetry.
+          </figcaption>
+        </figure>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">Target Architecture</span>
+            <span class="spec-value">ESP32 Xtensa Dual-Core 240MHz</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Operating Environment</span>
+            <span class="spec-value">FreeRTOS &middot; ESP-IDF Native APIs</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Display &amp; Input</span>
+            <span class="spec-value">SSD1306 128x64 OLED &middot; 3-Button GPIO</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">RF Packet Injection</span>
+            <span class="spec-value">Raw 802.11 Frame TX (Promiscuous)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Dual UI Architecture</span>
+            <span class="spec-value">Hardware OLED &amp; Async Web Server AP</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Memory Footprint</span>
+            <span class="spec-value">&lt; 180 KB SRAM &middot; 1.2 MB Flash</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>1. The Problem Space &amp; IEEE 802.11 Vulnerability</h2>
+          <p>
+            The IEEE 802.11 Wi-Fi standard historically transmits management frames (such as Beacon, Probe Request, and Deauthentication/Disassociation frames) in cleartext without cryptographic message integrity verification unless 802.11w (Management Frame Protection - MFP) is strictly enforced. Malicious or misconfigured networks can be diagnosed and audited by injecting unencrypted deauth frames to test network resiliency and client reconnection behavior.
+          </p>
+          <p>
+            Standard security assessments require cumbersome laptops with specific external wireless NICs running Kali Linux and packet injection drivers (such as <code>airmon-ng</code>). The goal of this project was to condense the entire wireless packet manipulation pipeline into a micro-power, battery-operated embedded appliance running natively on an ESP32 microcontroller.
+          </p>
+
+          <h2>2. Dual-Core FreeRTOS Task Distribution</h2>
+          <p>
+            Injecting 802.11 raw frames at high rates while simultaneously rendering UI elements to an I2C OLED screen and hosting an asynchronous HTTP captive portal requires deterministic task separation. An ESP32 dual-core Xtensa architecture was leveraged:
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Core 0: RF &amp; Promiscuous RX/TX Engine</h4>
+              <p>Dedicated strictly to the Wi-Fi baseband: cycling 2.4 GHz channels (1-14), capturing probe requests in promiscuous mode, maintaining client-AP association tables, and dispatching crafted raw 802.11 frame buffers using <code>esp_wifi_80211_tx</code>.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Core 1: OLED Pipeline &amp; Async Web GUI</h4>
+              <p>Runs the SSD1306 rendering engine at 30 FPS over fast I2C (400 kHz), scans hardware button debouncing with interrupts, and serves a zero-dependency HTML5/CSS dashboard using <code>ESPAsyncWebServer</code> when SoftAP mode is engaged.</p>
+            </div>
+          </div>
+
+          <h2>3. Low-Level Raw Frame Crafting</h2>
+          <p>
+            The firmware constructs IEEE 802.11 deauthentication packets directly into contiguous memory buffers before handing off to the MAC hardware layer:
+          </p>
+
+          <pre><code>// IEEE 802.11 Deauthentication Frame Structure
+uint8_t deauthPacket[26] = {
+    0xC0, 0x00,                         // Type: Management, Subtype: Deauthentication (0x0C)
+    0x00, 0x00,                         // Duration: 0 µs
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, // Destination MAC (Client or Broadcast)
+    0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, // Source MAC (Access Point BSSID)
+    0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, // BSSID
+    0x00, 0x00,                         // Sequence number (dynamic)
+    0x07, 0x00                          // Reason Code: Class 3 frame received from nonassociated STA
+};
+
+// Dispatch via native ESP-IDF raw transmission API
+esp_wifi_80211_tx(WIFI_IF_STA, deauthPacket, sizeof(deauthPacket), false);</code></pre>
+
+          <h2>4. Key Hardware &amp; Firmware Capabilities</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Multi-Target Channel Hopping</h4>
+              <p>Automated asynchronous channel scanning across all 2.4 GHz channels with RSSI signal strength tracking and SSID beacon identification.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Beacon Cloning &amp; Rogue AP Simulation</h4>
+              <p>Simulates dozens of virtual SSIDs simultaneously to evaluate client-side wireless probing behaviors and probe response vulnerabilities.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Zero-Lag OLED UI Engine</h4>
+              <p>Custom double-buffered graphics engine drawing menus, network lists, and real-time transmission graphs on a 128x64 monochrome OLED without blocking the RF core.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Encrypted SoftAP Remote Terminal</h4>
+              <p>When operating in covert mode, the device provides an on-demand Wi-Fi hotspot with a responsive mobile interface for wireless network control from any smartphone.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Persian Content Section -->
+      <article class="lang-content-fa">
+        <header class="project-hero">
+          <div class="project-category-badge">سیستم‌های تعبیه‌شده &middot; امنیت بی‌سیم &middot; زبان C++</div>
+          <h1 class="project-title">دستگاه تست نفوذ و پایش بی‌سیم ESP32 (Deauth Tool)</h1>
+          <p class="project-lead">
+            یک ابزار سخت‌افزاری جیبی و مستقل بر پایه تراشه دو هسته‌ای ESP32 برای تحلیل عمیق فریم‌های مدیریتی IEEE 802.11، تزریق بسته‌های Deauthentication، شبیه‌سازی Beacon و پایش زنده ترافیک بی‌سیم با نمایشگر OLED بدون وابستگی به کامپیوتر.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/esp32-deauth" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+            <a href="https://github.com/RMNO21/esp32-deauth/releases" target="_blank" rel="noopener noreferrer" class="btn-pill">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>دانلود فریمور کامپایل‌شده</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42" alt="دستگاه سخت‌افزاری ESP32 Deauth با نمایشگر OLED" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            نمای واقعی دستگاه در حال اجرا: میکروکنترلر ESP32 متصل به نمایشگر OLED ۰.۹۶ اینچ و کلیدهای کنترل سخت‌افزاری همراه با پردازش زنده پکت‌های شبکه.
+          </figcaption>
+        </figure>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">تراشه و معماری</span>
+            <span class="spec-value">ESP32 Xtensa دوهسته‌ای ۲۴۰ مگاهرتز</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">محیط اجرایی پایه</span>
+            <span class="spec-value">سیستم‌عامل بی‌درنگ FreeRTOS و ESP-IDF</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">نمایشگر و ورودی‌ها</span>
+            <span class="spec-value">نمایشگر SSD1306 ۱۲۸x۶۴ و ۳ کلید اینتراپت</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">تزریق فریم‌های رادیویی</span>
+            <span class="spec-value">تزریق مستقیم فریم‌های خام ۸۰۲.۱۱</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">معماری رابط کاربری</span>
+            <span class="spec-value">رابط گرافیکی OLED و پنل تحت وب مستقل</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">مصرف حافظه</span>
+            <span class="spec-value">کمتر از ۱۸۰ کیلوبایت رم &middot; ۱.۲ مگابایت فلش</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. تحلیل فنی آسیب‌پذیری استاندارد IEEE 802.11</h2>
+          <p>
+            در پروتکل سنتی Wi-Fi (IEEE 802.11)، فریم‌های مدیریتی نظیر Beacon، Probe و Deauthentication بدون رمزنگاری و به صورت متن‌باز مبادله می‌شوند؛ مگر آنکه استاندارد 802.11w (حفاظت از فریم‌های مدیریتی) به صورت اجباری فعال شده باشد. این حفره به متخصصان امنیت شبکه اجازه می‌دهد با تزریق فریم‌های قطع اتصال شبیه‌سازی‌شده، میزان پایداری شبکه و مکانیزم‌های بازیابی کلاینت‌ها را ممیزی و ارزیابی نمایند.
+          </p>
+          <p>
+            انجام این ممیزی‌ها پیش از این به لپ‌تاپ‌های سنگین با کارت‌های شبکه خاص در توزیع‌هایی مانند کالی لینوکس متکی بود. این پروژه کل خط لوله تحلیل و تزریق فریم‌های رادیویی را در سطح سخت‌افزار درون یک دستگاه جیبی، کم‌مصرف و مستقل پیاده‌سازی کرده است.
+          </p>
+
+          <h2>۲. تفکیک وظایف با سیستم‌عامل بی‌درنگ (FreeRTOS)</h2>
+          <p>
+            تزریق فریم‌های خام در نرخ‌های بالا، همزمان با ترسیم روان رابط کاربری روی نمایشگر OLED و پاسخگویی به درخواست‌های وب سرور، نیازمند معماری موازی دوهسته‌ای بود:
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>هسته صفر: موتور رادیویی و تزریق بسته‌های خام</h4>
+              <p>اختصاص داده شده به لایه فیزیکی Wi-Fi جهت پیمایش خودکار کانال‌های ۲.۴ گیگاهرتز، رهگیری بسته‌ها در حالت پرومیسکیوس (Promiscuous) و ارسال فریم‌های خام سفارشی با تابع <code>esp_wifi_80211_tx</code>.</p>
+            </div>
+            <div class="feature-card">
+              <h4>هسته یک: رابط کاربری گرافیکی و وب‌سرور ناهمگام</h4>
+              <p>مسئول راه‌اندازی درایور نمایشگر SSD1306 با پروتکل I2C در نرخ ۳۰ فریم بر ثانیه، خوانش کلیدهای سخت‌افزاری با سیستم اینتراپت و میزبانی پنل وب با <code>ESPAsyncWebServer</code> در حالت SoftAP.</p>
+            </div>
+          </div>
+
+          <h2>۳. ساخت و تزریق بسته در سطح نزدیک به سخت‌افزار</h2>
+          <p>
+            بسته‌های Deauthentication مستقیماً به صورت بایت‌های پیوسته درون بافر حافظه ساخته شده و بدون لایه‌های اضافه به لایه MAC و رادیو ارسال می‌شوند:
+          </p>
+
+          <pre><code>// ساختار فریم مدیریتی قطع اتصال در استاندارد 802.11
+uint8_t deauthPacket[26] = {
+    0xC0, 0x00,                         // فریم مدیریتی Deauthentication
+    0x00, 0x00,                         // مدت زمان انتشار
+    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, // آدرس مقصد (کلاینت یا برودکست)
+    0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, // آدرس فرستنده (BSSID مودم)
+    0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF, // شناسه اکسس‌پوینت
+    0x00, 0x00,                         // شماره توالی بسته (داینامیک)
+    0x07, 0x00                          // کد دلیل: نقض ارتباط و نیاز به احراز هویت مجدد
+};
+
+// ارسال مستقیم از طریق API پایه سخت‌افزار
+esp_wifi_80211_tx(WIFI_IF_STA, deauthPacket, sizeof(deauthPacket), false);</code></pre>
+
+          <h2>۴. ویژگی‌های برجسته سخت‌افزاری و نرم‌افزاری</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>پیمایش چندکاناله و شناسایی اهداف</h4>
+              <p>اسکن هوشمند کانال‌های ۱ تا ۱۴ با محاسبه قدرت سیگنال (RSSI) و دسته‌بندی شبکه‌های پنهان و آشکار به شکل خودکار.</p>
+            </div>
+            <div class="feature-card">
+              <h4>شبیه‌سازی اکسس‌پوینت‌های چندگانه (Beacon Spam)</h4>
+              <p>تولید ده‌ها شبکه مجازی همزمان جهت سنجش رفتار کلاینت‌ها و بررسی مقاومت جدول اسکن سیستم‌های عامل.</p>
+            </div>
+            <div class="feature-card">
+              <h4>رابط کاربری بدون تاخیر با بافر دوگانه</h4>
+              <p>موتور گرافیکی بهینه‌سازی‌شده برای ترسیم نمودارهای ترافیک زنده و منوهای پیمایش چندمرحله‌ای روی نمایشگر OLED بدون ایجاد تداخل در هسته شبکه.</p>
+            </div>
+            <div class="feature-card">
+              <h4>کنترل از راه دور با اکسس‌پوینت امن</h4>
+              <p>قابلیت اتصال بی‌سیم به دستگاه از طریق گوشی موبایل و کنترل تمامی فرآیندهای تست نفوذ از طریق پنل وب بدون نیاز به اینترنت.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">Home</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/esp32-deauth">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

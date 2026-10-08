@@ -25,13 +25,90 @@
     <loc>https://rmno21.github.io/resume.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/resume.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/resume.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/resume.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.95</priority>
     <image:image>
       <image:loc>https://rmno21.github.io/assets/images/raman-tondro-square.jpg</image:loc>
       <image:title>Raman Tondro Official Resume (رزومه رسمی رامان تندرو)</image:title>
       <image:caption>Raman Tondro Engineering Resume - Computer Engineering &amp; Systems Developer</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/sepotify.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/sepotify.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/sepotify.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/sepotify.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/ruview.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ruview.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/ruview.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/ruview.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/esp32-deauth.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/esp32-deauth.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/esp32-deauth.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/esp32-deauth.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42</image:loc>
+      <image:title>ESP32 802.11 Deauth Device Running with OLED Display</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/rmn-player.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/rmn-player.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/rmn-player.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/rmn-player.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/ai-virtual-mouse.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ai-virtual-mouse.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/ai-virtual-mouse.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/ai-virtual-mouse.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/dimoled.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/dimoled.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/dimoled.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/dimoled.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/drawsiness-detection.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/drawsiness-detection.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/drawsiness-detection.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/drawsiness-detection.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://rmno21.github.io/projects/sess-shirazu-autologin.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Virtual-Mouse: Sub-Pixel Touchless Interface | Raman Tondro</title>
+  
+  <meta name="title" content="AI-Virtual-Mouse: Sub-Pixel Touchless Interface | Raman Tondro">
+  <meta name="description" content="Technical dossier of AI-Virtual-Mouse: Real-time touchless Windows cursor control using MediaPipe 21 hand landmarks, EMA sub-pixel jitter filter, and zero-latency Win32 dispatch. By Raman Tondro.">
+  <meta name="keywords" content="AI Virtual Mouse, Computer Vision, MediaPipe, OpenCV, Python, Win32 API, Gesture Control, Raman Tondro, رامان تندرو, RMNO21, Jitter-Free Tracking">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/projects/ai-virtual-mouse.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/ai-virtual-mouse.html">
+  <meta property="og:title" content="AI-Virtual-Mouse - Sub-Pixel Touchless Interface">
+  <meta property="og:description" content="Sub-pixel jitter-free AI virtual mouse for Windows using MediaPipe 21 3D hand landmarks, OpenCV, and Win32 event dispatch.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI-Virtual-Mouse - Computer Vision Controller">
+  <meta name="twitter:description" content="Real-time gesture-driven cursor controller by Raman Tondro.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI-Virtual-Mouse",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "High-precision computer vision virtual mouse translating 21 3D hand landmarks into smoothed Win32 cursor movements and multi-button click gestures.",
+    "url": "https://rmno21.github.io/projects/ai-virtual-mouse.html",
+    "downloadUrl": "https://github.com/RMNO21/AI-Virtual-Mouse",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "Python"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">Raman Tondro</span>
+            <span class="name-sub">Systems Developer</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+            <span id="langDisplay">FA / فارسی</span>
+          </button>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#projects">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">AI Virtual Mouse</span>
+      </nav>
+
+      <!-- English Content Section -->
+      <article class="lang-content-en">
+        <header class="project-hero">
+          <div class="project-category-badge">Computer Vision &middot; Human-Computer Interaction &middot; Python</div>
+          <h1 class="project-title">AI-Virtual-Mouse: Sub-Pixel Touchless Windows Controller</h1>
+          <p class="project-lead">
+            A real-time vision pipeline translating hand gestures captured from standard webcams into fluid OS cursor movements. Solves the ubiquitous optical tremor problem through an Exponential Moving Average (EMA) adaptive filter coupled directly with Win32 hardware event queues.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Source on GitHub</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">Language &amp; Runtime</span>
+            <span class="spec-value">Python 3.10+ &middot; CPython</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Landmark Engine</span>
+            <span class="spec-value">Google MediaPipe (21 3D Keypoints)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Smoothing Filter</span>
+            <span class="spec-value">Velocity-Adaptive EMA Algorithm</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">OS Input Layer</span>
+            <span class="spec-value">Win32 API via ctypes (`user32.dll`)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Processing Throughput</span>
+            <span class="spec-value">60+ FPS on Standard Core i5 / GPU</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">End-to-End Latency</span>
+            <span class="spec-value">&lt; 14 ms (Motion to Cursor Dispatch)</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>1. The Problem of Optical Jitter in HCI</h2>
+          <p>
+            Naïve implementations of webcam-based mouse controllers directly map the pixel coordinates of an index fingertip to screen pixels. Because webcam sensor noise and natural micro-muscular tremors cause coordinates to oscillate by 2-5 pixels each frame, the on-screen cursor suffers from intense jitter, making precision clicks on small desktop buttons or close links impossible.
+          </p>
+          <p>
+            AI-Virtual-Mouse addresses this through a multi-stage filtering pipeline combining confidence thresholding, dynamic dead-zone thresholds, and velocity-adaptive Exponential Moving Average (EMA) smoothing.
+          </p>
+
+          <h2>2. The Adaptive Smoothing Mathematical Model</h2>
+          <p>
+            When hand speed is high, smoothing is relaxed to eliminate perceptual drag; when hand speed drops near zero, the filter coefficient scales up to lock the cursor into a dead-zone:
+          </p>
+
+          <pre><code># Dynamic EMA Smoothing Formulation
+distance = math.hypot(curr_x - prev_x, curr_y - prev_y)
+# Adaptive alpha: higher alpha when fast movement, lower alpha when micro-adjusting
+alpha = min(1.0, max(0.15, distance / 40.0))
+
+smooth_x = prev_x + alpha * (curr_x - prev_x)
+smooth_y = prev_y + alpha * (curr_y - prev_y)
+
+# Direct Win32 Cursor Dispatch (Bypasses slow third-party wrappers)
+ctypes.windll.user32.SetCursorPos(int(smooth_x), int(smooth_y))</code></pre>
+
+          <h2>3. Gesture State Machine Architecture</h2>
+          <p>
+            Instead of ambiguous single-frame triggers, gestures are governed by a finite state machine:
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Tracking Mode (Pointing)</h4>
+              <p>Index finger extended, middle/ring/pinky curled. The index tip coordinates drive smoothed cursor navigation without triggering clicks.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Left Click / Drag (Pinch Gesture)</h4>
+              <p>Euclidean distance between Index Tip (Landmark 8) and Thumb Tip (Landmark 4) drops below calibrated threshold $d &lt; 25\text{px}$, firing <code>MOUSEEVENTF_LEFTDOWN</code>.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Right Click (Middle Pinch)</h4>
+              <p>Euclidean distance between Middle Tip (Landmark 12) and Thumb Tip (Landmark 4) drops below threshold, dispatching <code>MOUSEEVENTF_RIGHTDOWN</code> / <code>UP</code>.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Two-Finger Scroll</h4>
+              <p>Index and Middle fingers extended in parallel. Vertical vector displacement translates directly into native Windows mouse-wheel delta events.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Persian Content Section -->
+      <article class="lang-content-fa">
+        <header class="project-hero">
+          <div class="project-category-badge">بینایی ماشین &middot; تعامل انسان و کامپیوتر &middot; پایتون</div>
+          <h1 class="project-title">ماوس مجازی هوشمند (AI-Virtual-Mouse): کنترل لمسی مکان‌نما در ویندوز</h1>
+          <p class="project-lead">
+            یک خط لوله بی‌درنگ بینایی ماشین که حرکات دست کاربر را از طریق وب‌کم استاندارد به حرکت بسیار روان نشانگر ماوس در محیط ویندوز تبدیل می‌کند. رفع کامل لرزش دست با فیلتر تطبیقی میانگین متحرک نمایی (EMA) و ارسال مستقیم رویدادها به لایه Win32 API.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">زبان و محیط اجرا</span>
+            <span class="spec-value">Python 3.10+ &middot; هسته بهینه‌سازی‌شده</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">مدل رهگیری اسکلتی</span>
+            <span class="spec-value">گوگل مدیاپایپ (۲۱ نقطه سه‌بعدی دست)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">الگوریتم حذف لرزش</span>
+            <span class="spec-value">فیلتر تطبیقی سرعت‌محور EMA</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">لایه ارسال به سیستم‌عامل</span>
+            <span class="spec-value">توابع Win32 API از طریق ctypes مستقیم</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">نرخ فریم پردازش</span>
+            <span class="spec-value">بیش از ۶۰ فریم بر ثانیه روی پردازنده‌های معمولی</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">تأخیر پاسخ‌دهی</span>
+            <span class="spec-value">کمتر از ۱۴ میلی‌ثانیه از حرکت تا نشانگر</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. تحلیل چالش لرزش اپتیکال در تعامل بدون لمس</h2>
+          <p>
+            در پروژه‌های ساده بینایی ماشین، معمولاً موقعیت نوک انگشت اشاره مستقیماً به پیکسل‌های صفحه نمایش متصل می‌شود. به علت نویز ذاتی سنسور وب‌کم و لرزش‌های میکروسکوپی ماهیچه‌های انگشت، مختصات در هر فریم بین ۲ تا ۵ پیکسل نوسان می‌کند؛ امری که کلیک روی دکمه‌های کوچک و پنجره‌های ویندوز را غیرممکن می‌سازد.
+          </p>
+          <p>
+            پروژه AI-Virtual-Mouse با ترکیب یک فیلتر نرم‌کننده نمایی تطبیقی با سرعت دست و ناحیه مرده (Deadzone)، حرکات سریع را بدون تاخیر انتقال می‌دهد و هنگام ثابت شدن دست، لرزش زیرپیکسلی را به صفر می‌رساند.
+          </p>
+
+          <h2>۲. مدل ریاضی فیلتر هموارساز تطبیقی (EMA)</h2>
+          <p>
+            هنگامی که دست با سرعت حرکت می‌کند ضریب فیلتر کاهش می‌یابد تا واکنش لحظه‌ای حفظ شود؛ به محض کاهش سرعت برای کلیک، ضریب فیلتر افزایش یافته و مکان‌نما کاملاً پایدار می‌ماند:
+          </p>
+
+          <pre><code># پیاده‌سازی فرمول نرم‌سازی نمایی متناسب با سرعت حرکت
+distance = math.hypot(curr_x - prev_x, curr_y - prev_y)
+# تنظیم داینامیک ضریب نرم‌سازی بین 0.15 تا 1.0
+alpha = min(1.0, max(0.15, distance / 40.0))
+
+smooth_x = prev_x + alpha * (curr_x - prev_x)
+smooth_y = prev_y + alpha * (curr_y - prev_y)
+
+# تزریق مستقیم موقعیت به صف رویدادهای هسته ویندوز بدون تاخیر
+ctypes.windll.user32.SetCursorPos(int(smooth_x), int(smooth_y))</code></pre>
+
+          <h2>۳. ماشین حالت تشخیص ژست‌های حرکتی (State Machine)</h2>
+          <p>
+            به جای تصمیم‌گیری تک‌فریمی که منجر به کلیک‌های اشتباه می‌شود، حالات دست بر اساس یک ماشین وضعیت قطعی مدیریت می‌شوند:
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>حالت ناوبری و اشاره (Pointing)</h4>
+              <p>انگشت اشاره باز و سایر انگشتان جمع هستند. موقعیت نشانگر در صفحه بدون فعال شدن کلیک‌ها به نرمی جابجا می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>کلیک چپ و درگ (Pinch Gesture)</h4>
+              <p>نزدیک شدن فاصله اقلیدسی نوک انگشت شست و اشاره به زیر ۲۵ پیکسل باعث فعال شدن آنی رویداد کلیک چپ و درگ فایل‌ها می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>کلیک راست (Middle Finger Pinch)</h4>
+              <p>نزدیک شدن شست به انگشت وسط بدون حرکت انگشت اشاره، دستور استاندارد کلیک راست را در سیستم‌عامل صادر می‌کند.</p>
+            </div>
+            <div class="feature-card">
+              <h4>اسکرول روان با دو انگشت</h4>
+              <p>باز بودن همزمان انگشت اشاره و وسط؛ حرکت عمودی دست مستقیماً به رویداد چرخ ماوس (Mouse Wheel) با شتاب نرم تبدیل می‌شود.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">Home</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/AI-Virtual-Mouse">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DimOLED: Hardware-Level Burn-In Protection | Raman Tondro</title>
+  
+  <meta name="title" content="DimOLED: Hardware-Level Burn-In Protection | Raman Tondro">
+  <meta name="description" content="Technical dossier of DimOLED: A lightweight Windows utility protecting OLED panels against burn-in using true physical hardware brightness regulation via WMI & DDC/CI. By Raman Tondro.">
+  <meta name="keywords" content="DimOLED, OLED Protection, Burn-In Prevention, WMI, DDC/CI, Windows API, Raman Tondro, رامان تندرو, RMNO21, Hardware Luminance">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/projects/dimoled.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/dimoled.html">
+  <meta property="og:title" content="DimOLED - Hardware-Level Burn-In Protection">
+  <meta property="og:description" content="Zero-flicker background utility controlling physical OLED brightness registers to prevent burn-in without fake transparent overlays.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DimOLED - Hardware OLED Utility">
+  <meta name="twitter:description" content="Physical panel brightness controller for OLED monitors by Raman Tondro.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DimOLED",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "True physical hardware brightness controller for OLED displays mitigating static UI burn-in via WMI and DDC/CI protocols.",
+    "url": "https://rmno21.github.io/projects/dimoled.html",
+    "downloadUrl": "https://github.com/RMNO21/DimOLED",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "PowerShell"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">Raman Tondro</span>
+            <span class="name-sub">Systems Developer</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+            <span id="langDisplay">FA / فارسی</span>
+          </button>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#projects">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">DimOLED</span>
+      </nav>
+
+      <!-- English Content Section -->
+      <article class="lang-content-en">
+        <header class="project-hero">
+          <div class="project-category-badge">Hardware Interfaces &middot; Windows Internals &middot; WMI</div>
+          <h1 class="project-title">DimOLED: Hardware-Level Burn-In Protection Utility</h1>
+          <p class="project-lead">
+            A zero-overhead Windows background daemon that protects OLED and mini-LED displays from static image degradation. Regulates physical panel luminance directly through WMI and DDC/CI hardware registers without rendering fake translucent desktop overlays.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Source on GitHub</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">Operating System</span>
+            <span class="spec-value">Windows 10 / 11 (x64 &amp; ARM64)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Hardware Protocol</span>
+            <span class="spec-value">WMI Monitor &middot; DDC/CI I2C Bus</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Input Hooking</span>
+            <span class="spec-value">Win32 `GetLastInputInfo` (Zero Poll)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">CPU Footprint</span>
+            <span class="spec-value">0.00% during normal idle sleep</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">RAM Footprint</span>
+            <span class="spec-value">&lt; 12 MB total process allocation</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">GPU Overhead</span>
+            <span class="spec-value">0% &middot; Bypasses DWM Compositor</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>1. Why Software Dimming Fails OLED Displays</h2>
+          <p>
+            Common third-party screen dimming utilities create a transparent black fullscreen window with the <code>WS_EX_LAYERED</code> and <code>WS_EX_TRANSPARENT</code> flags. While this makes the screen look darker, it is a catastrophic illusion for OLED hardware:
+          </p>
+          <ul>
+            <li><strong>No Voltage Reduction:</strong> The display panel's internal power supply and LED driver circuits continue operating at full operating voltage and nominal diode temperatures.</li>
+            <li><strong>GPU Overhead:</strong> Forces the Desktop Window Manager (DWM) to blend the translucent surface every refresh cycle (120Hz-240Hz), burning unnecessary laptop battery.</li>
+            <li><strong>Fullscreen Conflicts:</strong> Causes window focus stealing and HDR tone-mapping corruption in professional color grading software and 3D games.</li>
+          </ul>
+
+          <h2>2. The WMI / DDC/CI Hardware Approach</h2>
+          <p>
+            DimOLED communicates directly with the physical display controller. When user inactivity exceeds the configured threshold, it dispatches calls to the underlying hardware driver:
+          </p>
+
+          <pre><code># Native WMI Physical Brightness Call in PowerShell
+$wmi = Get-WmiObject -Namespace root/wmi -Class WmiMonitorBrightnessMethods
+if ($wmi) {
+    # Set brightness physically: Timeout = 0s, TargetBrightness = 10%
+    $wmi.WmiSetBrightness(0, 10)
+}
+
+# Monitoring user activity via Win32 GetLastInputInfo
+Add-Type @'
+using System;
+using System.Runtime.InteropServices;
+public class UserInput {
+    [DllImport("user32.dll")]
+    public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+    public struct LASTINPUTINFO {
+        public uint cbSize;
+        public uint dwTime;
+    }
+}
+'@</code></pre>
+
+          <h2>3. Key Capabilities</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Genuine Panel Power Reduction</h4>
+              <p>Directly throttles diode current, significantly reducing thermal buildup in organic emissive layers and halting sub-pixel aging on taskbars and static IDE windows.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Zero-Latency Recovery</h4>
+              <p>The instant any mouse movement or keystroke registers, hardware brightness snaps back to the user's working level without UI flicker or window transitions.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Multi-Monitor DDC/CI Support</h4>
+              <p>Compatible with external OLED monitors connected via DisplayPort or HDMI supporting VESA Display Data Channel Command Interface (DDC/CI).</p>
+            </div>
+            <div class="feature-card">
+              <h4>Silent Background Execution</h4>
+              <p>Runs as a lightweight background daemon without taskbar icons or intrusive prompts, consuming virtually zero system resources.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Persian Content Section -->
+      <article class="lang-content-fa">
+        <header class="project-hero">
+          <div class="project-category-badge">ارتباط با سخت‌افزار &middot; توابع سیستمی ویندوز &middot; WMI</div>
+          <h1 class="project-title">ابزار محافظت از نمایشگر DimOLED: کنترل روشنایی در سطح سخت‌افزار</h1>
+          <p class="project-lead">
+            یک ابزار سبک پس‌زمینه برای سیستم‌عامل ویندوز که از ماندگاری تصویر و سوختگی پیکسل‌های نمایشگرهای OLED و Mini-LED جلوگیری می‌کند. تنظیم فیزیکی جریان دیودهای پنل از طریق رابط‌های WMI و پروتکل DDC/CI بدون استفاده از لایه‌های شفاف کاذب نرم‌افزاری.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">سیستم‌عامل هدف</span>
+            <span class="spec-value">ویندوز ۱۰ و ۱۱ (معماری x64 و ARM64)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">پروتکل ارتباطی سخت‌افزار</span>
+            <span class="spec-value">کلاس‌های WMI و گذرگاه DDC/CI مانیتور</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">ردیابی ورودی کاربر</span>
+            <span class="spec-value">تابع Win32 `GetLastInputInfo` بدون بار پردازشی</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">مصرف پردازنده (CPU)</span>
+            <span class="spec-value">۰.۰۰٪ در حالت آماده‌باش</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">مصرف حافظه (RAM)</span>
+            <span class="spec-value">کمتر از ۱۲ مگابایت در کل اجرای پروسه</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">تاثیر روی کارت گرافیک</span>
+            <span class="spec-value">صفر &middot; عدم اشغال رندرر و پنجره DWM</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. چرا نرم‌افزارهای سنتی تاریک‌کننده برای پنل‌های OLED مخربند؟</h2>
+          <p>
+            اغلب برنامه‌های تاریک‌کننده صفحه در اینترنت، یک پنجره سیاه نیمه‌شفاف را روی کل دسکتاپ می‌کشند. این کار در پنل‌های OLED نه تنها مفید نیست بلکه آسیب‌زننده است:
+          </p>
+          <ul>
+            <li><strong>عدم کاهش ولتاژ و حرارت:</strong> مدار درایور مانیتور همچنان با حداکثر توان کار می‌کند و پیکسل‌ها زیر بار حرارتی باقی می‌مانند.</li>
+            <li><strong>اتلاف انرژی در کارت گرافیک:</strong> موتور کامپوزیت ویندوز (DWM) در نرخ‌های ۱۲۰ تا ۲۴۰ هرتز مجبور به ترکیب دو لایه گرافیکی است که مصرف باتری لپ‌تاپ را افزایش می‌دهد.</li>
+            <li><strong>اختلال در بازی‌ها و نرم‌افزارهای گرافیکی:</strong> لایه‌های شفاف نرم‌افزاری موجب تداخل با حالت تمام‌صفحه و پروفایل‌های رنگی HDR می‌شوند.</li>
+          </ul>
+
+          <h2>۲. راه‌حل مهندسی DimOLED: تغییر مستقیم رجیسترهای سخت‌افزار</h2>
+          <p>
+            نرم‌افزار DimOLED مستقیماً با درایور کنترلر سخت‌افزاری نمایشگر ارتباط برقرار می‌کند. با گذشت مدت زمان عدم فعالیت کاربر، مقدار روشنایی از طریق WMI کاهش می‌یابد:
+          </p>
+
+          <pre><code># فراخوانی متد سخت‌افزاری تنظیم روشنایی مانیتور
+$wmi = Get-WmiObject -Namespace root/wmi -Class WmiMonitorBrightnessMethods
+if ($wmi) {
+    # اعمال مقدار فیزیکی: زمان انتقال صفر ثانیه، روشنایی ۱۰ درصد
+    $wmi.WmiSetBrightness(0, 10)
+}
+
+# نظارت بر بیکاری سیستم از طریق توابع سطح سیستم‌عامل
+Add-Type @'
+using System;
+using System.Runtime.InteropServices;
+public class UserInput {
+    [DllImport("user32.dll")]
+    public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+    public struct LASTINPUTINFO {
+        public uint cbSize;
+        public uint dwTime;
+    }
+}
+'@</code></pre>
+
+          <h2>۳. مزایای محوری و دستاوردهای فنی</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>کاهش واقعی حرارت و استهلاک پنل</h4>
+              <p>با کم کردن مستقیم ولتاژ اعمالی به دیودهای نوری، دمای سطح مانیتور کاهش یافته و طول عمر ساب‌پیکسل‌های حساس OLED چند برابر می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>بازگشت آنی و بدون تأخیر</h4>
+              <p>با کوچک‌ترین حرکت ماوس یا لمس کیبورد، سطح روشنایی اولیه در کسری از میلی‌ثانیه بازیابی شده و هیچ تداخلی در تمرکز کاربر ایجاد نمی‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>پشتیبانی از مانیتورهای خارجی DDC/CI</h4>
+              <p>قابلیت ارسال فرامین تنظیم نور به مانیتورهای رومیزی از طریق کابل‌های DisplayPort و HDMI با پروتکل استاندارد VESA DDC/CI.</p>
+            </div>
+            <div class="feature-card">
+              <h4>اجرای کاملاً نامرئی و بهینه</h4>
+              <p>به عنوان یک سرویس فوق سبک در پس‌زمینه بدون ایجاد آیکون‌های مزاحم در تسک‌بار اجرا شده و مصرف رم آن عملاً ناچیز است.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">Home</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/DimOLED">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

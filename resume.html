@@ -154,9 +154,51 @@
       text-decoration: underline;
     }
 
-    .farsi-text {
-      font-family: var(--font-fa);
+    /* Bilingual View Control */
+    .lang-content-fa {
+      display: none;
+    }
+    .lang-content-en {
+      display: block;
+    }
+
+    body.lang-fa {
       direction: rtl;
+      font-family: var(--font-fa);
+    }
+    body.lang-fa .lang-content-en {
+      display: none !important;
+    }
+    body.lang-fa .lang-content-fa {
+      display: block !important;
+      direction: rtl;
+      font-family: var(--font-fa);
+    }
+
+    body.lang-fa .section-title {
+      font-family: var(--font-fa);
+      letter-spacing: normal;
+    }
+    body.lang-fa .timeline-header {
+      flex-direction: row-reverse;
+    }
+    body.lang-fa .edu-header {
+      flex-direction: row-reverse;
+    }
+    body.lang-fa .resume-list li {
+      padding-left: 0;
+      padding-right: 1.3rem;
+    }
+    body.lang-fa .resume-list li::before {
+      left: auto;
+      right: 0;
+      content: "◂";
+    }
+    body.lang-fa .skills-category-row {
+      grid-template-columns: 210px 1fr;
+    }
+    body.lang-fa .skills-label {
+      font-family: var(--font-fa);
     }
 
     /* Top Floating Toolbar (Hidden during print) */
@@ -199,6 +241,10 @@
       color: var(--text-main);
       transition: all 0.15s ease;
       text-decoration: none !important;
+    }
+
+    body.lang-fa .btn-action {
+      font-family: var(--font-fa);
     }
 
     .btn-action:hover {
@@ -248,7 +294,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
-    /* Resume Header */
+    /* Header Section */
     .resume-header {
       display: flex;
       align-items: center;
@@ -259,7 +305,6 @@
     }
 
     .header-portrait {
-      position: relative;
       flex-shrink: 0;
     }
 
@@ -268,10 +313,8 @@
       height: 120px;
       border-radius: 12px;
       object-fit: cover;
-      object-position: center;
-      border: 2px solid var(--border);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-      display: block;
+      border: 2px solid var(--border-accent);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
     }
 
     .header-details {
@@ -281,9 +324,9 @@
     .header-title-row {
       display: flex;
       align-items: baseline;
-      gap: 0.75rem;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
       flex-wrap: wrap;
-      margin-bottom: 0.3rem;
     }
 
     .candidate-name {
@@ -291,7 +334,6 @@
       font-weight: 800;
       color: var(--text-heading);
       letter-spacing: -0.02em;
-      line-height: 1.15;
     }
 
     .candidate-name-fa {
@@ -315,6 +357,10 @@
       font-size: 0.84rem;
       font-family: var(--font-mono);
       color: var(--text-muted);
+    }
+
+    body.lang-fa .contact-grid {
+      font-family: var(--font-fa);
     }
 
     .contact-item {
@@ -404,6 +450,10 @@
       border: 1px solid var(--border);
     }
 
+    body.lang-fa .timeline-date {
+      font-family: var(--font-fa);
+    }
+
     .role-badge {
       display: inline-block;
       font-size: 0.76rem;
@@ -414,6 +464,10 @@
       padding: 0.15rem 0.55rem;
       border-radius: 4px;
       margin-bottom: 0.6rem;
+    }
+
+    body.lang-fa .role-badge {
+      font-family: var(--font-fa);
     }
 
     .resume-list {
@@ -513,12 +567,17 @@
     .project-link-row {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.6rem;
       font-size: 0.78rem;
       font-family: var(--font-mono);
+      margin-top: auto;
     }
 
-    /* Certifications Grid & Table */
+    body.lang-fa .project-link-row {
+      font-family: var(--font-fa);
+    }
+
+    /* Certifications Grid */
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -580,6 +639,10 @@
       font-family: var(--font-mono);
     }
 
+    body.lang-fa .cert-meta {
+      font-family: var(--font-fa);
+    }
+
     .cert-verify-link {
       display: inline-flex;
       align-items: center;
@@ -589,6 +652,10 @@
       font-weight: 600;
       color: var(--accent-cyan);
       margin-top: auto;
+    }
+
+    body.lang-fa .cert-verify-link {
+      font-family: var(--font-fa);
     }
 
     .cert-verify-link svg {
@@ -633,6 +700,10 @@
       font-family: var(--font-mono);
     }
 
+    body.lang-fa .skill-chip {
+      font-family: var(--font-fa);
+    }
+
     /* Print Styles */
     @media print {
       @page {
@@ -643,8 +714,13 @@
       body {
         background: #ffffff !important;
         color: #111827 !important;
-        font-size: 11pt !important;
+        font-size: 10.5pt !important;
         line-height: 1.45 !important;
+      }
+
+      body.lang-fa {
+        direction: rtl !important;
+        font-family: 'Vazirmatn', Tahoma, sans-serif !important;
       }
 
       .resume-toolbar {
@@ -673,14 +749,14 @@
       }
 
       .portrait-img {
-        width: 90pt !important;
-        height: 90pt !important;
+        width: 85pt !important;
+        height: 85pt !important;
         border: 1pt solid #cbd5e1 !important;
         box-shadow: none !important;
       }
 
       .candidate-name {
-        font-size: 20pt !important;
+        font-size: 19pt !important;
         color: #0f172a !important;
       }
 
@@ -711,11 +787,11 @@
       }
 
       .resume-section {
-        margin-bottom: 12pt !important;
+        margin-bottom: 11pt !important;
       }
 
       .role-title {
-        font-size: 10.5pt !important;
+        font-size: 10pt !important;
         color: #0f172a !important;
       }
 
@@ -740,10 +816,15 @@
       }
 
       .resume-list li {
-        font-size: 9pt !important;
+        font-size: 8.8pt !important;
         color: #1e293b !important;
         margin-bottom: 2pt !important;
         padding-left: 12pt !important;
+      }
+
+      body.lang-fa .resume-list li {
+        padding-left: 0 !important;
+        padding-right: 12pt !important;
       }
 
       .resume-list li::before {
@@ -751,7 +832,7 @@
       }
 
       .summary-text {
-        font-size: 9pt !important;
+        font-size: 8.8pt !important;
         color: #1e293b !important;
       }
 
@@ -763,23 +844,23 @@
       .project-card {
         background: #f8fafc !important;
         border: 1pt solid #e2e8f0 !important;
-        padding: 6pt 8pt !important;
+        padding: 5pt 7pt !important;
         break-inside: avoid;
         page-break-inside: avoid;
       }
 
       .project-name {
-        font-size: 9pt !important;
+        font-size: 8.8pt !important;
         color: #0f172a !important;
       }
 
       .project-tech {
-        font-size: 7.5pt !important;
+        font-size: 7.2pt !important;
         color: #0284c7 !important;
       }
 
       .project-summary {
-        font-size: 8pt !important;
+        font-size: 7.8pt !important;
         color: #334155 !important;
         margin-bottom: 3pt !important;
       }
@@ -787,7 +868,7 @@
       .project-link-row a {
         color: #0284c7 !important;
         text-decoration: none !important;
-        font-size: 7.5pt !important;
+        font-size: 7.2pt !important;
       }
 
       .cert-grid {
@@ -817,7 +898,7 @@
       }
 
       .cert-meta {
-        font-size: 7.5pt !important;
+        font-size: 7.2pt !important;
         color: #475569 !important;
         margin-bottom: 2pt !important;
       }
@@ -828,16 +909,16 @@
       }
 
       .skills-category-row {
-        grid-template-columns: 140pt 1fr !important;
-        padding: 3pt 0 !important;
-        font-size: 8.5pt !important;
+        grid-template-columns: 130pt 1fr !important;
+        padding: 2.5pt 0 !important;
+        font-size: 8.2pt !important;
       }
 
       .skill-chip {
         background: #f1f5f9 !important;
         border: 0.5pt solid #cbd5e1 !important;
         color: #1e293b !important;
-        font-size: 7.5pt !important;
+        font-size: 7.2pt !important;
         padding: 1pt 3pt !important;
       }
 
@@ -880,8 +961,12 @@
     <div class="toolbar-left">
       <a href="index.html" class="btn-action">
         <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        <span>Back to Portfolio</span>
+        <span class="toolbar-nav-text">Back to Portfolio</span>
       </a>
+      <button id="langToggleBtn" class="btn-action" aria-label="Toggle Resume Language">
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span id="langDisplay">FA / فارسی</span>
+      </button>
       <button id="themeToggleBtn" class="btn-action" aria-label="Toggle Document Theme">
         <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <span id="themeToggleText">Paper Mode (Light)</span>
@@ -890,14 +975,18 @@
     <div class="toolbar-right">
       <button onclick="window.print()" class="btn-action btn-primary" aria-label="Print or Save PDF">
         <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-        <span>Print / Save PDF</span>
+        <span class="toolbar-print-text">Print / Save PDF</span>
       </button>
     </div>
   </aside>
 
-  <!-- Resume Document -->
+  <!-- Resume Document Wrapper -->
   <main class="resume-page-wrapper">
-    <article class="resume-paper" itemscope itemtype="https://schema.org/Person">
+    
+    <!-- ==========================================
+         ENGLISH RESUME VERSION
+         ========================================== -->
+    <article class="resume-paper lang-content-en" itemscope itemtype="https://schema.org/Person">
       
       <!-- Candidate Header -->
       <header class="resume-header">
@@ -1035,7 +1124,7 @@
           <div class="cert-card">
             <div>
               <div class="cert-title-row">
-                <span class="cert-name">C++ Developer Track (Intro to C++)</span>
+                <span class="cert-name">C++ Developer Track</span>
                 <span class="cert-issuer-badge sololearn">Sololearn</span>
               </div>
               <div class="cert-meta">
@@ -1209,11 +1298,12 @@
                 <span class="project-tech">Kotlin &middot; Android SDK</span>
               </div>
               <p class="project-summary">
-                Native zero-latency Android audio playback engine featuring hardware-level FLAC decoding, background audio lifecycle isolation, and offline streaming cache.
+                Native zero-latency Android audio playback engine featuring hardware-level FLAC decoding, background service isolation, and offline cache.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/Sepotify" target="_blank" rel="noopener">github.com/RMNO21/Sepotify</a>
+              <a href="projects/sepotify.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/Sepotify" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
@@ -1225,11 +1315,12 @@
                 <span class="project-tech">Rust &middot; RF Sensing</span>
               </div>
               <p class="project-summary">
-                Spatial perception engine decoding commodity 802.11 Wi-Fi Channel State Information (CSI) to detect human presence, motion, and vital signs non-invasively without cameras.
+                Spatial perception engine decoding 802.11 Wi-Fi CSI to detect human presence, motion, and vital signs non-invasively without cameras.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/RuView" target="_blank" rel="noopener">github.com/RMNO21/RuView</a>
+              <a href="projects/ruview.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/RuView" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
@@ -1238,14 +1329,15 @@
             <div>
               <div class="project-card-header">
                 <span class="project-name">ESP32-Deauth</span>
-                <span class="project-tech">C++ &middot; ESP-IDF / FreeRTOS</span>
+                <span class="project-tech">C++ &middot; FreeRTOS / OLED</span>
               </div>
               <p class="project-summary">
-                Standalone embedded firmware performing real-time 802.11 management frame capture, injection, and wireless protocol vulnerability auditing directly on microcontrollers.
+                Standalone embedded security appliance performing real-time 802.11 raw packet injection and network auditing on microcontrollers.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/ESP32-Deauth" target="_blank" rel="noopener">github.com/RMNO21/ESP32-Deauth</a>
+              <a href="projects/esp32-deauth.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/esp32-deauth" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
@@ -1254,14 +1346,15 @@
             <div>
               <div class="project-card-header">
                 <span class="project-name">RMN_Player</span>
-                <span class="project-tech">Lua &middot; MPV Engine</span>
+                <span class="project-tech">Lua &middot; MPV &middot; GLSL</span>
               </div>
               <p class="project-summary">
-                High-efficiency Windows media player customized for OLED monitors with zero frame jitter, dynamic ambient backlight glow synchronization, and minimal CPU footprint.
+                High-efficiency Windows media engine customized for OLED monitors with dynamic ambilight glow shaders and auto subtitle repair.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/RMN_Player" target="_blank" rel="noopener">github.com/RMNO21/RMN_Player</a>
+              <a href="projects/rmn-player.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/rmn-player" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
@@ -1269,15 +1362,33 @@
           <div class="project-card">
             <div>
               <div class="project-card-header">
-                <span class="project-name">ai-virtual-mouse</span>
+                <span class="project-name">AI-Virtual-Mouse</span>
                 <span class="project-tech">Python &middot; MediaPipe &middot; Win32</span>
               </div>
               <p class="project-summary">
-                Sub-millisecond optical virtual mouse utilizing 21-point hand skeleton tracking, velocity smoothing filters, and direct Win32 mouse event dispatch without cursor jitter.
+                Sub-pixel optical virtual mouse utilizing 21-point 3D hand tracking, adaptive EMA filter, and direct Win32 mouse dispatch without jitter.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/ai-virtual-mouse" target="_blank" rel="noopener">github.com/RMNO21/ai-virtual-mouse</a>
+              <a href="projects/ai-virtual-mouse.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+
+          <!-- DimOLED -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">DimOLED</span>
+                <span class="project-tech">PowerShell &middot; WMI / DDC-CI</span>
+              </div>
+              <p class="project-summary">
+                Hardware-level OLED burn-in protection utility directly regulating physical panel backlight registers without fake window overlays.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/dimoled.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
 
@@ -1285,15 +1396,33 @@
           <div class="project-card">
             <div>
               <div class="project-card-header">
-                <span class="project-name">Drawsiness-detection</span>
-                <span class="project-tech">Python &middot; OpenCV &middot; Dlib</span>
+                <span class="project-name">Drowsiness-Detection</span>
+                <span class="project-tech">Python &middot; MediaPipe &middot; OpenCV</span>
               </div>
               <p class="project-summary">
-                Real-time driver fatigue warning system computing Eye Aspect Ratio (EAR) across 68 facial landmarks to trigger immediate alerts upon detecting micro-sleep states.
+                Real-time driver fatigue warning pipeline computing Eye Aspect Ratio (EAR) and MAR to trigger tiered alarms upon microsleep states.
               </p>
             </div>
             <div class="project-link-row">
-              <a href="https://github.com/RMNO21/Drawsiness-detection" target="_blank" rel="noopener">github.com/RMNO21/Drawsiness-detection</a>
+              <a href="projects/drawsiness-detection.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+
+          <!-- SESS-Autologin -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">SESS-Autologin</span>
+                <span class="project-tech">JS &middot; Web Crypto &middot; MV3</span>
+              </div>
+              <p class="project-summary">
+                Chrome MV3 university portal automator with client-side AES-GCM-256 encryption, zero network leakage, and smart CAPTCHA reset.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/sess-shirazu-autologin.html">Case Study</a> &middot;
+              <a href="https://github.com/RMNO21/sess-shirazu-autologin" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
         </div>
@@ -1352,7 +1481,6 @@
           <div class="skills-items">
             <span class="skill-chip">OpenCV</span>
             <span class="skill-chip">MediaPipe</span>
-            <span class="skill-chip">Dlib Facial Landmarks</span>
             <span class="skill-chip">Wi-Fi CSI Sensing</span>
             <span class="skill-chip">FFmpeg Multi-pass</span>
             <span class="skill-chip">Win32 API</span>
@@ -1365,6 +1493,523 @@
           <div class="skills-items">
             <span class="skill-chip">Persian (Native)</span>
             <span class="skill-chip">English (Professional Working Proficiency)</span>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <!-- ==========================================
+         PERSIAN RESUME VERSION (رزومه رسمی فارسی)
+         ========================================== -->
+    <article class="resume-paper lang-content-fa" itemscope itemtype="https://schema.org/Person" dir="rtl">
+      
+      <!-- Candidate Header -->
+      <header class="resume-header">
+        <div class="header-portrait">
+          <img src="assets/images/raman-tondro-square.jpg" 
+               alt="رامان تندرو (Raman Tondro) - مهندسی کامپیوتر و توسعه‌دهنده سیستم‌ها" 
+               title="رامان تندرو" 
+               class="portrait-img" 
+               width="120" 
+               height="120" 
+               itemprop="image">
+        </div>
+        <div class="header-details">
+          <div class="header-title-row">
+            <h1 class="candidate-name" itemprop="name">رامان تندرو</h1>
+            <span class="candidate-name-fa" lang="en" itemprop="alternateName" style="direction: ltr;">Raman Tondro</span>
+          </div>
+          <div class="candidate-role" itemprop="jobTitle">مهندس کامپیوتر &middot; توسعه‌دهنده سیستم‌های نزدیک به سخت‌افزار و شبکه</div>
+          
+          <div class="contact-grid">
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <a href="mailto:tondroraman83@gmail.com" itemprop="email" style="direction: ltr;">tondroraman83@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:+989330093381" itemprop="telephone" style="direction: ltr;">۰۹۳۳ ۰۰۹ ۳۳۸۱</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <a href="https://rmno21.github.io" itemprop="url" style="direction: ltr;">rmno21.github.io</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a href="https://github.com/RMNO21" target="_blank" rel="noopener" style="direction: ltr;">github.com/RMNO21</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+              <a href="https://orcid.org/0009-0008-3052-1874" target="_blank" rel="noopener" style="direction: ltr;">ORCID 0009-0008-3052-1874</a>
+            </div>
+            <div class="contact-item">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.17-.02.27z"/></svg>
+              <a href="https://t.me/RMNT21" target="_blank" rel="noopener" style="direction: ltr;">t.me/RMNT21</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- خلاصه سوابق حرفه‌ای -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          خلاصه سوابق و نمایه حرفه‌ای
+        </h2>
+        <p class="summary-text" itemprop="description">
+          دانشجوی مهندسی کامپیوتر دانشگاه شیراز و توسعه‌دهنده سیستم‌ها با تخصص متمرکز در سیستم‌های تعبیه‌شده و نزدیک به سخت‌افزار (فریمورهای ESP32، زبان‌های C و C++)، زیرساخت‌های شبکه سازمانی و سامانه‌های پردازش بی‌درنگ. ترکیب سابقه میدانی و اجرایی در راه‌اندازی مراکز داده استاندارد (اتاق‌های سرور استاندارد TIA-942، ممیزی و تست فلوک کابل‌های شبکه، و اتاق سرور اختصاصی سازمان بازرسی کل کشور در شرکت پیمان ساخت) با مهارت‌های الگوریتمی در موتورهای چندرسانه‌ای با تأخیر نزدیک به صفر، پردازش سیگنال‌های رادیویی (حسگری وای‌فای CSI با زبان Rust) و بینایی ماشین. متعهد به دسترسی مستقیم به سخت‌افزار، تضمین کارایی قطعی (Deterministic) و بهینه‌سازی بدون لایه‌های انتزاعی اضافه.
+        </p>
+      </section>
+
+      <!-- سوابق کاری و اجرایی -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          سوابق شغلی و تجربیات حرفه‌ای
+        </h2>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <span class="role-title">تکنسین زیرساخت شبکه و سیستم‌ها</span> &middot; 
+              <span class="org-name">شرکت پیمان ساخت</span>
+              <span class="org-subtitle">(Peyman Sakht Co.)</span>
+            </div>
+            <span class="timeline-date">آذر ۱۴۰۲ – تاکنون</span>
+          </div>
+          <div class="role-badge">
+            دارای سابقه رسمی و بیمه تأمین اجتماعی (سازمان تأمین اجتماعی کشور)
+          </div>
+          <ul class="resume-list">
+            <li><strong>مهندسی و راه‌اندازی اتاق سرور سازمانی:</strong> طراحی، استقرار و راه‌اندازی اتاق‌های سرور حساس بر پایه استانداردهای بین‌المللی TIA-942، کابل‌کشی ساخت‌یافته استاندارد، سیستم‌های کنترل محیطی و سرمایشی، و تابلوهای تغذیه برق اضطراری UPS با افزونگی کامل.</li>
+            <li><strong>تست و ممیزی تخصصی با دستگاه فلوک:</strong> انجام تست‌های دقیق لایه فیزیکی با دستگاه‌های Fluke DSX CableAnalyzer روی لینک‌های مسی Cat6A و فیبر نوری، بررسی و تایید پارامترهای Return Loss، NEXT و Attenuation جهت تضمین پهنای باند ۱۰ گیگابیت بر ثانیه بدون افت پکت (Zero Packet Loss).</li>
+            <li><strong>پشتیبانی اتاق سرور اختصاصی دولتی:</strong> نگهداری، پایش و پشتیبانی فنی اتاق سرور اختصاصی و بستر شبکه امن سازمان بازرسی کل کشور.</li>
+            <li><strong>مسیریابی امن و دفاع پیرامونی:</strong> پیکربندی روترهای سازمانی، فایروال‌های سخت‌افزاری، بخش‌بندی امن شبکه‌ها با VLAN و پیاده‌سازی مکانیزم‌های دفاع پیرامونی تحت پروتکل‌های حفاظت فیزیکی و نرم‌افزاری دقیق.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- سوابق تحصیلی -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          سوابق تحصیلی و دانشگاهی
+        </h2>
+        <div class="timeline-item">
+          <div class="edu-header">
+            <span class="edu-degree">کارشناسی مهندسی کامپیوتر</span>
+            <span class="timeline-date">مقطع کارشناسی</span>
+          </div>
+          <div class="edu-school">دانشگاه شیراز <span class="org-subtitle">(Shiraz University)</span></div>
+          <p class="edu-desc">
+            دروس و سرفصل‌های تخصصی: سیستم‌های عامل، معماری کامپیوتر، ریزپردازنده‌ها و سیستم‌های تعبیه‌شده، ساختمان داده‌ها و الگوریتم‌ها، شبکه‌های کامپیوتری، طراحی مدارهای منطقی و دیجیتال، مهندسی نرم‌افزار.
+          </p>
+        </div>
+      </section>
+
+      <!-- مدارک و گواهینامه‌های رسمی -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          مدارک و گواهینامه‌های تخصصی معتبر
+        </h2>
+        
+        <div class="cert-grid">
+          <!-- Sololearn Python -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">دوره تخصصی توسعه‌دهنده پایتون</span>
+                <span class="cert-issuer-badge sololearn">Sololearn</span>
+              </div>
+              <div class="cert-meta">
+                شناسه مدرک: CC-ZLEODPIX &middot; آزمون بین‌المللی تأییدشده
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                برنامه‌نویسی شیءگرا، توابع لامبدا، دکوراتورها، ساختمان‌های داده و بهینه‌سازی الگوریتم‌ها.
+              </p>
+            </div>
+            <a href="https://api2.sololearn.com/v2/certificates/CC-ZLEODPIX/image/png?t=638945671729119666" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>مشاهده و استعلام مدرک</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Sololearn C++ -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">دوره تخصصی توسعه‌دهنده ++C</span>
+                <span class="cert-issuer-badge sololearn">Sololearn</span>
+              </div>
+              <div class="cert-meta">
+                شناسه مدرک: CC-VDRDHJQ7 &middot; آزمون بین‌المللی تأییدشده
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                معماری حافظه، اشاره‌گرها، تخصیص حافظه داینامیک، اورلودینگ و پارادایم‌های رویه‌ای و شیءگرا.
+              </p>
+            </div>
+            <a href="https://api2.sololearn.com/v2/certificates/CC-VDRDHJQ7/image/png?t=638945691800861523" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>مشاهده و استعلام مدرک</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- FaraDars Network+ -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">آموزش اصول و مبانی شبکه (+Network)</span>
+                <span class="cert-issuer-badge">فرادرس</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: E8AA8844 &middot; مدرس: مهندس منوچهر بابایی
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                مدل هفت لایه OSI، پروتکل‌های TCP/IP، ساب‌نتینگ، مسیریابی سازمانی و عیب‌یابی پکت‌ها.
+              </p>
+            </div>
+            <a href="https://faradars.org/verify/E8AA8844" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام آنلاین در faradars.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- FaraDars C++ -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">آموزش برنامه‌نویسی پیشرفته ++C</span>
+                <span class="cert-issuer-badge">فرادرس</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: 8138E41D &middot; مدرس: دکتر فرشید شیرافکن
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                اشاره‌گرهای پیشرفته، کپسوله‌سازی، پلی‌مورفیسم، مدیریت استثناها و تحلیل پیچیدگی الگوریتم‌ها.
+              </p>
+            </div>
+            <a href="https://faradars.org/verify/8138E41D" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام آنلاین در faradars.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- FaraDars Python -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">آموزش کاربردی برنامه‌نویسی پایتون</span>
+                <span class="cert-issuer-badge">فرادرس</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: 02004C97 &middot; مدرس: دکتر پژمان اقبالی
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                اسکریپت‌نویسی اتوماسیون، ورودی/خروجی فایل‌ها، ساختارهای محاسباتی و ابزارهای مهندسی.
+              </p>
+            </div>
+            <a href="https://faradars.org/verify/02004C97" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام آنلاین در faradars.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- FaraDars Fundamentals -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">مبانی و اصول برنامه‌نویسی الگوریتمی</span>
+                <span class="cert-issuer-badge">فرادرس</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: D44A8330 &middot; مدرس: دکتر سید مصطفی کلامی هریس
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                فلوچارت، منطق محاسباتی، پیچیدگی زمانی، جریان منطقی و تجزیه مسائل مهندسی.
+              </p>
+            </div>
+            <a href="https://faradars.org/verify/D44A8330" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام آنلاین در faradars.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Maktabkhooneh Electronics -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">آموزش الکترونیک کاربردی و مدارهای پایه</span>
+                <span class="cert-issuer-badge maktab">مکتب‌خونه</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: MK-9VT79L &middot; مدرس: علیرضا غایبی
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                نیمه‌هادی‌ها، دیودها، ترانزیستورها، نقشه‌خوانی شماتیک و شبیه‌سازی مدارهای دیجیتال در Proteus.
+              </p>
+            </div>
+            <a href="https://maktabkhooneh.org/certificates/MK-9VT79L/" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام در maktabkhooneh.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Maktabkhooneh C -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">برنامه‌نویسی سیستمی با زبان C</span>
+                <span class="cert-issuer-badge maktab">مکتب‌خونه</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: MK-GJ9WL2 &middot; مدرس: احمد انواری
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                مدیریت حافظه در سطح بایت، محاسبات اشاره‌گرها، استراکت‌ها، جریان فایل‌ها و استانداردهای POSIX.
+              </p>
+            </div>
+            <a href="https://maktabkhooneh.org/certificates/MK-GJ9WL2/" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام در maktabkhooneh.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Maktabkhooneh JS -->
+          <div class="cert-card">
+            <div>
+              <div class="cert-title-row">
+                <span class="cert-name">جاوااسکریپت فشرده و کاربردی</span>
+                <span class="cert-issuer-badge maktab">مکتب‌خونه</span>
+              </div>
+              <div class="cert-meta">
+                کد رهگیری: MK-PHY3N8 &middot; مدرس: ابوالفضل وفادوست
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                استاندارد نوین ES6+، چرخه رویدادها (Event Loop)، دستکاری پیشرفته DOM و اتوماسیون مرورگر.
+              </p>
+            </div>
+            <a href="https://maktabkhooneh.org/certificates/MK-PHY3N8/" target="_blank" rel="noopener noreferrer" class="cert-verify-link">
+              <span>استعلام در maktabkhooneh.org</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- پروژه‌های مهندسی برگزیده -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          پروژه‌های مهندسی و نرم‌افزارهای منتشرشده (اکوسیستم گیتهاب)
+        </h2>
+
+        <div class="projects-grid">
+          <!-- Sepotify -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">سپوتیفای (Sepotify)</span>
+                <span class="project-tech">کاتلین &middot; Android SDK</span>
+              </div>
+              <p class="project-summary">
+                موتور صوتی Native بدون تأخیر در اندروید با دیکود سخت‌افزاری فایل‌های FLAC، سرویس پس‌زمینه ایزوله و استریمینگ با کش آفلاین.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/sepotify.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/Sepotify" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- RuView -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">روویو (RuView)</span>
+                <span class="project-tech">زبان Rust &middot; سیگنال‌های CSI</span>
+              </div>
+              <p class="project-summary">
+                موتور ادراک مکانی با دیکود سیگنال‌های خام وای‌فای 802.11 جهت تشخیص حضور، حرکت و پایش علائم حیاتی بدون نیاز به دوربین نوری.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/ruview.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/RuView" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- ESP32-Deauth -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">ابزار پایش و نفوذ ESP32</span>
+                <span class="project-tech">زبان ++C &middot; FreeRTOS / OLED</span>
+              </div>
+              <p class="project-summary">
+                سخت‌افزار جیبی با فریمور مستقل برای رهگیری، تحلیل و تزریق فریم‌های مدیریتی 802.11 در سطح میکروکنترلر همراه با نمایشگر OLED.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/esp32-deauth.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/esp32-deauth" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- RMN_Player -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">پلیر سفارشی RMN-Player</span>
+                <span class="project-tech">زبان Lua &middot; هسته MPV &middot; GLSL</span>
+              </div>
+              <p class="project-summary">
+                پلیر ویدیویی پرسرعت برای مانیتورهای OLED با هاله نوری Ambilight شیدرهای GPU، دیکود سخت‌افزاری و اصلاح خودکار زیرنویس‌های فارسی.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/rmn-player.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/rmn-player" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- ai-virtual-mouse -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">ماوس مجازی هوشمند (AI Mouse)</span>
+                <span class="project-tech">پایتون &middot; MediaPipe &middot; Win32</span>
+              </div>
+              <p class="project-summary">
+                کنترل لمسی و بدون لرزش نشانگر ویندوز بر پایه ۲۱ نقطه اسکلتی دست با فیلتر تطبیقی سرعت‌محور EMA و تزریق مستقیم به لایه Win32.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/ai-virtual-mouse.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- DimOLED -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">محافظ پنل OLED (DimOLED)</span>
+                <span class="project-tech">پاورشل &middot; پروتکل‌های WMI / DDC-CI</span>
+              </div>
+              <p class="project-summary">
+                ابزار سبک پیشگیری از سوختگی پیکسل‌های OLED با کنترل مستقیم رجیسترهای روشنایی سخت‌افزار مانیتور بدون لایه‌های شفاف نرم‌افزاری.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/dimoled.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- Drawsiness-detection -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">سامانه تشخیص خواب‌آلودگی راننده</span>
+                <span class="project-tech">پایتون &middot; MediaPipe &middot; OpenCV</span>
+              </div>
+              <p class="project-summary">
+                خط لوله بینایی ماشین جهت پایش خواب‌های کوتاه راننده با محاسبه نسبت ابعادی چشم (EAR) و فعال‌سازی آلارم‌های صوتی و تصویری.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/drawsiness-detection.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+
+          <!-- SESS-Autologin -->
+          <div class="project-card">
+            <div>
+              <div class="project-card-header">
+                <span class="project-name">ورود خودکار سامانه سس (SESS)</span>
+                <span class="project-tech">جاوااسکریپت &middot; Web Crypto &middot; MV3</span>
+              </div>
+              <p class="project-summary">
+                افزونه امن مرورگر جهت ورود سریع به پرتال دانشگاه شیراز با رمزنگاری کلاینت AES-GCM-256 و ایزولاسیون کامل بدون نشت داده.
+              </p>
+            </div>
+            <div class="project-link-row">
+              <a href="projects/sess-shirazu-autologin.html">بررسی فنی (Case Study)</a> &middot;
+              <a href="https://github.com/RMNO21/sess-shirazu-autologin" target="_blank" rel="noopener">گیت‌هاب</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- مهارت‌های فنی و ابزارها -->
+      <section class="resume-section">
+        <h2 class="section-title">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          ماتریس تخصص‌های فنی و ابزارهای مهندسی
+        </h2>
+
+        <div class="skills-category-row">
+          <span class="skills-label">زبان‌های برنامه‌نویسی</span>
+          <div class="skills-items">
+            <span class="skill-chip">C</span>
+            <span class="skill-chip">C++ (C++17/20)</span>
+            <span class="skill-chip">Rust</span>
+            <span class="skill-chip">Kotlin</span>
+            <span class="skill-chip">Python 3.x</span>
+            <span class="skill-chip">JavaScript (ES6+)</span>
+            <span class="skill-chip">Lua</span>
+            <span class="skill-chip">Bash / POSIX Shell</span>
+            <span class="skill-chip">AutoHotkey</span>
+          </div>
+        </div>
+
+        <div class="skills-category-row">
+          <span class="skills-label">سیستم‌های تعبیه‌شده و سخت‌افزار</span>
+          <div class="skills-items">
+            <span class="skill-chip">میکروکنترلرهای ESP32 / ESP8266</span>
+            <span class="skill-chip">سیستم‌عامل FreeRTOS</span>
+            <span class="skill-chip">تزریق فریم‌های خام 802.11</span>
+            <span class="skill-chip">طراحی مدارهای دیجیتال</span>
+            <span class="skill-chip">شبیه‌سازی Proteus</span>
+            <span class="skill-chip">پروتکل‌های UART / SPI / I2C / GPIO</span>
+            <span class="skill-chip">محیط PlatformIO</span>
+          </div>
+        </div>
+
+        <div class="skills-category-row">
+          <span class="skills-label">زیرساخت شبکه و مراکز داده</span>
+          <div class="skills-items">
+            <span class="skill-chip">استانداردهای اتاق سرور TIA-942</span>
+            <span class="skill-chip">دستگاه تست فلوک Fluke DSX CableAnalyzer</span>
+            <span class="skill-chip">کابل‌کشی ساخت‌یافته فیبر و مس</span>
+            <span class="skill-chip">مسیریابی سازمانی و VLAN</span>
+            <span class="skill-chip">فایروال‌های سخت‌افزاری</span>
+            <span class="skill-chip">تحلیل بسته‌ها با Wireshark</span>
+            <span class="skill-chip">مدیریت لینوکس سرور (آرچ و دبیان)</span>
+          </div>
+        </div>
+
+        <div class="skills-category-row">
+          <span class="skills-label">بینایی ماشین و معماری سیستم‌ها</span>
+          <div class="skills-items">
+            <span class="skill-chip">OpenCV</span>
+            <span class="skill-chip">Google MediaPipe</span>
+            <span class="skill-chip">حسگری فرکانس رادیویی Wi-Fi CSI</span>
+            <span class="skill-chip">پردازش ویدیویی FFmpeg</span>
+            <span class="skill-chip">توابع Win32 API</span>
+            <span class="skill-chip">توسعه اندروید Android SDK &amp; Media3</span>
+          </div>
+        </div>
+
+        <div class="skills-category-row">
+          <span class="skills-label">زبان‌های گفتاری</span>
+          <div class="skills-items">
+            <span class="skill-chip">فارسی (زبان مادری)</span>
+            <span class="skill-chip">انگلیسی (مسلط و حرفه‌ای در محیط‌های کاری)</span>
           </div>
         </div>
       </section>
@@ -1390,8 +2035,51 @@
         const isLight = document.body.classList.contains('light-theme');
         localStorage.setItem('rmn_resume_theme', isLight ? 'light' : 'dark');
         if (themeText) {
-          themeText.textContent = isLight ? 'Dark Console Mode' : 'Paper Mode (Light)';
+          const isFa = document.body.classList.contains('lang-fa');
+          if (isFa) {
+            themeText.textContent = isLight ? 'حالت تیره کنسول' : 'حالت روشن کاغذ';
+          } else {
+            themeText.textContent = isLight ? 'Dark Console Mode' : 'Paper Mode (Light)';
+          }
         }
+      });
+    }
+
+    // Language Toggle Engine (EN / FA)
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+    const navText = document.querySelector('.toolbar-nav-text');
+    const printText = document.querySelector('.toolbar-print-text');
+
+    function updateResumeLanguage(lang) {
+      const isLight = document.body.classList.contains('light-theme');
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        if (langDisplay) langDisplay.textContent = 'EN / English';
+        if (navText) navText.textContent = 'بازگشت به سایت';
+        if (printText) printText.textContent = 'چاپ / ذخیره PDF';
+        if (themeText) themeText.textContent = isLight ? 'حالت تیره کنسول' : 'حالت روشن کاغذ';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        if (langDisplay) langDisplay.textContent = 'FA / فارسی';
+        if (navText) navText.textContent = 'Back to Portfolio';
+        if (printText) printText.textContent = 'Print / Save PDF';
+        if (themeText) themeText.textContent = isLight ? 'Dark Console Mode' : 'Paper Mode (Light)';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateResumeLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateResumeLanguage(isFa ? 'en' : 'fa');
       });
     }
   </script>

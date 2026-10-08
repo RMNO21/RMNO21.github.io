@@ -62,6 +62,7 @@ window.SITE_CONFIG = {
       persianDescription: "موتور پخش و استریم نیتیو موزیک در اندروید با تأخیر صفر، پشتیبانی از دیکود فایل‌های Lossless FLAC و معماری سرویس پس‌زمینه بدون کرش.",
       stack: ["Kotlin", "Android SDK", "FLAC", "Media3"],
       url: "https://github.com/RMNO21/Sepotify",
+      caseStudyUrl: "projects/sepotify.html",
       stars: 6
     },
     {
@@ -72,6 +73,7 @@ window.SITE_CONFIG = {
       persianDescription: "هوشمندی مکانی و پایش علائم حیاتی و حضور افراد با تحلیل سیگنال‌های CSI وای‌فای خانگی بدون نیاز به هیچ‌گونه دوربین نوری.",
       stack: ["Rust", "Wi-Fi CSI", "RF Analysis", "IoT"],
       url: "https://github.com/RMNO21/RuView",
+      caseStudyUrl: "projects/ruview.html",
       stars: 2
     },
     {
@@ -81,8 +83,20 @@ window.SITE_CONFIG = {
       description: "Standalone embedded firmware for ESP32 microcontrollers executing 802.11 management frame inspection, injection, and security auditing.",
       persianDescription: "فرم‌ویر میکروکنترلر ESP32 جهت بازرسی و تزریق فریم‌های مدیریتی 802.11 و ارزیابی پروتکل‌های امنیتی شبکه‌های بی‌سیم.",
       stack: ["C++", "ESP32", "802.11", "Network Auditing"],
-      url: "https://github.com/RMNO21/ESP32-Deauth",
+      url: "https://github.com/RMNO21/esp32-deauth",
+      caseStudyUrl: "projects/esp32-deauth.html",
       stars: 3
+    },
+    {
+      title: "RMN_Player",
+      category: "vision",
+      tag: "Media / Lua",
+      description: "High-efficiency Windows media engine customized for OLED monitors with dynamic ambilight glow shaders and auto subtitle repair.",
+      persianDescription: "پلیر ویدیویی پرسرعت برای مانیتورهای OLED با هاله نوری Ambilight شیدرهای GPU، دیکود سخت‌افزاری و اصلاح خودکار زیرنویس‌های فارسی.",
+      stack: ["Lua", "MPV Engine", "GLSL Shaders", "Win32"],
+      url: "https://github.com/RMNO21/rmn-player",
+      caseStudyUrl: "projects/rmn-player.html",
+      stars: 2
     },
     {
       title: "sess-shirazu-autologin",
@@ -92,6 +106,7 @@ window.SITE_CONFIG = {
       persianDescription: "افزونه مرورگر سریع برای ورود خودکار به سامانه دانشگاهی با قابلیت تشخیص و ریست هوشمند کپچا.",
       stack: ["JavaScript", "Chrome MV3", "DOM", "Automation"],
       url: "https://github.com/RMNO21/sess-shirazu-autologin",
+      caseStudyUrl: "projects/sess-shirazu-autologin.html",
       stars: 1
     },
     {
@@ -101,7 +116,8 @@ window.SITE_CONFIG = {
       description: "Real-time driver fatigue monitor tracking ocular blink duration and facial 68-point landmarks via computer vision to prevent collisions.",
       persianDescription: "سیستم پایش زمان‌واقعی خستگی و خواب‌آلودگی راننده بر پایه نرخ پلک‌زدن و لندمارک‌های چهره جهت پیشگیری از تصادفات جاده‌ای.",
       stack: ["Python", "OpenCV", "Dlib", "Facial Landmarks"],
-      url: "https://github.com/RMNO21/Drawsiness-detection",
+      url: "https://github.com/RMNO21/drawsiness-detection",
+      caseStudyUrl: "projects/drawsiness-detection.html",
       stars: 1
     },
     {
@@ -111,7 +127,8 @@ window.SITE_CONFIG = {
       description: "Jitter-free computer vision virtual mouse for Windows using MediaPipe hand tracking, decoupled gesture state machines, and Win32 APIs.",
       persianDescription: "موس مجازی بدون لرزش در ویندوز با رهگیری حرکات دست توسط MediaPipe و شبیه‌سازی دقیق ماوس با Win32 API.",
       stack: ["Python", "MediaPipe", "Win32", "OpenCV"],
-      url: "https://github.com/RMNO21/ai-virtual-mouse",
+      url: "https://github.com/RMNO21/AI-Virtual-Mouse",
+      caseStudyUrl: "projects/ai-virtual-mouse.html",
       stars: 2
     },
     {
@@ -138,10 +155,11 @@ window.SITE_CONFIG = {
       title: "DimOLED",
       category: "automation",
       tag: "Win32 / AHK",
-      description: "Zero-flicker background utility protecting OLED monitors against burn-in through direct DWM alpha manipulation without latency.",
-      persianDescription: "ابزار بهینه‌سازی پس‌زمینه جهت محافظت از نمایشگرهای OLED در برابر پیکسل سوختگی با تنظیم نرم روشنایی بدون پرش تصویر.",
+      description: "Zero-flicker background utility protecting OLED monitors against burn-in through direct hardware luminance regulation without latency.",
+      persianDescription: "ابزار بهینه‌سازی پس‌زمینه جهت محافظت از نمایشگرهای OLED در برابر پیکسل سوختگی با تنظیم نرم روشنایی در سطح سخت‌افزار.",
       stack: ["AutoHotkey", "Win32 API", "OLED Tech"],
       url: "https://github.com/RMNO21/DimOLED",
+      caseStudyUrl: "projects/dimoled.html",
       stars: 1
     }
   ],

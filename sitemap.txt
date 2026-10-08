@@ -1,2 +1,10 @@
 https://rmno21.github.io/
 https://rmno21.github.io/resume.html
+https://rmno21.github.io/projects/sepotify.html
+https://rmno21.github.io/projects/ruview.html
+https://rmno21.github.io/projects/esp32-deauth.html
+https://rmno21.github.io/projects/rmn-player.html
+https://rmno21.github.io/projects/ai-virtual-mouse.html
+https://rmno21.github.io/projects/dimoled.html
+https://rmno21.github.io/projects/drawsiness-detection.html
+https://rmno21.github.io/projects/sess-shirazu-autologin.html

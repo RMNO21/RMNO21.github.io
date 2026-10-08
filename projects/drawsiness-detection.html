@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Drowsiness & Fatigue Vision Pipeline | Raman Tondro</title>
+  
+  <meta name="title" content="Driver Drowsiness & Fatigue Vision Pipeline | Raman Tondro">
+  <meta name="description" content="Technical case study of the Driver Drowsiness Detection system: A real-time computer vision pipeline utilizing MediaPipe Face Mesh, Eye Aspect Ratio (EAR), and MAR metrics for vehicle operator safety. By Raman Tondro.">
+  <meta name="keywords" content="Drowsiness Detection, Computer Vision, MediaPipe, Face Mesh, EAR, Driver Safety, Python, OpenCV, Raman Tondro, رامان تندرو, RMNO21">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/projects/drawsiness-detection.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/drawsiness-detection.html">
+  <meta property="og:title" content="Driver Drowsiness & Fatigue Vision Pipeline">
+  <meta property="og:description" content="Real-time facial geometry analysis pipeline monitoring operator alertness via Eye Aspect Ratio and microsleep detection.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Driver Fatigue Vision Pipeline">
+  <meta name="twitter:description" content="Real-time driver fatigue monitoring system by Raman Tondro.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Driver Drowsiness Detection System",
+    "operatingSystem": "Linux, Windows, Embedded Edge Linux",
+    "applicationCategory": "SafetyApplication",
+    "description": "Real-time edge computer vision pipeline detecting operator fatigue, microsleeps, and yawning via MediaPipe facial landmark geometry.",
+    "url": "https://rmno21.github.io/projects/drawsiness-detection.html",
+    "downloadUrl": "https://github.com/RMNO21/drawsiness-detection",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "Python"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">Raman Tondro</span>
+            <span class="name-sub">Systems Developer</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+            <span id="langDisplay">FA / فارسی</span>
+          </button>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html#projects">Projects</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Drowsiness Detection</span>
+      </nav>
+
+      <!-- English Content Section -->
+      <article class="lang-content-en">
+        <header class="project-hero">
+          <div class="project-category-badge">Edge AI &middot; Computer Vision &middot; Automotive Safety</div>
+          <h1 class="project-title">Driver Drowsiness &amp; Fatigue Vision Pipeline</h1>
+          <p class="project-lead">
+            An edge-optimized computer vision system safeguarding operators against fatigue-induced collisions. Extracts 468-point facial topology in real time, computing Eye Aspect Ratio (EAR) hysteresis and Mouth Aspect Ratio (MAR) to catch microsleeps before accidents occur.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Source on GitHub</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">Model Pipeline</span>
+            <span class="spec-value">MediaPipe Face Mesh (468 3D Points)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Metrics Engine</span>
+            <span class="spec-value">Soukupov&aacute; &amp; Čech Eye Aspect Ratio (EAR)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Inference Rate</span>
+            <span class="spec-value">45+ FPS (Jetson Nano / Intel i5)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Microsleep Latency</span>
+            <span class="spec-value">&lt; 650 ms alert trigger window</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Alert Mechanism</span>
+            <span class="spec-value">Auditory Alarm + Visual Hysteresis HUD</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">Lighting Robustness</span>
+            <span class="spec-value">CLAHE contrast normalization</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>1. The Mathematics of Eye Aspect Ratio (EAR)</h2>
+          <p>
+            Traditional blink detection relied on heavy CNN classifiers running per-frame bounding boxes, which is computationally prohibitive on low-power vehicle hardware. In this architecture, 6 localized 3D ocular landmarks are extracted to compute the scalar aspect ratio:
+          </p>
+
+          <pre><code># Soukupová and Čech EAR Equation Formulation
+def calculate_ear(eye_landmarks):
+    # Vertical euclidean distances
+    A = np.linalg.norm(eye_landmarks[1] - eye_landmarks[5])
+    B = np.linalg.norm(eye_landmarks[2] - eye_landmarks[4])
+    # Horizontal euclidean distance
+    C = np.linalg.norm(eye_landmarks[0] - eye_landmarks[3])
+    
+    # Eye Aspect Ratio calculation
+    ear = (A + B) / (2.0 * C)
+    return ear</code></pre>
+
+          <h2>2. Consecutive Frame Hysteresis (Filtering Blinks)</h2>
+          <p>
+            Normal involuntary blinks last between 100 ms and 250 ms ($3\text{--}7$ frames at 30 FPS). A microsleep event is defined when the eyelid remains closed past 500 ms ($N \ge 16$ consecutive frames where $\text{EAR} &lt; \text{Threshold}$). An integrated state counter prevents false alarm fatigue while ensuring immediate escalation when genuine sleep is identified.
+          </p>
+
+          <h2>3. Key System Capabilities</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Mouth Aspect Ratio (MAR) Yawn Analysis</h4>
+              <p>Simultaneously monitors lip separation metrics to recognize yawning frequency as an early precursor to deep physical exhaustion.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Head Pose &amp; Distraction Monitoring</h4>
+              <p>Computes 3D pitch, yaw, and roll vectors using facial point projections to detect when a driver looks down at a phone or away from the roadway.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Night &amp; Low-Light Adaptability</h4>
+              <p>Employs Contrast Limited Adaptive Histogram Equalization (CLAHE) preprocessing, ensuring reliable tracking under infrared or weak cabin lighting.</p>
+            </div>
+            <div class="feature-card">
+              <h4>Automotive Edge Ready</h4>
+              <p>Engineered to run efficiently on single-board computers (Raspberry Pi 4, Jetson Orin Nano) without requiring dedicated desktop GPUs.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Persian Content Section -->
+      <article class="lang-content-fa">
+        <header class="project-hero">
+          <div class="project-category-badge">هوش مصنوعی لبه &middot; بینایی ماشین &middot; ایمنی خودرو</div>
+          <h1 class="project-title">سامانه تشخیص خواب‌آلودگی راننده (Driver Drowsiness Detection)</h1>
+          <p class="project-lead">
+            یک سامانه بهینه‌سازی‌شده بینایی ماشین برای سخت‌افزارهای کم‌مصرف جهت پیشگیری از تصادفات جاده‌ای ناشی از خستگی. استخراج زنده ۴۶۸ نقطه هندسی چهره، محاسبه نسبت ابعادی چشم (EAR) و دهان (MAR) برای شناسایی خواب‌های کوتاه (Microsleep) پیش از وقوع حادثه.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        <!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">مدل پایپ‌لاین چهره</span>
+            <span class="spec-value">مدل ۴۶۸ نقطه‌ای MediaPipe Face Mesh</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">فرمول محاسباتی چشم</span>
+            <span class="spec-value">معیار هندسی Eye Aspect Ratio (EAR)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">نرخ فریم پردازش</span>
+            <span class="spec-value">بیش از ۴۵ فریم بر ثانیه (تراشه‌های پردازش لبه)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">زمان تشخیص خواب کوتاه</span>
+            <span class="spec-value">کمتر از ۶۵۰ میلی‌ثانیه تا فعال‌سازی هشدار</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">سیستم آلارم</span>
+            <span class="spec-value">بوق صوتی پرقدرت + لایه گرافیکی هشدار قرمز</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">سازگاری با نور کم</span>
+            <span class="spec-value">نرمال‌سازی کنتراست تطبیقی با فیلتر CLAHE</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. مبانی ریاضی نسبت ابعادی چشم (EAR)</h2>
+          <p>
+            تشخیص خستگی با مدل‌های سنگین شبکه‌های عصبی پیچشی (CNN) برای پردازنده‌های تعبیه‌شده داخل خودرو بیش از حد سنگین است. در این روش، با استفاده از ۶ لندمارک هندسی مشخص در اطراف هر چشم، یک نسبت اسکالر بسیار سبک محاسبه می‌شود:
+          </p>
+
+          <pre><code># محاسبه نسبت ابعادی چشم بر اساس فاصله اقلیدسی لندمارک‌ها
+def calculate_ear(eye_landmarks):
+    # فواصل عمودی پلک بالا و پایین
+    A = np.linalg.norm(eye_landmarks[1] - eye_landmarks[5])
+    B = np.linalg.norm(eye_landmarks[2] - eye_landmarks[4])
+    # فاصله افقی گوشه‌های داخلی و خارجی چشم
+    C = np.linalg.norm(eye_landmarks[0] - eye_landmarks[3])
+    
+    # فرمول استاندارد نسبت ابعادی چشم
+    ear = (A + B) / (2.0 * C)
+    return ear</code></pre>
+
+          <h2>۲. تفکیک پلک‌زدن طبیعی از خواب‌آلودگی با فیلتر هیسترزیس</h2>
+          <p>
+            پلک‌زدن‌های طبیعی غیرارادی انسان بین ۱۰۰ تا ۲۵۰ میلی‌ثانیه به طول می‌انجامند. سامانه با پیاده‌سازی یک بافر فریم متوالی، تنها زمانی آلارم اضطراری را به صدا درمی‌آورد که مقدار EAR بیش از ۱۶ فریم متوالی (حدود ۰.۵ ثانیه) زیر آستانه بحرانی باقی بماند؛ این کار مانع از هشدارهای آزاردهنده کاذب می‌شود.
+          </p>
+
+          <h2>۳. قابلیت‌های کلیدی سیستم</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>تشخیص خمیازه با معیار MAR</h4>
+              <p>پایش پیوسته نسبت بازشدگی دهان برای تشخیص تکرار خمیازه به عنوان نشانگر اولیه افت سطح هوشیاری راننده.</p>
+            </div>
+            <div class="feature-card">
+              <h4>تخمین زاویه سر و حواس‌پرتی</h4>
+              <p>محاسبه بردارهای سه‌بعدی دوران سر (Roll, Pitch, Yaw) جهت تشخیص نگاه به تلفن همراه یا انحراف دید از جاده.</p>
+            </div>
+            <div class="feature-card">
+              <h4>عملکرد پایدار در تاریکی کابین</h4>
+              <p>به‌کارگیری پیش‌پردازش تطبیقی کنتراست تصویر (CLAHE) جهت تضمین پایداری لندمارک‌ها در شرایط نوری ضعیف یا دوربین‌های فروسرخ.</p>
+            </div>
+            <div class="feature-card">
+              <h4>آماده برای بردهای پردازش لبه (Edge)</h4>
+              <p>طراحی بهینه با مصرف پایین حافظه و پردازنده، قابل اجرا روی بردهای صنعتی رزبری‌پای ۴ و انویدیا جتسُن بدون نیاز به کارت گرافیک مجزا.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; 2026 Raman Tondro &middot; Systems Architecture &middot; Hosted on GitHub Pages</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">Home</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/drawsiness-detection">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>
