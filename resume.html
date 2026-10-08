@@ -455,19 +455,72 @@
     }
 
     .role-badge {
-      display: inline-block;
-      font-size: 0.76rem;
-      font-family: var(--font-mono);
-      color: var(--accent-emerald);
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 0.15rem 0.55rem;
-      border-radius: 4px;
-      margin-bottom: 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 0.22rem 0.65rem;
+      border-radius: 9999px;
+      margin: 0.35rem 0 0.75rem 0;
+      line-height: 1.4;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .role-badge:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .role-badge .badge-icon {
+      width: 14px;
+      height: 14px;
+      color: #10b981;
+      flex-shrink: 0;
+    }
+
+    .role-badge .badge-status {
+      color: #34d399;
+      font-weight: 600;
+    }
+
+    .role-badge .badge-org {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .role-badge .badge-sep {
+      color: var(--text-muted);
+      opacity: 0.4;
     }
 
     body.lang-fa .role-badge {
       font-family: var(--font-fa);
+    }
+
+    body.light-theme .role-badge {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      color: #64748b;
+    }
+
+    body.light-theme .role-badge:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    body.light-theme .role-badge .badge-icon {
+      color: #059669;
+    }
+
+    body.light-theme .role-badge .badge-status {
+      color: #059669;
+    }
+
+    body.light-theme .role-badge .badge-org {
+      color: #1e293b;
     }
 
     .resume-list {
@@ -808,11 +861,32 @@
       }
 
       .role-badge {
-        background: #f0fdf4 !important;
-        border: 1pt solid #86efac !important;
-        color: #166534 !important;
-        font-size: 8pt !important;
-        padding: 1pt 4pt !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3pt !important;
+        background: #f8fafc !important;
+        border: 0.75pt solid #cbd5e1 !important;
+        color: #475569 !important;
+        font-size: 7.8pt !important;
+        padding: 1.5pt 5.5pt !important;
+        border-radius: 999pt !important;
+        margin: 2pt 0 4pt 0 !important;
+      }
+
+      .role-badge .badge-icon {
+        width: 8pt !important;
+        height: 8pt !important;
+        color: #059669 !important;
+      }
+
+      .role-badge .badge-status {
+        color: #047857 !important;
+        font-weight: 600 !important;
+      }
+
+      .role-badge .badge-org {
+        color: #0f172a !important;
+        font-weight: 500 !important;
       }
 
       .resume-list li {
@@ -1063,7 +1137,13 @@
             <span class="timeline-date">Dec 2023 – Present</span>
           </div>
           <div class="role-badge">
-            Documented &amp; Insured by the Social Security Organization of Iran (سازمان تأمین اجتماعی)
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span class="badge-status">Official Insured Record</span>
+            <span class="badge-sep">&middot;</span>
+            <span class="badge-org">Social Security Organization of Iran</span>
           </div>
           <ul class="resume-list">
             <li><strong>Enterprise Server Room Engineering:</strong> Engineered and commissioned mission-critical server room infrastructure adhering strictly to TIA-942 international tier standards, structural cabling hierarchies, environmental climate regulation, and redundant UPS power feeds.</li>
@@ -1580,7 +1660,13 @@
             <span class="timeline-date">آذر ۱۴۰۲ – تاکنون</span>
           </div>
           <div class="role-badge">
-            دارای سابقه رسمی و بیمه تأمین اجتماعی (سازمان تأمین اجتماعی کشور)
+            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span class="badge-status">سابقه رسمی و بیمه‌شده</span>
+            <span class="badge-sep">&middot;</span>
+            <span class="badge-org">سازمان تأمین اجتماعی کشور</span>
           </div>
           <ul class="resume-list">
             <li><strong>مهندسی و راه‌اندازی اتاق سرور سازمانی:</strong> طراحی، استقرار و راه‌اندازی اتاق‌های سرور حساس بر پایه استانداردهای بین‌المللی TIA-942، کابل‌کشی ساخت‌یافته استاندارد، سیستم‌های کنترل محیطی و سرمایشی، و تابلوهای تغذیه برق اضطراری UPS با افزونگی کامل.</li>
