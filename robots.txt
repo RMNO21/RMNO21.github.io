@@ -12,5 +12,6 @@ Disallow: /assets/certificates/
 Disallow: /docs/
 
 Sitemap: https://rmno21.github.io/sitemap.xml
+Sitemap: https://rmno21.github.io/sitemap.txt
 # AI Agents & LLM Manifest
 # Standards compliant llms.txt: https://rmno21.github.io/llms.txt
