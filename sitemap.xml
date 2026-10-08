@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
   <url>
     <loc>https://rmno21.github.io/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/"/>
@@ -21,6 +23,8 @@
       <image:caption>Raman Tondro portrait - Systems &amp; Embedded Developer</image:caption>
     </image:image>
   </url>
+
+  <!-- Official Resume -->
   <url>
     <loc>https://rmno21.github.io/resume.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/resume.html"/>
@@ -35,6 +39,8 @@
       <image:caption>Raman Tondro Engineering Resume - Computer Engineering &amp; Systems Developer</image:caption>
     </image:image>
   </url>
+
+  <!-- Sepotify Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/sepotify.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/sepotify.html"/>
@@ -42,8 +48,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/sepotify.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/sepotify-player-interface.png</image:loc>
+      <image:title>Sepotify - Android Lossless Audio Engine UI (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Production UI of Sepotify: Native zero-delay music player for Android by Raman Tondro</image:caption>
+    </image:image>
   </url>
+
+  <!-- RuView Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/ruview.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ruview.html"/>
@@ -51,8 +64,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/ruview.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/ruview-sensing-dashboard.png</image:loc>
+      <image:title>RuView - Wi-Fi CSI Spatial RF Sensing Telemetry Dashboard (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Real-time human presence and motion tracking using commodity Wi-Fi CSI signals without cameras</image:caption>
+    </image:image>
   </url>
+
+  <!-- ESP32 Deauth Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/esp32-deauth.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/esp32-deauth.html"/>
@@ -60,12 +80,20 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/esp32-deauth.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
     <image:image>
-      <image:loc>https://github.com/user-attachments/assets/e7bfb0f2-5364-456a-94c7-93c8dbbdab42</image:loc>
-      <image:title>ESP32 802.11 Deauth Device Running with OLED Display</image:title>
+      <image:loc>https://rmno21.github.io/assets/images/projects/esp32-deauth-oled-device.jpg</image:loc>
+      <image:title>ESP32 802.11 Deauth Hardware Appliance Running with OLED Display (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Field demonstration of standalone ESP32 pocket wireless penetration testing device by Raman Tondro</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/esp32-deauth-circuit.png</image:loc>
+      <image:title>ESP32 Deauth Hardware Circuit Diagram &amp; Schematic</image:title>
+      <image:caption>Electronic schematic of ESP32 DevKit V1 and SSD1306 OLED display connection</image:caption>
     </image:image>
   </url>
+
+  <!-- RMN-Player Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/rmn-player.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/rmn-player.html"/>
@@ -73,8 +101,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/rmn-player.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/rmn-player-oled-ambilight.png</image:loc>
+      <image:title>RMN-Player - Ultra-Optimized OLED Media Engine Architecture (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Lightweight MPV/Lua media player for OLED panels with dynamic GLSL ambilight glow by Raman Tondro</image:caption>
+    </image:image>
   </url>
+
+  <!-- AI-Virtual-Mouse Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/ai-virtual-mouse.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ai-virtual-mouse.html"/>
@@ -82,8 +117,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/ai-virtual-mouse.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/ai-virtual-mouse-pipeline.png</image:loc>
+      <image:title>AI-Virtual-Mouse - Sub-Pixel Touchless Windows Interface Architecture (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Real-time 21 3D hand landmark tracking with adaptive EMA smoothing filter by Raman Tondro</image:caption>
+    </image:image>
   </url>
+
+  <!-- DimOLED Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/dimoled.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/dimoled.html"/>
@@ -91,8 +133,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/dimoled.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/dimoled-wmi-architecture.png</image:loc>
+      <image:title>DimOLED - Hardware-Level Burn-In Protection Utility Architecture (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Direct physical display panel luminance regulation via Windows WMI &amp; DDC/CI by Raman Tondro</image:caption>
+    </image:image>
   </url>
+
+  <!-- Drowsiness Detection Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/drawsiness-detection.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/drawsiness-detection.html"/>
@@ -100,8 +149,15 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/drawsiness-detection.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/drawsiness-detection-ear-hud.png</image:loc>
+      <image:title>Driver Drowsiness &amp; Fatigue Vision Pipeline EAR HUD (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Real-time vehicle operator fatigue monitoring using Eye Aspect Ratio and microsleep detection by Raman Tondro</image:caption>
+    </image:image>
   </url>
+
+  <!-- SESS Autologin Project Case Study -->
   <url>
     <loc>https://rmno21.github.io/projects/sess-shirazu-autologin.html</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html"/>
@@ -109,6 +165,11 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://rmno21.github.io/projects/sess-shirazu-autologin.html"/>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://rmno21.github.io/assets/images/projects/sess-autologin-crypto-mv3.png</image:loc>
+      <image:title>SESS-Shirazu-Autologin - Cryptographically Secured Portal Automator (Raman Tondro / رامان تندرو)</image:title>
+      <image:caption>Chrome Manifest V3 browser extension with client-side AES-GCM-256 Web Crypto by Raman Tondro</image:caption>
+    </image:image>
   </url>
 </urlset>

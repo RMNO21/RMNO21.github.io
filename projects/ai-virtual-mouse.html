@@ -17,11 +17,11 @@
   <meta property="og:url" content="https://rmno21.github.io/projects/ai-virtual-mouse.html">
   <meta property="og:title" content="AI-Virtual-Mouse - Sub-Pixel Touchless Interface">
   <meta property="og:description" content="Sub-pixel jitter-free AI virtual mouse for Windows using MediaPipe 21 3D hand landmarks, OpenCV, and Win32 event dispatch.">
-  <meta property="og:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/ai-virtual-mouse-pipeline.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI-Virtual-Mouse - Computer Vision Controller">
   <meta name="twitter:description" content="Real-time gesture-driven cursor controller by Raman Tondro.">
-  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/raman-tondro-square.jpg">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/ai-virtual-mouse-pipeline.png">
 
   <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
 
@@ -80,7 +80,15 @@
       </div>
     </header>
 
-    <main class="container">
+    
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../assets/images/projects/ai-virtual-mouse-pipeline.png" alt="AI-Virtual-Mouse 3D Hand Landmark Pipeline & Architecture by Raman Tondro (رامان تندرو)" title="AI-Virtual-Mouse 3D Hand Landmark Pipeline & Architecture by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            Vision Pipeline: 21 3D hand landmark tracking, velocity-dependent Exponential Moving Average (EMA) tremor filter, and direct Win32 event queue dispatch.
+          </figcaption>
+        </figure>
+<main class="container">
       <!-- Breadcrumb -->
       <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
         <a href="../index.html">Home</a>
@@ -204,7 +212,15 @@ ctypes.windll.user32.SetCursorPos(int(smooth_x), int(smooth_y))</code></pre>
           </div>
         </header>
 
-        <!-- Technical Specification Matrix -->
+        
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../assets/images/projects/ai-virtual-mouse-pipeline.png" alt="خط لوله ماوس مجازی هوشمند با رهگیری دست اثر رامان تندرو" title="خط لوله ماوس مجازی هوشمند با رهگیری دست اثر رامان تندرو" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            خط لوله پردازش تصویر: رهگیری ۲۱ نقطه اسکلتی دست با مدیاپایپ، فیلتر ضدرعشه تطبیقی EMA و ارسال بدون تاخیر رویدادها به Win32 API.
+          </figcaption>
+        </figure>
+<!-- Technical Specification Matrix -->
         <section class="specs-matrix">
           <div class="spec-cell">
             <span class="spec-label">زبان و محیط اجرا</span>

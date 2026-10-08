@@ -2,13 +2,17 @@ User-agent: *
 Allow: /
 Disallow: /certificates/
 Disallow: /assets/certificates/
+Disallow: /assets/images/certificates/
 Disallow: /docs/
 
-# Explicit Image Crawling Directives
+# Explicit Image Crawling Directives: Allow all project images and site assets
 User-agent: Googlebot-Image
 Allow: /
+Allow: /assets/images/
+Allow: /assets/images/projects/
 Disallow: /certificates/
 Disallow: /assets/certificates/
+Disallow: /assets/images/certificates/
 Disallow: /docs/
 
 Sitemap: https://rmno21.github.io/sitemap.xml
