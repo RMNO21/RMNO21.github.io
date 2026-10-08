@@ -259,7 +259,7 @@
         break;
 
       case "contact":
-        response = `Email: <a href="mailto:${config.profile?.email}" style="color:#38bdf8;">${config.profile?.email}</a>\nGitHub: <a href="${config.profile?.github}" target="_blank" style="color:#38bdf8;">${config.profile?.github}</a>`;
+        response = `Email: <a href="mailto:${config.profile?.email}" style="color:#38bdf8;">${config.profile?.email}</a>\nTelegram: <a href="https://t.me/RMNT21" target="_blank" style="color:#38bdf8;">t.me/RMNT21</a>\nGitHub: <a href="${config.profile?.github}" target="_blank" style="color:#38bdf8;">${config.profile?.github}</a>`;
         break;
 
       case "clear":
