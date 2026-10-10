@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DimOLED: Hardware-Level Burn-In Protection | Raman Tondro</title>
+  <title>DimOLED: Hardware OLED Burn-In Utility | Raman Tondro</title>
   
-  <meta name="title" content="DimOLED: Hardware-Level Burn-In Protection | Raman Tondro">
-  <meta name="description" content="Technical dossier of DimOLED: A lightweight Windows utility protecting OLED panels against burn-in using true physical hardware brightness regulation via WMI & DDC/CI. By Raman Tondro.">
-  <meta name="keywords" content="DimOLED, OLED Protection, Burn-In Prevention, WMI, DDC/CI, Windows API, Raman Tondro, رامان تندرو, RMNO21, Hardware Luminance">
+  <meta name="title" content="DimOLED: Hardware OLED Burn-In Utility | Raman Tondro">
+  <meta name="description" content="Technical dossier of DimOLED: Windows background utility protecting OLED panels against burn-in using true physical WMI brightness control by Raman Tondro.">
+  <meta name="keywords" content="DimOLED, OLED Protection, Burn-In Prevention, WMI, DDC/CI, Windows API, Raman Tondro, RMNO21, Hardware Luminance">
   <meta name="author" content="Raman Tondro">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://rmno21.github.io/projects/dimoled.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/dimoled.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/dimoled.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/dimoled.html">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://rmno21.github.io/projects/dimoled.html">
-  <meta property="og:title" content="DimOLED - Hardware-Level Burn-In Protection">
-  <meta property="og:description" content="Zero-flicker background utility controlling physical OLED brightness registers to prevent burn-in without fake transparent overlays.">
+  <meta property="og:title" content="DimOLED: Hardware OLED Burn-In Utility | Raman Tondro">
+  <meta property="og:description" content="Technical dossier of DimOLED: Windows background utility protecting OLED panels against burn-in using true physical WMI brightness control by Raman Tondro.">
   <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/dimoled-wmi-architecture.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DimOLED - Hardware OLED Utility">
-  <meta name="twitter:description" content="Physical panel brightness controller for OLED monitors by Raman Tondro.">
+  <meta name="twitter:title" content="DimOLED: Hardware OLED Burn-In Utility | Raman Tondro">
+  <meta name="twitter:description" content="Technical dossier of DimOLED: Windows background utility protecting OLED panels against burn-in using true physical WMI brightness control by Raman Tondro.">
   <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/dimoled-wmi-architecture.png">
 
   <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
@@ -68,9 +71,9 @@
         </a>
 
         <div class="header-actions">
-          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+          <a href="../fa/projects/dimoled.html" id="langToggleBtn" class="btn-pill" aria-label="مشاهده به زبان فارسی">
             <span id="langDisplay">FA / فارسی</span>
-          </button>
+          </a>
           <a href="../resume.html" class="btn-pill">Resume</a>
           <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
             <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -83,23 +86,13 @@
     
         <!-- Visual Media Exhibit -->
         <figure class="media-container">
-          <img src="../assets/images/projects/dimoled-wmi-architecture.png" alt="DimOLED Hardware-Level OLED Burn-In Protection Architecture by Raman Tondro (رامان تندرو)" title="DimOLED Hardware-Level OLED Burn-In Protection Architecture by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <img src="../assets/images/projects/dimoled-wmi-architecture.png" alt="DimOLED Hardware-Level OLED Burn-In Protection Architecture by Raman Tondro" title="DimOLED Hardware-Level OLED Burn-In Protection Architecture by Raman Tondro" class="media-image" loading="lazy">
           <figcaption class="media-caption">
             Hardware Interface Model: Physical monitor panel luminance regulation via Windows WMI & DDC/CI registers, eliminating DWM overlay compositing overhead.
           </figcaption>
         </figure>
 <main class="container">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
-        <a href="../index.html">Home</a>
-        <span class="breadcrumb-separator">/</span>
-        <a href="../index.html#projects">Projects</a>
-        <span class="breadcrumb-separator">/</span>
-        <span class="breadcrumb-current">DimOLED</span>
-      </nav>
-
-      <!-- English Content Section -->
-      <article class="lang-content-en">
+<article class="project-article">
         <header class="project-hero">
           <div class="project-category-badge">Hardware Interfaces &middot; Windows Internals &middot; WMI</div>
           <h1 class="project-title">DimOLED: Hardware-Level Burn-In Protection Utility</h1>
@@ -202,120 +195,7 @@ public class UserInput {
           </div>
         </div>
       </article>
-
-      <!-- Persian Content Section -->
-      <article class="lang-content-fa">
-        <header class="project-hero">
-          <div class="project-category-badge">ارتباط با سخت‌افزار &middot; توابع سیستمی ویندوز &middot; WMI</div>
-          <h1 class="project-title">ابزار محافظت از نمایشگر DimOLED: کنترل روشنایی در سطح سخت‌افزار</h1>
-          <p class="project-lead">
-            یک ابزار سبک پس‌زمینه برای سیستم‌عامل ویندوز که از ماندگاری تصویر و سوختگی پیکسل‌های نمایشگرهای OLED و Mini-LED جلوگیری می‌کند. تنظیم فیزیکی جریان دیودهای پنل از طریق رابط‌های WMI و پروتکل DDC/CI بدون استفاده از لایه‌های شفاف کاذب نرم‌افزاری.
-          </p>
-
-          <div class="project-actions-row">
-            <a href="https://github.com/RMNO21/DimOLED" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span>مشاهده سورس‌کد در گیتهاب</span>
-            </a>
-          </div>
-        </header>
-
-        
-        <!-- Visual Media Exhibit -->
-        <figure class="media-container">
-          <img src="../assets/images/projects/dimoled-wmi-architecture.png" alt="معماری محافظ سخت‌افزاری نمایشگر DimOLED اثر رامان تندرو" title="معماری محافظ سخت‌افزاری نمایشگر DimOLED اثر رامان تندرو" class="media-image" loading="lazy">
-          <figcaption class="media-caption">
-            مدل ارتباط سخت‌افزاری: تنظیم فیزیکی جریان دیودهای پنل OLED از طریق WMI و DDC/CI بدون لایه‌های شفاف کاذب نرم‌افزاری.
-          </figcaption>
-        </figure>
-<!-- Technical Specification Matrix -->
-        <section class="specs-matrix">
-          <div class="spec-cell">
-            <span class="spec-label">سیستم‌عامل هدف</span>
-            <span class="spec-value">ویندوز ۱۰ و ۱۱ (معماری x64 و ARM64)</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">پروتکل ارتباطی سخت‌افزار</span>
-            <span class="spec-value">کلاس‌های WMI و گذرگاه DDC/CI مانیتور</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">ردیابی ورودی کاربر</span>
-            <span class="spec-value">تابع Win32 `GetLastInputInfo` بدون بار پردازشی</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">مصرف پردازنده (CPU)</span>
-            <span class="spec-value">۰.۰۰٪ در حالت آماده‌باش</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">مصرف حافظه (RAM)</span>
-            <span class="spec-value">کمتر از ۱۲ مگابایت در کل اجرای پروسه</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">تاثیر روی کارت گرافیک</span>
-            <span class="spec-value">صفر &middot; عدم اشغال رندرر و پنجره DWM</span>
-          </div>
-        </section>
-
-        <!-- Engineering Architecture Breakdown -->
-        <div class="content-body">
-          <h2>۱. چرا نرم‌افزارهای سنتی تاریک‌کننده برای پنل‌های OLED مخربند؟</h2>
-          <p>
-            اغلب برنامه‌های تاریک‌کننده صفحه در اینترنت، یک پنجره سیاه نیمه‌شفاف را روی کل دسکتاپ می‌کشند. این کار در پنل‌های OLED نه تنها مفید نیست بلکه آسیب‌زننده است:
-          </p>
-          <ul>
-            <li><strong>عدم کاهش ولتاژ و حرارت:</strong> مدار درایور مانیتور همچنان با حداکثر توان کار می‌کند و پیکسل‌ها زیر بار حرارتی باقی می‌مانند.</li>
-            <li><strong>اتلاف انرژی در کارت گرافیک:</strong> موتور کامپوزیت ویندوز (DWM) در نرخ‌های ۱۲۰ تا ۲۴۰ هرتز مجبور به ترکیب دو لایه گرافیکی است که مصرف باتری لپ‌تاپ را افزایش می‌دهد.</li>
-            <li><strong>اختلال در بازی‌ها و نرم‌افزارهای گرافیکی:</strong> لایه‌های شفاف نرم‌افزاری موجب تداخل با حالت تمام‌صفحه و پروفایل‌های رنگی HDR می‌شوند.</li>
-          </ul>
-
-          <h2>۲. راه‌حل مهندسی DimOLED: تغییر مستقیم رجیسترهای سخت‌افزار</h2>
-          <p>
-            نرم‌افزار DimOLED مستقیماً با درایور کنترلر سخت‌افزاری نمایشگر ارتباط برقرار می‌کند. با گذشت مدت زمان عدم فعالیت کاربر، مقدار روشنایی از طریق WMI کاهش می‌یابد:
-          </p>
-
-          <pre><code># فراخوانی متد سخت‌افزاری تنظیم روشنایی مانیتور
-$wmi = Get-WmiObject -Namespace root/wmi -Class WmiMonitorBrightnessMethods
-if ($wmi) {
-    # اعمال مقدار فیزیکی: زمان انتقال صفر ثانیه، روشنایی ۱۰ درصد
-    $wmi.WmiSetBrightness(0, 10)
-}
-
-# نظارت بر بیکاری سیستم از طریق توابع سطح سیستم‌عامل
-Add-Type @'
-using System;
-using System.Runtime.InteropServices;
-public class UserInput {
-    [DllImport("user32.dll")]
-    public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
-    public struct LASTINPUTINFO {
-        public uint cbSize;
-        public uint dwTime;
-    }
-}
-'@</code></pre>
-
-          <h2>۳. مزایای محوری و دستاوردهای فنی</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h4>کاهش واقعی حرارت و استهلاک پنل</h4>
-              <p>با کم کردن مستقیم ولتاژ اعمالی به دیودهای نوری، دمای سطح مانیتور کاهش یافته و طول عمر ساب‌پیکسل‌های حساس OLED چند برابر می‌شود.</p>
-            </div>
-            <div class="feature-card">
-              <h4>بازگشت آنی و بدون تأخیر</h4>
-              <p>با کوچک‌ترین حرکت ماوس یا لمس کیبورد، سطح روشنایی اولیه در کسری از میلی‌ثانیه بازیابی شده و هیچ تداخلی در تمرکز کاربر ایجاد نمی‌شود.</p>
-            </div>
-            <div class="feature-card">
-              <h4>پشتیبانی از مانیتورهای خارجی DDC/CI</h4>
-              <p>قابلیت ارسال فرامین تنظیم نور به مانیتورهای رومیزی از طریق کابل‌های DisplayPort و HDMI با پروتکل استاندارد VESA DDC/CI.</p>
-            </div>
-            <div class="feature-card">
-              <h4>اجرای کاملاً نامرئی و بهینه</h4>
-              <p>به عنوان یک سرویس فوق سبک در پس‌زمینه بدون ایجاد آیکون‌های مزاحم در تسک‌بار اجرا شده و مصرف رم آن عملاً ناچیز است.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    </main>
+</main>
 
     <!-- Footer -->
     <footer class="site-footer">

@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RMN-Player: Ultra-Optimized OLED Media Engine | Raman Tondro</title>
+  <title>RMN_Player: OLED Video Engine & Shaders | Raman Tondro</title>
   
-  <meta name="title" content="RMN-Player: Ultra-Optimized OLED Media Engine | Raman Tondro">
-  <meta name="description" content="Technical case study of RMN-Player: A lightweight, customized MPV/Lua media playback engine engineered for OLED displays with dynamic ambilight simulation, sub-pixel subtitle rendering, and zero-stutter decoding. By Raman Tondro.">
-  <meta name="keywords" content="RMN-Player, MPV, Lua, GLSL, OLED, Media Player, Hardware Decoding, Raman Tondro, رامان تندرو, RMNO21, Subtitle Encoding">
+  <meta name="title" content="RMN_Player: OLED Video Engine & Shaders | Raman Tondro">
+  <meta name="description" content="Technical dossier of RMN_Player: High-efficiency Windows media engine customized for OLED displays with 2D ambilight glow shaders by Raman Tondro.">
+  <meta name="keywords" content="RMN-Player, MPV, Lua, GLSL, OLED, Media Player, Hardware Decoding, Raman Tondro, RMNO21, Subtitle Encoding">
   <meta name="author" content="Raman Tondro">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://rmno21.github.io/projects/rmn-player.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/rmn-player.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/rmn-player.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/rmn-player.html">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://rmno21.github.io/projects/rmn-player.html">
-  <meta property="og:title" content="RMN-Player - Ultra-Optimized OLED Media Engine">
-  <meta property="og:description" content="Customized MPV/Lua media player engineered for OLED panels with dynamic ambilight glow and automatic subtitle encoding repair.">
+  <meta property="og:title" content="RMN_Player: OLED Video Engine & Shaders | Raman Tondro">
+  <meta property="og:description" content="Technical dossier of RMN_Player: High-efficiency Windows media engine customized for OLED displays with 2D ambilight glow shaders by Raman Tondro.">
   <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/rmn-player-oled-ambilight.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RMN-Player - OLED Media Engine">
-  <meta name="twitter:description" content="Lightweight MPV/Lua media player for OLED panels by Raman Tondro.">
+  <meta name="twitter:title" content="RMN_Player: OLED Video Engine & Shaders | Raman Tondro">
+  <meta name="twitter:description" content="Technical dossier of RMN_Player: High-efficiency Windows media engine customized for OLED displays with 2D ambilight glow shaders by Raman Tondro.">
   <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/rmn-player-oled-ambilight.png">
 
   <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
@@ -68,9 +71,9 @@
         </a>
 
         <div class="header-actions">
-          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+          <a href="../fa/projects/rmn-player.html" id="langToggleBtn" class="btn-pill" aria-label="مشاهده به زبان فارسی">
             <span id="langDisplay">FA / فارسی</span>
-          </button>
+          </a>
           <a href="../resume.html" class="btn-pill">Resume</a>
           <a href="https://github.com/RMNO21/rmn-player" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
             <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -83,23 +86,13 @@
     
         <!-- Visual Media Exhibit -->
         <figure class="media-container">
-          <img src="../assets/images/projects/rmn-player-oled-ambilight.png" alt="RMN-Player OLED Ambilight & Video Engine Architecture by Raman Tondro (رامان تندرو)" title="RMN-Player OLED Ambilight & Video Engine Architecture by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <img src="../assets/images/projects/rmn-player-oled-ambilight.png" alt="RMN-Player OLED Ambilight & Video Engine Architecture by Raman Tondro" title="RMN-Player OLED Ambilight & Video Engine Architecture by Raman Tondro" class="media-image" loading="lazy">
           <figcaption class="media-caption">
             Architecture Overview: MPV core video pipeline featuring dynamic GLSL ambilight edge shaders, automated Persian subtitle CP-1256 reconciliation, and true-black OLED preservation.
           </figcaption>
         </figure>
 <main class="container">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
-        <a href="../index.html">Home</a>
-        <span class="breadcrumb-separator">/</span>
-        <a href="../index.html#projects">Projects</a>
-        <span class="breadcrumb-separator">/</span>
-        <span class="breadcrumb-current">RMN-Player</span>
-      </nav>
-
-      <!-- English Content Section -->
-      <article class="lang-content-en">
+<article class="project-article">
         <header class="project-hero">
           <div class="project-category-badge">Systems Graphics &middot; Lua &middot; Video Pipelines</div>
           <h1 class="project-title">RMN-Player: Ultra-Optimized OLED Media Engine</h1>
@@ -199,117 +192,7 @@ end)</code></pre>
           </div>
         </div>
       </article>
-
-      <!-- Persian Content Section -->
-      <article class="lang-content-fa">
-        <header class="project-hero">
-          <div class="project-category-badge">گرافیک سیستمی &middot; اسکریپت‌نویسی لوان &middot; خط لوله ویدیو</div>
-          <h1 class="project-title">پلیر سفارشی RMN-Player: بهینه‌سازی‌شده برای نمایشگرهای OLED</h1>
-          <p class="project-lead">
-            یک محیط پخش ویدیویی سبک و سریع بر پایه موتور MPV، مهندسی‌شده به طور اختصاصی برای نمایشگرهای OLED با نرخ نوسازی بالا. مجهز به شیدرهای شبیه‌سازی نور محیطی (Ambilight)، رندرینگ زیرپیکسلی فونت‌ها و اصلاح خودکار انکودینگ زیرنویس‌های فارسی.
-          </p>
-
-          <div class="project-actions-row">
-            <a href="https://github.com/RMNO21/rmn-player" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span>مشاهده سورس‌کد در گیتهاب</span>
-            </a>
-            <a href="https://github.com/RMNO21/rmn-player/releases" target="_blank" rel="noopener noreferrer" class="btn-pill">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>دانلود بسته آماده</span>
-            </a>
-          </div>
-        </header>
-
-        
-        <!-- Visual Media Exhibit -->
-        <figure class="media-container">
-          <img src="../assets/images/projects/rmn-player-oled-ambilight.png" alt="معماری فنی پلیر RMN-Player برای نمایشگرهای OLED اثر رامان تندرو" title="معماری فنی پلیر RMN-Player برای نمایشگرهای OLED اثر رامان تندرو" class="media-image" loading="lazy">
-          <figcaption class="media-caption">
-            معماری فنی RMN-Player: پلیر سفارشی مانیتورهای OLED با هاله نوری Ambilight شیدرهای GPU، دیکود سخت‌افزاری و اصلاح خودکار زیرنویس‌های فارسی.
-          </figcaption>
-        </figure>
-<!-- Technical Specification Matrix -->
-        <section class="specs-matrix">
-          <div class="spec-cell">
-            <span class="spec-label">موتور مرکزی</span>
-            <span class="spec-value">هسته MPV نسخه ۰.۳۸+ با کتابخانه libmpv</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">زبان اسکریپت‌نویسی</span>
-            <span class="spec-value">موتور تفسیری سریع Lua 5.1 JIT</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">شتاب‌دهنده سخت‌افزاری</span>
-            <span class="spec-value">دیکود مستقیم D3D11VA / NVDEC / VA-API</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">پردازش شیدرها</span>
-            <span class="spec-value">شیدر سفارشی GLSL برای نور حاشیه‌ای Ambilight</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">مصرف حافظه رم</span>
-            <span class="spec-value">کمتر از ۷۵ مگابایت حین پخش ۴K HDR</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">مدیریت زیرنویس</span>
-            <span class="spec-value">تشخیص هوشمند انکودینگ (Windows-1256 به UTF-8)</span>
-          </div>
-        </section>
-
-        <!-- Engineering Architecture Breakdown -->
-        <div class="content-body">
-          <h2>۱. ضرورت مهندسی و حل چالش‌های موجود</h2>
-          <p>
-            نرم‌افزارهای سنتی پخش ویدیو (نظیر VLC یا پات‌پلیر) دارای رابط‌های کاربری شلوغ و سنگین، تأخیر در جابجایی روی ویدیوهای سنگین ۱۰ بیتی HDR، و به‌ویژه مشکل دائمی به‌هم‌ریختگی حروف فارسی در فایل‌های زیرنویس ANSI (کدپیج Windows-1256) هستند.
-          </p>
-          <p>
-            علاوه بر این، در مانیتورهای مدرن OLED کنترل دقیق پیکسل‌ها اهمیت حیاتی دارد: عناصر ثابت سفید باعث سوختگی پیکسل‌ها (Burn-in) می‌شوند، در حالی که پیکسل‌های مشکی خالص در اتاق‌های تاریک کنتراست شدیدی ایجاد می‌کنند که ایجاد هاله نوری ملایم در لبه‌ها (Ambilight) از خستگی چشم جلوگیری می‌کند. پروژه RMN-Player این اهداف را بدون اتلاف منابع پردازنده و با اسکریپت‌های بهینه‌سازی‌شده پیاده کرده است.
-          </p>
-
-          <h2>۲. خط لوله شیدر GLSL برای هاله نوری پویا (Ambilight)</h2>
-          <p>
-            به جای خواندن پیکسل‌ها روی CPU که موجب افت فریم می‌شود، نمونه‌برداری از حاشیه فریم‌ها مستقیماً روی پردازنده گرافیکی (GPU) از طریق پایپ‌لاین GLSL انجام می‌شود:
-          </p>
-
-          <pre><code>-- ثبت رویداد تغییر وضعیت ویدیو و تنظیم پویا شیدر
-mp.register_event("video-reconfig", function()
-    local w = mp.get_property_number("dwidth", 1920)
-    local h = mp.get_property_number("dheight", 1080)
-    local aspect = w / h
-    
-    -- اعمال شیدرهای گرافیکی سفارشی بدون افت کارایی
-    mp.commandv("change-list", "glsl-shaders", "set", "~~/shaders/ambilight_glow.glsl")
-    mp.msg.info(string.format("Ambilight configured for resolution: %dx%d (%.2f)", w, h, aspect))
-end)</code></pre>
-
-          <h2>۳. رفع خودکار ناهماهنگی انکودینگ زیرنویس فارسی</h2>
-          <p>
-            اکثر فایل‌های زیرنویس فارسی دانلود شده از اینترنت با فرمت قدیمی Windows-1256 ذخیره شده‌اند و در پلیرهای استاندارد به شکل کاراکترهای نامفهوم نمایش می‌یابند. اسکریپت هوشمند RMN-Player با بررسی الگوی بایت‌های ابتدایی فایل، به طور خودکار کدپیج صحیح را شناسایی کرده و بدون نیاز به دخالت کاربر زیرنویس را با چینش استاندارد و بدون حروف ناخوانا لود می‌کند.
-          </p>
-
-          <h2>۴. دستاوردهای کلیدی معماری</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h4>خط لوله سخت‌افزاری با مصرف صفر پردازنده</h4>
-              <p>دیکود مستقیم کارت گرافیک از طریق D3D11VA و NVDEC که مصرف پردازنده مرکزی را به زیر ۱ درصد رسانده و از داغ شدن سیستم جلوگیری می‌کند.</p>
-            </div>
-            <div class="feature-card">
-              <h4>پخش هوشمند قسمت بعدی سریال‌ها</h4>
-              <p>تشخیص خودکار نام‌گذاری قسمت‌ها در پوشه و انتقال پیوسته به اپیزود بعدی با پرش از بخش‌های تکراری تیتراژ ابتدایی بر اساس فصل‌بندی فایل.</p>
-            </div>
-            <div class="feature-card">
-              <h4>حفظ سیاهی مطلق در پنل‌های OLED</h4>
-              <p>تضمین خاموش ماندن دیودهای پیکسل‌های سیاه واقعی (Zero-Luminance) برای افزایش کنتراست بی‌نهایت و جلوگیری از هدررفت انرژی و استهلاک پنل.</p>
-            </div>
-            <div class="feature-card">
-              <h4>پرش‌های زمانی میلی‌ثانیه‌ای با کلیدهای میانبر</h4>
-              <p>پیکربندی کلیدهای کیبورد برای پیمایش فریم به فریم و پرش‌های لگاریتمی (۵ ثانیه، ۳۰ ثانیه، ۳ دقیقه) بدون افت حتی یک فریم تصویر.</p>
-            </div>
-          </div>
-        </div>
-      </article>
-    </main>
+</main>
 
     <!-- Footer -->
     <footer class="site-footer">

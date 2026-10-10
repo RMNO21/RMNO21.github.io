@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروژه Sepotify: موتور صوتی نیتیو اندروید | رامان تندرو</title>
+  
+  <meta name="title" content="پروژه Sepotify: موتور صوتی نیتیو اندروید | رامان تندرو">
+  <meta name="description" content="شناسنامه مهندسی نرم‌افزار Sepotify: موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید توسعه‌یافته با کاتلین توسط رامان تندرو.">
+  <meta name="keywords" content="Sepotify, Android, Kotlin, Media3, FLAC, Audio Engine, Raman Tondro, رامان تندرو, RMNO21, Low-Latency Audio, Mobile Architecture">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/fa/projects/sepotify.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/sepotify.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/sepotify.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/sepotify.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/sepotify.html">
+  <meta property="og:title" content="پروژه Sepotify: موتور صوتی نیتیو اندروید | رامان تندرو">
+  <meta property="og:description" content="شناسنامه مهندسی نرم‌افزار Sepotify: موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید توسعه‌یافته با کاتلین توسط رامان تندرو.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/sepotify-player-interface.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="پروژه Sepotify: موتور صوتی نیتیو اندروید | رامان تندرو">
+  <meta name="twitter:description" content="شناسنامه مهندسی نرم‌افزار Sepotify: موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید توسعه‌یافته با کاتلین توسط رامان تندرو.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/sepotify-player-interface.png">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication & SoftwareSourceCode -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sepotify",
+    "operatingSystem": "Android",
+    "applicationCategory": "MultimediaApplication",
+    "description": "High-fidelity, zero-delay music streaming and offline playback engine for Android with FLAC decoding.",
+    "url": "https://rmno21.github.io/projects/sepotify.html",
+    "downloadUrl": "https://github.com/RMNO21/Sepotify/releases",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "Kotlin"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../projects/project.css">
+</head>
+<body class="lang-fa">
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">رامان تندرو</span>
+            <span class="name-sub">توسعه‌دهنده سیستم‌های نهفته</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <a href="../../projects/sepotify.html" id="langToggleBtn" class="btn-pill" aria-label="Switch to English">
+            <span id="langDisplay">EN / English</span>
+          </a>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/Sepotify" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/sepotify-player-interface.png" alt="Sepotify Native Android Audio Engine UI by Raman Tondro (رامان تندرو)" title="Sepotify Native Android Audio Engine UI by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            Production Interface: Native Android lossless audio engine featuring low-latency FLAC pipeline, foreground service isolation, and gapless buffer management.
+          </figcaption>
+        </figure>
+<main class="container">
+<article class="project-article">
+        <header class="project-hero">
+          <div class="project-category-badge">مهندسی نرم‌افزار موبایل &middot; سیستم‌های صوتی</div>
+          <h1 class="project-title">سپس‌یفای (Sepotify): موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید</h1>
+          <p class="project-lead">
+            موتور پخش و استریم نیتیو در اندروید با حل کامل مشکل توقف سرویس‌های پس‌زمینه توسط سیستم‌عامل، دیکود سخت‌افزاری فایل‌های Lossless FLAC و سوییچینگ بلادرنگ ترک‌ها بدون هیچ‌گونه بافرینگ و لگ.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/Sepotify" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <span>مشاهده سورس در گیت‌هاب</span>
+            </a>
+            <a href="https://github.com/RMNO21/Sepotify/releases" target="_blank" rel="noopener noreferrer" class="btn-pill">
+              <span>دریافت نسخه‌های ریلیز</span>
+            </a>
+          </div>
+        </header>
+
+        
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/sepotify-player-interface.png" alt="رابط کاربری موتور صوتی اندروید Sepotify اثر رامان تندرو" title="رابط کاربری موتور صوتی اندروید Sepotify اثر رامان تندرو" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            رابط کاربری نرم‌افزار Sepotify: موتور صوتی نیتیو اندروید با پشتیبانی از فایل‌های باکیفیت FLAC، سرویس پس‌زمینه ایزوله و پخش بدون وقفه.
+          </figcaption>
+        </figure>
+<section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">زبان و محیط</span>
+            <span class="spec-value">Kotlin &middot; Android SDK 34+</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">پایپ‌لاین اصلی</span>
+            <span class="spec-value">Jetpack Media3 &middot; ExoPlayer</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">کدک‌های صوتی</span>
+            <span class="spec-value">FLAC, ALAC, Opus, AAC-LC</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">معماری سرویس</span>
+            <span class="spec-value">Isolated Foreground MediaSession</span>
+          </div>
+        </section>
+
+        <div class="project-content-body">
+          <div class="content-block">
+            <h2>مسئله مهندسی و چالش‌های معماری</h2>
+            <p>
+              اپلیکیشن‌های استاندارد پخش موسیقی در اندروید اغلب با توقف ناگهانی در پس‌زمینه توسط مکانیزم‌های سخت‌گیرانه مدیریت باتری (Battery Savers)، تأخیر مشهود در تغییر آهنگ و کاهش کیفیت به علت فشرده‌سازی مواجه هستند. پروژه Sepotify با جداسازی چرخه حیات سرویس پخش از رابط کاربری و دسترسی مستقیم به کنترلر صوتی سخت‌افزاری توسعه داده شده است.
+            </p>
+          </div>
+
+          <div class="content-block">
+            <h2>نوآوری‌ها و مزایای فنی</h2>
+            <div class="features-list">
+              <div class="feature-card">
+                <h4>پایداری کامل در پس‌زمینه (Zero Crash)</h4>
+                <p>جداسازی کامل پردازش صدا در یک پروسس مستقل با اولویت Foreground Service که مانع از کشته شدن برنامه حین اجرای تسک‌های سنگین می‌شود.</p>
+              </div>
+              <div class="feature-card">
+                <h4>دیکود بی‌نقص فایل‌های بدون افت کیفیت (FLAC)</h4>
+                <p>انتقال بیت به بیت استریم صوتی به AudioTrack بدون دستکاری و ری‌سمپلینگ نرم‌افزاری جهت حفظ کیفیت استودیویی.</p>
+              </div>
+              <div class="feature-card">
+                <h4>سیستم کش محلی هوشمند (LRU Cache)</h4>
+                <p>ذخیره‌سازی رمزنگاری‌شده بلاک‌های صوتی برای پخش آفلاین و استریم بلادرنگ بدون نیاز به اعتبارسنجی مجدد شبکه.</p>
+              </div>
+              <div class="feature-card">
+                <h4>پخش پیوسته بدون وقفه (Gapless Playback)</h4>
+                <p>تخصیص بافرهای چرخشی در رم برای بارگذاری اولیه ترک بعدی که تأخیر بین آهنگ‌ها را به زیر ۵ میلی‌ثانیه کاهش می‌دهد.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+</main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">صفحه اصلی</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/Sepotify">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

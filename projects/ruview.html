@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RuView - Wi-Fi CSI Spatial Intelligence & Vital Signs in Rust | Raman Tondro</title>
+  <title>RuView: Wi-Fi CSI Spatial Sensing System | Raman Tondro</title>
   
-  <meta name="title" content="RuView - Wi-Fi CSI Spatial Intelligence & Vital Signs in Rust | Raman Tondro">
-  <meta name="description" content="Technical dossier of RuView: Contactless spatial intelligence, human presence detection, and vital sign monitoring using commodity Wi-Fi Channel State Information (CSI) signals without cameras. Engineered in Rust by Raman Tondro.">
-  <meta name="keywords" content="RuView, Wi-Fi CSI, Rust, RF Sensing, Vital Signs Monitoring, DensePose, Spatial Intelligence, Raman Tondro, رامان تندرو, RMNO21">
+  <meta name="title" content="RuView: Wi-Fi CSI Spatial Sensing System | Raman Tondro">
+  <meta name="description" content="Technical dossier of RuView: Contactless spatial intelligence and vital sign monitoring using Wi-Fi CSI RF signals in Rust by Raman Tondro.">
+  <meta name="keywords" content="RuView, Wi-Fi CSI, Rust, RF Sensing, Vital Signs Monitoring, DensePose, Spatial Intelligence, Raman Tondro, RMNO21">
   <meta name="author" content="Raman Tondro">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://rmno21.github.io/projects/ruview.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/ruview.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/ruview.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ruview.html">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://rmno21.github.io/projects/ruview.html">
-  <meta property="og:title" content="RuView - Wi-Fi CSI Spatial Intelligence in Rust">
-  <meta property="og:description" content="Turning commodity Wi-Fi signals into real-time spatial intelligence and vital signs monitoring without cameras.">
+  <meta property="og:title" content="RuView: Wi-Fi CSI Spatial Sensing System | Raman Tondro">
+  <meta property="og:description" content="Technical dossier of RuView: Contactless spatial intelligence and vital sign monitoring using Wi-Fi CSI RF signals in Rust by Raman Tondro.">
   <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/ruview-sensing-dashboard.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RuView - Wi-Fi CSI Sensing">
-  <meta name="twitter:description" content="Spatial perception via Wi-Fi RF perturbations built in Rust.">
+  <meta name="twitter:title" content="RuView: Wi-Fi CSI Spatial Sensing System | Raman Tondro">
+  <meta name="twitter:description" content="Technical dossier of RuView: Contactless spatial intelligence and vital sign monitoring using Wi-Fi CSI RF signals in Rust by Raman Tondro.">
   <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/ruview-sensing-dashboard.png">
 
   <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
@@ -65,9 +68,9 @@
         </a>
 
         <div class="header-actions">
-          <button id="langToggleBtn" class="btn-pill" aria-label="Toggle Language">
+          <a href="../fa/projects/ruview.html" id="langToggleBtn" class="btn-pill" aria-label="مشاهده به زبان فارسی">
             <span id="langDisplay">FA / فارسی</span>
-          </button>
+          </a>
           <a href="../resume.html" class="btn-pill">Resume</a>
           <a href="https://github.com/RMNO21/RuView" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
             <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -80,22 +83,13 @@
     
         <!-- Visual Media Exhibit -->
         <figure class="media-container">
-          <img src="../assets/images/projects/ruview-sensing-dashboard.png" alt="RuView Wi-Fi CSI Spatial RF Sensing Telemetry by Raman Tondro (رامان تندرو)" title="RuView Wi-Fi CSI Spatial RF Sensing Telemetry by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <img src="../assets/images/projects/ruview-sensing-dashboard.png" alt="RuView Wi-Fi CSI Spatial RF Sensing Telemetry by Raman Tondro" title="RuView Wi-Fi CSI Spatial RF Sensing Telemetry by Raman Tondro" class="media-image" loading="lazy">
           <figcaption class="media-caption">
             Spatial Telemetry Dashboard: Non-invasive human presence & motion tracking via commodity 802.11 Wi-Fi CSI RF channel state analysis in Rust.
           </figcaption>
         </figure>
 <main class="container">
-      <nav class="breadcrumb-bar" aria-label="Breadcrumbs">
-        <a href="../index.html">Home</a>
-        <span class="breadcrumb-separator">/</span>
-        <a href="../index.html#projects">Projects</a>
-        <span class="breadcrumb-separator">/</span>
-        <span class="breadcrumb-current">RuView</span>
-      </nav>
-
-      <!-- English Content -->
-      <article class="lang-content-en">
+<article class="project-article">
         <header class="project-hero">
           <div class="project-category-badge">RF Signal Processing &middot; Rust Systems</div>
           <h1 class="project-title">RuView: Contactless Wi-Fi CSI Spatial Intelligence</h1>
@@ -161,78 +155,7 @@
           </div>
         </div>
       </article>
-
-      <!-- Persian Content -->
-      <article class="lang-content-fa">
-        <header class="project-hero">
-          <div class="project-category-badge">پردازش سیگنال‌های رادیویی &middot; سیستم‌های نیتیو Rust</div>
-          <h1 class="project-title">روویو (RuView): هوشمندی مکانی و پایش علائم حیاتی با سیگنال‌های وای‌فای در Rust</h1>
-          <p class="project-lead">
-            تبدیل امواج وای‌فای معمولی خانگی به یک حسگر مکانی بسیار دقیق جهت پایش علائم حیاتی (تنفس و ضربان) و تشخیص حضور افراد با تحلیل فاز و دامنه ساب‌کریرهای 802.11 — کاملاً بدون نیاز به دوربین و با تضمین ۱۰۰٪ حریم خصوصی.
-          </p>
-
-          <div class="project-actions-row">
-            <a href="https://github.com/RMNO21/RuView" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
-              <span>مشاهده مخزن RuView در گیت‌هاب</span>
-            </a>
-          </div>
-        </header>
-
-        
-        <!-- Visual Media Exhibit -->
-        <figure class="media-container">
-          <img src="../assets/images/projects/ruview-sensing-dashboard.png" alt="داشبورد ادراک مکانی با امواج وای‌فای RuView اثر رامان تندرو" title="داشبورد ادراک مکانی با امواج وای‌فای RuView اثر رامان تندرو" class="media-image" loading="lazy">
-          <figcaption class="media-caption">
-            داشبورد تحلیلی سامانه RuView: ادراک مکانی و ردگیری حرکات افراد از طریق تحلیل سیگنال‌های خام وای‌فای CSI با زبان Rust بدون دوربین.
-          </figcaption>
-        </figure>
-<section class="specs-matrix">
-          <div class="spec-cell">
-            <span class="spec-label">زبان توسعه</span>
-            <span class="spec-value">Rust 2021</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">بستر فیزیکی</span>
-            <span class="spec-value">ساب‌کریرهای OFDM استاندارد 802.11</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">فیلترینگ سیگنال</span>
-            <span class="spec-value">Phase Unwrapping &amp; Hampel Filter</span>
-          </div>
-          <div class="spec-cell">
-            <span class="spec-label">سطح حریم خصوصی</span>
-            <span class="spec-value">عدم استفاده از دوربین نوری (Zero-Camera)</span>
-          </div>
-        </section>
-
-        <div class="project-content-body">
-          <div class="content-block">
-            <h2>مکانیزم حسگری رادیویی (Wi-Fi CSI)</h2>
-            <p>
-              دوربین‌های نوری علاوه بر نقض جدی حریم خصوصی، با مشکلاتی نظیر تاریکی مطلق و وجود موانع فیزیکی روبه‌رو هستند. پروژه RuView با استفاده از اطلاعات وضعیت کانال (CSI) در کارت‌های شبکه، تغییرات بسیار ناچیز فاز و دامنه امواج وای‌فای ناشی از حرکت قفسه سینه انسان را استخراج و پردازش می‌کند.
-            </p>
-          </div>
-
-          <div class="content-block">
-            <h2>مزایای مهندسی سیستم</h2>
-            <div class="features-list">
-              <div class="feature-card">
-                <h4>حذف نویز فرکانسی در زبان Rust</h4>
-                <p>پاکسازی خطاهای ساعت فرستنده و گیرنده (CFO و STO) با الگوریتم‌های بلادرنگ ریاضی جهت دستیابی به فاز حقیقی سیگنال.</p>
-              </div>
-              <div class="feature-card">
-                <h4>تشخیص بدون درنگ نرخ تنفس</h4>
-                <p>تشخیص حرکات چندمیلی‌متری تنفس در بازه فرکانسی ۰.۲ الی ۰.۵ هرتز حتی از پشت دیوارهای غیرفلزی.</p>
-              </div>
-              <div class="feature-card">
-                <h4>کارایی قطعی و مصرف حافظه صفر</h4>
-                <p>معماری Zero-Copy در زبان Rust برای پردازش بیش از ۱۰۰۰ بسته CSI در هر ثانیه بدون سربار زباله‌روب (GC).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </main>
+</main>
 
     <footer class="site-footer">
       <div class="container footer-inner">

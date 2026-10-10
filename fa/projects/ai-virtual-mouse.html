@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروژه ماوس مجازی با هوش مصنوعی و بینایی ماشین | رامان تندرو</title>
+  
+  <meta name="title" content="پروژه ماوس مجازی با هوش مصنوعی و بینایی ماشین | رامان تندرو">
+  <meta name="description" content="شناسنامه فنی پروژه ماوس مجازی: کنترل تعاملی اشاره‌گر ماوس با رهگیری حرکات دست توسط پردازش تصویر OpenCV و MediaPipe توسط رامان تندرو.">
+  <meta name="keywords" content="AI Virtual Mouse, Computer Vision, MediaPipe, OpenCV, Python, Win32 API, Gesture Control, Raman Tondro, رامان تندرو, RMNO21, Jitter-Free Tracking">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/fa/projects/ai-virtual-mouse.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/ai-virtual-mouse.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/ai-virtual-mouse.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/ai-virtual-mouse.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/ai-virtual-mouse.html">
+  <meta property="og:title" content="پروژه ماوس مجازی با هوش مصنوعی و بینایی ماشین | رامان تندرو">
+  <meta property="og:description" content="شناسنامه فنی پروژه ماوس مجازی: کنترل تعاملی اشاره‌گر ماوس با رهگیری حرکات دست توسط پردازش تصویر OpenCV و MediaPipe توسط رامان تندرو.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/ai-virtual-mouse-pipeline.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="پروژه ماوس مجازی با هوش مصنوعی و بینایی ماشین | رامان تندرو">
+  <meta name="twitter:description" content="شناسنامه فنی پروژه ماوس مجازی: کنترل تعاملی اشاره‌گر ماوس با رهگیری حرکات دست توسط پردازش تصویر OpenCV و MediaPipe توسط رامان تندرو.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/ai-virtual-mouse-pipeline.png">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI-Virtual-Mouse",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "High-precision computer vision virtual mouse translating 21 3D hand landmarks into smoothed Win32 cursor movements and multi-button click gestures.",
+    "url": "https://rmno21.github.io/projects/ai-virtual-mouse.html",
+    "downloadUrl": "https://github.com/RMNO21/AI-Virtual-Mouse",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "Python"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../projects/project.css">
+</head>
+<body class="lang-fa">
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">رامان تندرو</span>
+            <span class="name-sub">توسعه‌دهنده سیستم‌های نهفته</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <a href="../../projects/ai-virtual-mouse.html" id="langToggleBtn" class="btn-pill" aria-label="Switch to English">
+            <span id="langDisplay">EN / English</span>
+          </a>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/ai-virtual-mouse-pipeline.png" alt="AI-Virtual-Mouse 3D Hand Landmark Pipeline & Architecture by Raman Tondro (رامان تندرو)" title="AI-Virtual-Mouse 3D Hand Landmark Pipeline & Architecture by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            Vision Pipeline: 21 3D hand landmark tracking, velocity-dependent Exponential Moving Average (EMA) tremor filter, and direct Win32 event queue dispatch.
+          </figcaption>
+        </figure>
+<main class="container">
+<article class="project-article">
+        <header class="project-hero">
+          <div class="project-category-badge">بینایی ماشین &middot; تعامل انسان و کامپیوتر &middot; پایتون</div>
+          <h1 class="project-title">ماوس مجازی هوشمند (AI-Virtual-Mouse): کنترل لمسی مکان‌نما در ویندوز</h1>
+          <p class="project-lead">
+            یک خط لوله بی‌درنگ بینایی ماشین که حرکات دست کاربر را از طریق وب‌کم استاندارد به حرکت بسیار روان نشانگر ماوس در محیط ویندوز تبدیل می‌کند. رفع کامل لرزش دست با فیلتر تطبیقی میانگین متحرک نمایی (EMA) و ارسال مستقیم رویدادها به لایه Win32 API.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/AI-Virtual-Mouse" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/ai-virtual-mouse-pipeline.png" alt="خط لوله ماوس مجازی هوشمند با رهگیری دست اثر رامان تندرو" title="خط لوله ماوس مجازی هوشمند با رهگیری دست اثر رامان تندرو" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            خط لوله پردازش تصویر: رهگیری ۲۱ نقطه اسکلتی دست با مدیاپایپ، فیلتر ضدرعشه تطبیقی EMA و ارسال بدون تاخیر رویدادها به Win32 API.
+          </figcaption>
+        </figure>
+<!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">زبان و محیط اجرا</span>
+            <span class="spec-value">Python 3.10+ &middot; هسته بهینه‌سازی‌شده</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">مدل رهگیری اسکلتی</span>
+            <span class="spec-value">گوگل مدیاپایپ (۲۱ نقطه سه‌بعدی دست)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">الگوریتم حذف لرزش</span>
+            <span class="spec-value">فیلتر تطبیقی سرعت‌محور EMA</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">لایه ارسال به سیستم‌عامل</span>
+            <span class="spec-value">توابع Win32 API از طریق ctypes مستقیم</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">نرخ فریم پردازش</span>
+            <span class="spec-value">بیش از ۶۰ فریم بر ثانیه روی پردازنده‌های معمولی</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">تأخیر پاسخ‌دهی</span>
+            <span class="spec-value">کمتر از ۱۴ میلی‌ثانیه از حرکت تا نشانگر</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. تحلیل چالش لرزش اپتیکال در تعامل بدون لمس</h2>
+          <p>
+            در پروژه‌های ساده بینایی ماشین، معمولاً موقعیت نوک انگشت اشاره مستقیماً به پیکسل‌های صفحه نمایش متصل می‌شود. به علت نویز ذاتی سنسور وب‌کم و لرزش‌های میکروسکوپی ماهیچه‌های انگشت، مختصات در هر فریم بین ۲ تا ۵ پیکسل نوسان می‌کند؛ امری که کلیک روی دکمه‌های کوچک و پنجره‌های ویندوز را غیرممکن می‌سازد.
+          </p>
+          <p>
+            پروژه AI-Virtual-Mouse با ترکیب یک فیلتر نرم‌کننده نمایی تطبیقی با سرعت دست و ناحیه مرده (Deadzone)، حرکات سریع را بدون تاخیر انتقال می‌دهد و هنگام ثابت شدن دست، لرزش زیرپیکسلی را به صفر می‌رساند.
+          </p>
+
+          <h2>۲. مدل ریاضی فیلتر هموارساز تطبیقی (EMA)</h2>
+          <p>
+            هنگامی که دست با سرعت حرکت می‌کند ضریب فیلتر کاهش می‌یابد تا واکنش لحظه‌ای حفظ شود؛ به محض کاهش سرعت برای کلیک، ضریب فیلتر افزایش یافته و مکان‌نما کاملاً پایدار می‌ماند:
+          </p>
+
+          <pre><code># پیاده‌سازی فرمول نرم‌سازی نمایی متناسب با سرعت حرکت
+distance = math.hypot(curr_x - prev_x, curr_y - prev_y)
+# تنظیم داینامیک ضریب نرم‌سازی بین 0.15 تا 1.0
+alpha = min(1.0, max(0.15, distance / 40.0))
+
+smooth_x = prev_x + alpha * (curr_x - prev_x)
+smooth_y = prev_y + alpha * (curr_y - prev_y)
+
+# تزریق مستقیم موقعیت به صف رویدادهای هسته ویندوز بدون تاخیر
+ctypes.windll.user32.SetCursorPos(int(smooth_x), int(smooth_y))</code></pre>
+
+          <h2>۳. ماشین حالت تشخیص ژست‌های حرکتی (State Machine)</h2>
+          <p>
+            به جای تصمیم‌گیری تک‌فریمی که منجر به کلیک‌های اشتباه می‌شود، حالات دست بر اساس یک ماشین وضعیت قطعی مدیریت می‌شوند:
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>حالت ناوبری و اشاره (Pointing)</h4>
+              <p>انگشت اشاره باز و سایر انگشتان جمع هستند. موقعیت نشانگر در صفحه بدون فعال شدن کلیک‌ها به نرمی جابجا می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>کلیک چپ و درگ (Pinch Gesture)</h4>
+              <p>نزدیک شدن فاصله اقلیدسی نوک انگشت شست و اشاره به زیر ۲۵ پیکسل باعث فعال شدن آنی رویداد کلیک چپ و درگ فایل‌ها می‌شود.</p>
+            </div>
+            <div class="feature-card">
+              <h4>کلیک راست (Middle Finger Pinch)</h4>
+              <p>نزدیک شدن شست به انگشت وسط بدون حرکت انگشت اشاره، دستور استاندارد کلیک راست را در سیستم‌عامل صادر می‌کند.</p>
+            </div>
+            <div class="feature-card">
+              <h4>اسکرول روان با دو انگشت</h4>
+              <p>باز بودن همزمان انگشت اشاره و وسط؛ حرکت عمودی دست مستقیماً به رویداد چرخ ماوس (Mouse Wheel) با شتاب نرم تبدیل می‌شود.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+</main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">صفحه اصلی</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/AI-Virtual-Mouse">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>

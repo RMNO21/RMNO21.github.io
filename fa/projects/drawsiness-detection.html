@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروژه تشخیص خواب‌آلودگی راننده با پردازش تصویر | رامان تندرو</title>
+  
+  <meta name="title" content="پروژه تشخیص خواب‌آلودگی راننده با پردازش تصویر | رامان تندرو">
+  <meta name="description" content="شناسنامه مهندسی سیستم پایش هوشیاری راننده: پردازش بی‌درنگ لندمارک‌های چهره و سنجش نسبت باز بودن پلک‌ها (EAR) جهت پیشگیری از تصادف توسط رامان تندرو.">
+  <meta name="keywords" content="Drowsiness Detection, Computer Vision, MediaPipe, Face Mesh, EAR, Driver Safety, Python, OpenCV, Raman Tondro, رامان تندرو, RMNO21">
+  <meta name="author" content="Raman Tondro">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://rmno21.github.io/fa/projects/drawsiness-detection.html">
+  <link rel="alternate" hreflang="fa" href="https://rmno21.github.io/fa/projects/drawsiness-detection.html">
+  <link rel="alternate" hreflang="en" href="https://rmno21.github.io/projects/drawsiness-detection.html">
+  <link rel="alternate" hreflang="x-default" href="https://rmno21.github.io/projects/drawsiness-detection.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rmno21.github.io/projects/drawsiness-detection.html">
+  <meta property="og:title" content="پروژه تشخیص خواب‌آلودگی راننده با پردازش تصویر | رامان تندرو">
+  <meta property="og:description" content="شناسنامه مهندسی سیستم پایش هوشیاری راننده: پردازش بی‌درنگ لندمارک‌های چهره و سنجش نسبت باز بودن پلک‌ها (EAR) جهت پیشگیری از تصادف توسط رامان تندرو.">
+  <meta property="og:image" content="https://rmno21.github.io/assets/images/projects/drawsiness-detection-ear-hud.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="پروژه تشخیص خواب‌آلودگی راننده با پردازش تصویر | رامان تندرو">
+  <meta name="twitter:description" content="شناسنامه مهندسی سیستم پایش هوشیاری راننده: پردازش بی‌درنگ لندمارک‌های چهره و سنجش نسبت باز بودن پلک‌ها (EAR) جهت پیشگیری از تصادف توسط رامان تندرو.">
+  <meta name="twitter:image" content="https://rmno21.github.io/assets/images/projects/drawsiness-detection-ear-hud.png">
+
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/158779818?v=4">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Driver Drowsiness Detection System",
+    "operatingSystem": "Linux, Windows, Embedded Edge Linux",
+    "applicationCategory": "SafetyApplication",
+    "description": "Real-time edge computer vision pipeline detecting operator fatigue, microsleeps, and yawning via MediaPipe facial landmark geometry.",
+    "url": "https://rmno21.github.io/projects/drawsiness-detection.html",
+    "downloadUrl": "https://github.com/RMNO21/drawsiness-detection",
+    "author": {
+      "@type": "Person",
+      "name": "Raman Tondro",
+      "alternateName": "رامان تندرو",
+      "url": "https://rmno21.github.io/"
+    },
+    "programmingLanguage": "Python"
+  }
+  </script>
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../projects/project.css">
+</head>
+<body class="lang-fa">
+
+  <div class="layout-wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-identity">
+          <img src="https://avatars.githubusercontent.com/u/158779818?v=4" alt="Raman Tondro" class="avatar-micro" width="34" height="34">
+          <div class="identity-text">
+            <span class="name-primary">رامان تندرو</span>
+            <span class="name-sub">توسعه‌دهنده سیستم‌های نهفته</span>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <a href="../../projects/drawsiness-detection.html" id="langToggleBtn" class="btn-pill" aria-label="Switch to English">
+            <span id="langDisplay">EN / English</span>
+          </a>
+          <a href="../resume.html" class="btn-pill">Resume</a>
+          <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/drawsiness-detection-ear-hud.png" alt="Driver Drowsiness Detection EAR Metric & Vision Pipeline by Raman Tondro (رامان تندرو)" title="Driver Drowsiness Detection EAR Metric & Vision Pipeline by Raman Tondro (رامان تندرو)" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            Computer Vision Architecture: Soukupová & Čech Eye Aspect Ratio (EAR) metric, consecutive frame hysteresis, and tiered automotive alarm escalation.
+          </figcaption>
+        </figure>
+<main class="container">
+<article class="project-article">
+        <header class="project-hero">
+          <div class="project-category-badge">هوش مصنوعی لبه &middot; بینایی ماشین &middot; ایمنی خودرو</div>
+          <h1 class="project-title">سامانه تشخیص خواب‌آلودگی راننده (Driver Drowsiness Detection)</h1>
+          <p class="project-lead">
+            یک سامانه بهینه‌سازی‌شده بینایی ماشین برای سخت‌افزارهای کم‌مصرف جهت پیشگیری از تصادفات جاده‌ای ناشی از خستگی. استخراج زنده ۴۶۸ نقطه هندسی چهره، محاسبه نسبت ابعادی چشم (EAR) و دهان (MAR) برای شناسایی خواب‌های کوتاه (Microsleep) پیش از وقوع حادثه.
+          </p>
+
+          <div class="project-actions-row">
+            <a href="https://github.com/RMNO21/drawsiness-detection" target="_blank" rel="noopener noreferrer" class="btn-pill primary">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>مشاهده سورس‌کد در گیتهاب</span>
+            </a>
+          </div>
+        </header>
+
+        
+        <!-- Visual Media Exhibit -->
+        <figure class="media-container">
+          <img src="../../assets/images/projects/drawsiness-detection-ear-hud.png" alt="سامانه تشخیص خستگی و خواب‌آلودگی راننده اثر رامان تندرو" title="سامانه تشخیص خستگی و خواب‌آلودگی راننده اثر رامان تندرو" class="media-image" loading="lazy">
+          <figcaption class="media-caption">
+            معماری بینایی ماشین: محاسبه نسبت ابعادی چشم (EAR)، فیلتر هیسترزیس تفکیک پلک‌زدن از خواب کوتاه و فعال‌سازی آلارم‌های ایمنی خودرو.
+          </figcaption>
+        </figure>
+<!-- Technical Specification Matrix -->
+        <section class="specs-matrix">
+          <div class="spec-cell">
+            <span class="spec-label">مدل پایپ‌لاین چهره</span>
+            <span class="spec-value">مدل ۴۶۸ نقطه‌ای MediaPipe Face Mesh</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">فرمول محاسباتی چشم</span>
+            <span class="spec-value">معیار هندسی Eye Aspect Ratio (EAR)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">نرخ فریم پردازش</span>
+            <span class="spec-value">بیش از ۴۵ فریم بر ثانیه (تراشه‌های پردازش لبه)</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">زمان تشخیص خواب کوتاه</span>
+            <span class="spec-value">کمتر از ۶۵۰ میلی‌ثانیه تا فعال‌سازی هشدار</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">سیستم آلارم</span>
+            <span class="spec-value">بوق صوتی پرقدرت + لایه گرافیکی هشدار قرمز</span>
+          </div>
+          <div class="spec-cell">
+            <span class="spec-label">سازگاری با نور کم</span>
+            <span class="spec-value">نرمال‌سازی کنتراست تطبیقی با فیلتر CLAHE</span>
+          </div>
+        </section>
+
+        <!-- Engineering Architecture Breakdown -->
+        <div class="content-body">
+          <h2>۱. مبانی ریاضی نسبت ابعادی چشم (EAR)</h2>
+          <p>
+            تشخیص خستگی با مدل‌های سنگین شبکه‌های عصبی پیچشی (CNN) برای پردازنده‌های تعبیه‌شده داخل خودرو بیش از حد سنگین است. در این روش، با استفاده از ۶ لندمارک هندسی مشخص در اطراف هر چشم، یک نسبت اسکالر بسیار سبک محاسبه می‌شود:
+          </p>
+
+          <pre><code># محاسبه نسبت ابعادی چشم بر اساس فاصله اقلیدسی لندمارک‌ها
+def calculate_ear(eye_landmarks):
+    # فواصل عمودی پلک بالا و پایین
+    A = np.linalg.norm(eye_landmarks[1] - eye_landmarks[5])
+    B = np.linalg.norm(eye_landmarks[2] - eye_landmarks[4])
+    # فاصله افقی گوشه‌های داخلی و خارجی چشم
+    C = np.linalg.norm(eye_landmarks[0] - eye_landmarks[3])
+    
+    # فرمول استاندارد نسبت ابعادی چشم
+    ear = (A + B) / (2.0 * C)
+    return ear</code></pre>
+
+          <h2>۲. تفکیک پلک‌زدن طبیعی از خواب‌آلودگی با فیلتر هیسترزیس</h2>
+          <p>
+            پلک‌زدن‌های طبیعی غیرارادی انسان بین ۱۰۰ تا ۲۵۰ میلی‌ثانیه به طول می‌انجامند. سامانه با پیاده‌سازی یک بافر فریم متوالی، تنها زمانی آلارم اضطراری را به صدا درمی‌آورد که مقدار EAR بیش از ۱۶ فریم متوالی (حدود ۰.۵ ثانیه) زیر آستانه بحرانی باقی بماند؛ این کار مانع از هشدارهای آزاردهنده کاذب می‌شود.
+          </p>
+
+          <h2>۳. قابلیت‌های کلیدی سیستم</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>تشخیص خمیازه با معیار MAR</h4>
+              <p>پایش پیوسته نسبت بازشدگی دهان برای تشخیص تکرار خمیازه به عنوان نشانگر اولیه افت سطح هوشیاری راننده.</p>
+            </div>
+            <div class="feature-card">
+              <h4>تخمین زاویه سر و حواس‌پرتی</h4>
+              <p>محاسبه بردارهای سه‌بعدی دوران سر (Roll, Pitch, Yaw) جهت تشخیص نگاه به تلفن همراه یا انحراف دید از جاده.</p>
+            </div>
+            <div class="feature-card">
+              <h4>عملکرد پایدار در تاریکی کابین</h4>
+              <p>به‌کارگیری پیش‌پردازش تطبیقی کنتراست تصویر (CLAHE) جهت تضمین پایداری لندمارک‌ها در شرایط نوری ضعیف یا دوربین‌های فروسرخ.</p>
+            </div>
+            <div class="feature-card">
+              <h4>آماده برای بردهای پردازش لبه (Edge)</h4>
+              <p>طراحی بهینه با مصرف پایین حافظه و پردازنده، قابل اجرا روی بردهای صنعتی رزبری‌پای ۴ و انویدیا جتسُن بدون نیاز به کارت گرافیک مجزا.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+</main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; ۲۰۲۶ رامان تندرو &middot; معماری سیستم‌های نهفته &middot; میزبانی روی گیت‌هاب پیجز</div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="../index.html">صفحه اصلی</a>
+          <a href="../resume.html">Resume</a>
+          <a href="https://github.com/RMNO21/drawsiness-detection">Source Code</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle Engine
+    const langBtn = document.getElementById('langToggleBtn');
+    const langDisplay = document.getElementById('langDisplay');
+
+    function updateLanguage(lang) {
+      if (lang === 'fa') {
+        document.body.classList.add('lang-fa');
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.setAttribute('lang', 'fa');
+        langDisplay.textContent = 'EN / English';
+      } else {
+        document.body.classList.remove('lang-fa');
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        langDisplay.textContent = 'FA / فارسی';
+      }
+      localStorage.setItem('rmn_lang', lang);
+    }
+
+    const currentLang = localStorage.getItem('rmn_lang') || 'en';
+    updateLanguage(currentLang);
+
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        const isFa = document.body.classList.contains('lang-fa');
+        updateLanguage(isFa ? 'en' : 'fa');
+      });
+    }
+  </script>
+</body>
+</html>
