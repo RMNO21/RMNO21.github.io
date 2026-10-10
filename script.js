@@ -89,9 +89,8 @@
     }
   };
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramLang = urlParams.get("lang");
-  let currentLang = (paramLang === "fa" || paramLang === "en") ? paramLang : (localStorage.getItem("rmn_lang") || "en");
+  const isDocFa = document.documentElement.getAttribute("lang") === "fa" || window.location.pathname.includes("/fa/");
+  let currentLang = isDocFa ? "fa" : "en";
 
   // --- Dynamic Project Catalog Rendering ---
   function renderProjects(filter = "all") {
@@ -392,12 +391,12 @@
       });
     });
 
-    // 3. Language Toggle
+    // 3. Language Toggle (Record preference on navigate)
     const langBtn = document.getElementById("langToggleBtn");
     if (langBtn) {
       langBtn.addEventListener("click", () => {
         const nextLang = currentLang === "en" ? "fa" : "en";
-        setLanguage(nextLang);
+        localStorage.setItem("rmn_lang", nextLang);
       });
     }
   });
