@@ -179,26 +179,47 @@
       font-family: var(--font-fa);
       letter-spacing: normal;
     }
-    body.lang-fa .timeline-header {
-      flex-direction: row-reverse;
+    body.lang-fa * {
+      letter-spacing: normal !important;
     }
-    body.lang-fa .edu-header {
-      flex-direction: row-reverse;
+    body.lang-fa .resume-list {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      margin-right: 0 !important;
     }
     body.lang-fa .resume-list li {
       padding-left: 0;
-      padding-right: 1.3rem;
+      padding-right: 1.35rem;
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.8;
     }
     body.lang-fa .resume-list li::before {
       left: auto;
       right: 0;
       content: "◂";
     }
+    body.lang-fa .summary-text,
+    body.lang-fa .edu-desc {
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.85;
+    }
     body.lang-fa .skills-category-row {
       grid-template-columns: 210px 1fr;
     }
     body.lang-fa .skills-label {
       font-family: var(--font-fa);
+    }
+    body.lang-fa .project-summary {
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.7;
+    }
+    body.lang-fa .project-tech {
+      direction: ltr;
+      display: inline-block;
+      unicode-bidi: isolate;
     }
 
     /* Top Floating Toolbar (Hidden during print) */
@@ -532,6 +553,7 @@
     .resume-list {
       list-style-type: none;
       padding-left: 0;
+      padding-right: 0;
       margin-top: 0.4rem;
     }
 
@@ -1049,6 +1071,11 @@
         width: 88px;
         height: 88px;
       }
+      .portrait-img {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 0.5rem;
+      }
       .candidate-name {
         font-size: 1.75rem;
       }
@@ -1058,11 +1085,27 @@
       }
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 0.35rem;
-        text-align: left;
+        gap: 0.45rem;
+        width: 100%;
+      }
+      .contact-item {
+        justify-content: center;
+        width: 100%;
+        font-size: 0.82rem;
+      }
+      .role-badge {
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        box-sizing: border-box;
       }
       body.lang-fa .contact-grid {
-        text-align: right;
+        width: 100%;
+      }
+      body.lang-fa .contact-item {
+        justify-content: center;
+        width: 100%;
       }
 
       .timeline-header,

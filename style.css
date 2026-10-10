@@ -691,6 +691,10 @@ body.lang-fa {
   text-align: right;
 }
 
+body.lang-fa * {
+  letter-spacing: normal !important;
+}
+
 body.lang-fa .site-header .header-container {
   flex-direction: row;
 }
@@ -698,6 +702,16 @@ body.lang-fa .site-header .header-container {
 body.lang-fa .header-nav {
   display: flex;
   gap: 1.5rem;
+}
+
+body.lang-fa .hero-main-title .farsi-tag {
+  margin-left: 0;
+  margin-right: 0.6rem;
+}
+
+body.lang-fa .hero-tagline {
+  text-align: right;
+  line-height: 1.8;
 }
 
 body.lang-fa .sidebar-tech-info {
@@ -713,9 +727,19 @@ body.lang-fa .sidebar-info-label {
   text-align: right;
 }
 
-body.lang-fa .bio-editorial-text p {
-  text-align: right;
-  line-height: 2;
+body.lang-fa .sidebar-info-val[dir="ltr"] {
+  text-align: right !important;
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+}
+
+body.lang-fa .project-summary-tech,
+body.lang-fa .bio-editorial-text p,
+body.lang-fa .bio-editorial-fa p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.9;
   unicode-bidi: plaintext;
 }
 
@@ -726,6 +750,23 @@ body.lang-fa .section-head-bar {
 body.lang-fa .terminal-block {
   direction: ltr;
   text-align: left;
+}
+
+body.lang-fa .btn-tech,
+body.lang-fa .btn-pill,
+body.lang-fa .status-pill,
+body.lang-fa .filter-btn,
+body.lang-fa .section-label,
+body.lang-fa .section-headline,
+body.lang-fa .header-nav a {
+  font-family: var(--font-fa);
+}
+
+body.lang-fa .project-tag-pill,
+body.lang-fa .stack-badge {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
 }
 
 /* Accessibility & SEO Crawler Helper */
@@ -802,6 +843,10 @@ body.lang-fa .sidebar-info-sub {
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
     margin-bottom: 1.75rem;
+  }
+  body.lang-fa .hero-actions-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
   .btn-tech {
     justify-content: center;
@@ -885,6 +930,10 @@ body.lang-fa .sidebar-info-sub {
   .contact-actions-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  body.lang-fa .contact-actions-bar {
+    grid-template-columns: 1fr;
     gap: 0.6rem;
   }
   .contact-link-pill {

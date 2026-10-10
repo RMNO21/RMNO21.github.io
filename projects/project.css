@@ -457,6 +457,48 @@ body.lang-fa .lang-content-en {
 
 body.lang-fa {
   direction: rtl;
+  text-align: right;
+  font-family: var(--font-fa), var(--font-sans);
+}
+
+body.lang-fa * {
+  letter-spacing: normal !important;
+}
+
+body.lang-fa .spec-label,
+body.lang-fa .spec-value {
+  text-align: right;
+}
+
+body.lang-fa .spec-value[dir="ltr"] {
+  text-align: right !important;
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+}
+
+body.lang-fa .project-lead,
+body.lang-fa .content-lead,
+body.lang-fa .content-block p,
+body.lang-fa .feature-card p {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.85;
+}
+
+body.lang-fa .tech-badge,
+body.lang-fa .code-window,
+body.lang-fa .code-body,
+body.lang-fa .code-header {
+  direction: ltr;
+  text-align: left;
+}
+
+body.lang-fa .btn-pill,
+body.lang-fa .badge,
+body.lang-fa .spec-item,
+body.lang-fa .feature-card {
+  font-family: var(--font-fa);
 }
 
 /* Footer */
@@ -500,6 +542,10 @@ body.lang-fa {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
+  }
+  body.lang-fa .project-actions-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
   .specs-matrix {
     grid-template-columns: 1fr;
