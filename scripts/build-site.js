@@ -17,8 +17,8 @@ const projectMetadata = {
   'sepotify': {
     enTitle: 'Sepotify: Lossless Audio Engine for Android | Raman Tondro',
     enDesc: 'Engineering dossier of Sepotify: A native zero-delay lossless audio streaming and FLAC decoding engine for Android built in Kotlin by Raman Tondro.',
-    faTitle: 'پروژه Sepotify: موتور صوتی نیتیو اندروید | رامان تندرو',
-    faDesc: 'شناسنامه مهندسی نرم‌افزار Sepotify: موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید توسعه‌یافته با کاتلین توسط رامان تندرو.'
+    faTitle: 'پروژه سپاتیفای (Sepotify): موتور صوتی اندروید | رامان تندرو',
+    faDesc: 'شناسنامه مهندسی نرم‌افزار سپاتیفای (Sepotify): موتور استریم و پخش باکیفیت و بدون تأخیر در اندروید توسعه‌یافته با کاتلین توسط رامان تندرو.'
   },
   'ruview': {
     enTitle: 'RuView: Wi-Fi CSI Spatial Sensing System | Raman Tondro',
