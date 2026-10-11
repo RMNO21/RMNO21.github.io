@@ -324,11 +324,16 @@
       if (titleEl) titleEl.textContent = dict.pageTitle;
     }
 
-    // Update all data-i18n attributes
+    // Update all data-i18n attributes without wiping child SVG icons
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) {
-        el.textContent = dict[key];
+        const spanEl = el.querySelector("span");
+        if (spanEl && el.querySelector("svg")) {
+          spanEl.textContent = dict[key];
+        } else {
+          el.textContent = dict[key];
+        }
       }
     });
 

@@ -129,6 +129,12 @@ if (!enIndex.includes('"alumniOf"')) {
 enIndex = enIndex.replace('"disambiguatingDescription": "Raman Tondro (رامان تندرو) is an individual person, software developer, and Computer Engineering student, distinct from Raman spectroscopy and gaming creators."', '"disambiguatingDescription": "Raman Tondro (RMNO21) is an Iranian systems developer and computer engineering researcher at Shiraz University, distinct from Raman spectroscopy."');
 enIndex = enIndex.replace('"description": "Raman Tondro (رامان تندرو) is a Computer Engineering student specializing in embedded firmware (ESP32), C/C++, computer vision, and client systems architecture."', '"description": "Raman Tondro (RMNO21) is a Computer Engineering student specializing in embedded firmware (ESP32), C/C++, computer vision, and client systems architecture."');
 
+// Button 4 with icon in English index
+enIndex = enIndex.replace(/<a href="#contact" class="btn-tech btn-tech-secondary" data-i18n="hero.btnContact">[\s\S]*?<\/a>/, `<a href="#contact" class="btn-tech btn-tech-secondary" data-i18n="hero.btnContact">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span>Direct Channels</span>
+            </a>`);
+
 fs.writeFileSync(path.join(rootDir, 'index.html'), enIndex, 'utf-8');
 console.log('✓ index.html polished.');
 
@@ -141,6 +147,17 @@ let faIndex = fs.readFileSync(path.join(faDir, 'index.html'), 'utf-8');
 if (!faIndex.includes('"alumniOf"')) {
   faIndex = faIndex.replace('"hasOccupation": {', alumniOfSnippet + '\n        "hasOccupation": {');
 }
+
+// Persian hero tagline
+faIndex = faIndex.replace(/<p class="hero-tagline" id="heroTagline">[\s\S]*?<\/p>/, `<p class="hero-tagline" id="heroTagline">
+            حوزه تمرکز: فرم‌ویر و سیستم‌های نهفته، معماری نزدیک به سخت‌افزار، مهندسی میکروکنترلرها (ESP32) و نرم‌افزارهای کلاینت با کارایی بالا.
+          </p>`);
+
+// Persian Button 4 with icon
+faIndex = faIndex.replace(/<a href="#contact" class="btn-tech btn-tech-secondary" data-i18n="hero.btnContact">[\s\S]*?<\/a>/, `<a href="#contact" class="btn-tech btn-tech-secondary" data-i18n="hero.btnContact">
+              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span>پل‌های ارتباطی</span>
+            </a>`);
 
 fs.writeFileSync(path.join(faDir, 'index.html'), faIndex, 'utf-8');
 console.log('✓ fa/index.html polished.');
